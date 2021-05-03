@@ -19,7 +19,7 @@ public class DatabaseService {
     @Getter
     private static EntityDataStore<CompanyEntity> companiesStore;
     @Getter
-    private static EntityDataStore<Customer> customersStore;
+    private static EntityDataStore<CustomerEntity> customersStore;
     @Getter
     private static EntityDataStore<OpeningHourEntity> openingHoursStore;
     @Getter
