@@ -2,3 +2,17 @@
   margin: 0 auto;
   max-width: 250px;
 }
+
+div {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto auto;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
