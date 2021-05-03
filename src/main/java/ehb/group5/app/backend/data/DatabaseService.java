@@ -3,11 +3,15 @@ package ehb.group5.app.backend.data;
 import com.zaxxer.hikari.HikariDataSource;
 import ehb.group5.app.backend.config.SQLCredentials;
 import ehb.group5.app.backend.data.table.*;
+import ehb.group5.app.backend.utils.LogUtils;
 import io.requery.sql.EntityDataStore;
 import lombok.Getter;
+import lombok.val;
 import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
+
+import static ehb.group5.app.backend.utils.Configurations.readOrCreateConfiguration;
 
 @Service
 public class DatabaseService {
@@ -38,10 +42,14 @@ public class DatabaseService {
     private HikariDataSource hikari;
 
     public DatabaseService() {
-        getLogger().info("Connection to the database...");
-        hikari = new HikariDataSource(new SQLCredentials().toHikari());
+        getLogger().info(LogUtils.YELLOW + "Reading sql config file...");
+        val sqlConfig = readOrCreateConfiguration(SQLCredentials.class);
 
-        getLogger().info("Setting up Entities Data Store...");
+        getLogger().info(LogUtils.YELLOW + "Connection to the database...");
+        hikari = new HikariDataSource(sqlConfig.toHikari());
+        getLogger().info(LogUtils.GREEN + "Connection etablised");
+
+        getLogger().info(LogUtils.YELLOW + "Setting up Entities Data Store...");
         billsStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         companiesStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         customersStore = new EntityDataStore<>(hikari, Models.DEFAULT);
@@ -52,5 +60,6 @@ public class DatabaseService {
         storesStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         ticketsStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         ticketMessagesStore = new EntityDataStore<>(hikari, Models.DEFAULT);
+        getLogger().info(LogUtils.GREEN + "Entities Data Store DONE");
     }
 }
