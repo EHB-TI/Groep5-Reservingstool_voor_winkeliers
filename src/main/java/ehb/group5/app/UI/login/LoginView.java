@@ -21,6 +21,8 @@ public class LoginView extends VerticalLayout {
         TextField textField = new TextField("Your name");
         textField.addThemeName("bordered");
 
+
+
         // Button click listeners can be defined as lambda expressions
         Button button = new Button("Say hello",
                 e -> Notification.show("Hey I love you " + textField.getValue()));
