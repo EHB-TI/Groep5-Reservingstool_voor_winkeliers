@@ -8,10 +8,13 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.theme.Theme;
+import com.vaadin.flow.theme.lumo.Lumo;
 
 @Route("profiel")
 @PageTitle("ProfielBewerken")
 @CssImport("./styles/ProfielBewerken.css")
+@Theme(value = Lumo.class, variant = Lumo.DARK)
 
 
 
@@ -46,6 +49,10 @@ public class ProfielBewerkenView extends VerticalLayout{
 
         Button button = new Button("Save");
         add(button);
+
+
+
+        addClassName("centered-content");
 
 
     }
