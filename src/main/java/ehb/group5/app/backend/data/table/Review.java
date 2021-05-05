@@ -9,19 +9,19 @@ import lombok.ToString;
 public abstract class Review {
 
     @Key @Generated
-    int id;
+    protected int id;
 
     @Column(name = "store_id")
     @ForeignKey(referencedColumn = "id")
     @ManyToOne
-    StoreEntity store;
+    protected StoreEntity store;
 
     @Column(name = "customer_id")
     @ForeignKey(referencedColumn = "id")
     @ManyToOne
-    CustomerEntity customer;
+    protected CustomerEntity customer;
 
-    int score;
+    protected int score;
 
-    String description;
+    protected String description;
 }

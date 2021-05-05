@@ -15,18 +15,18 @@ public abstract class Company {
     int id;
 
     @Column(length = 30)
-    String email;
+    protected String email;
 
     @Column(length = 50)
-    String password;
+    protected String password;
 
-    int credits;
+    protected int credits;
 
-    @OneToMany
-    MutableResult<BillEntity> bills;
+    @OneToMany(mappedBy = "company_id")
+    protected MutableResult<BillEntity> bills;
 
-    @OneToMany
-    MutableResult<StoreEntity> stores;
+    @OneToMany(mappedBy = "company_id")
+    protected MutableResult<StoreEntity> stores;
 
     public static CompanyEntity getCompanyById(int id){
         return DatabaseService.getCompaniesStore()
