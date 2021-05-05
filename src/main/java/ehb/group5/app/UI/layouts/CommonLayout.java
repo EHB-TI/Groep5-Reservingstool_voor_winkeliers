@@ -22,7 +22,7 @@ public abstract class CommonLayout extends VerticalLayout {
 
     public CommonLayout() {
         setWidth("100%");
-        setMinHeight("100%");
+        setHeight("100vh");
         getStyle().set("padding", "0");
 
         /**
