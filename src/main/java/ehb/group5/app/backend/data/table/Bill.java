@@ -16,7 +16,7 @@ public abstract class Bill {
     @Column(name = "company_id")
     @ForeignKey(referencedColumn = "id")
     @ManyToOne
-    protected CompanyEntity companyId;
+    protected CompanyEntity company;
 
     @Column
     protected double amount;
@@ -25,5 +25,5 @@ public abstract class Bill {
     protected Timestamp date;
 
     @Column(length = 10)
-    String method;
+    protected String method;
 }

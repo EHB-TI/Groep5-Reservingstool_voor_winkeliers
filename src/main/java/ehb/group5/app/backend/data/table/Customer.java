@@ -11,26 +11,26 @@ public abstract class Customer {
 
     @Key
     @Generated
-    int id;
+    protected int id;
 
     @Column(name = "first_name", length = 20)
-    String firstName;
+    protected String firstName;
 
     @Column(name = "last_name", length = 20)
-    String lastName;
+    protected String lastName;
 
     @Column
-    String email;
+    protected String email;
 
     @Column
-    String password;
+    protected String password;
 
     @Column
-    int type;
+    protected int type;
 
-    @OneToMany
-    MutableResult<ReservationEntity> reservations;
+    @OneToMany(mappedBy = "customer_id")
+    protected MutableResult<ReservationEntity> reservations;
 
-    @OneToMany
-    MutableResult<ReviewEntity> reviews;
+    @OneToMany(mappedBy = "customer_id")
+    protected MutableResult<ReviewEntity> reviews;
 }

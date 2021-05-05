@@ -11,17 +11,17 @@ import java.sql.Timestamp;
 public class TicketMessage {
 
     @Key @Generated
-    int id;
+    protected int id;
 
     @Column(name = "ticket_id")
     @ForeignKey(referencedColumn = "id")
     @ManyToOne
-    Ticket ticket;
+    protected TicketEntity ticket;
 
-    String message;
+    protected String message;
 
-    Timestamp date;
+    protected Timestamp date;
 
     @Column(name = "file_id")
-    int fileId;
+    protected int fileId;
 }
