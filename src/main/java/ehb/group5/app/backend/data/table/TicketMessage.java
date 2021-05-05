@@ -14,7 +14,7 @@ public class TicketMessage {
     int id;
 
     @Column(name = "ticket_id")
-    @ForeignKey(update = ReferentialAction.RESTRICT, referencedColumn = "id")
+    @ForeignKey(referencedColumn = "id")
     @ManyToOne
     Ticket ticket;
 

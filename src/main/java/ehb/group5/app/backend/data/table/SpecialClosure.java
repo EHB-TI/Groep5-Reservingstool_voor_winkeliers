@@ -14,7 +14,7 @@ public class SpecialClosure {
     int id;
 
     @Column(name = "store_id")
-    @ForeignKey(update = ReferentialAction.RESTRICT, referencedColumn = "id")
+    @ForeignKey(referencedColumn = "id")
     @ManyToOne
     StoreEntity store;
 

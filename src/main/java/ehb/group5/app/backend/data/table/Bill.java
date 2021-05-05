@@ -14,7 +14,7 @@ public abstract class Bill {
     protected int id;
 
     @Column(name = "company_id")
-    @ForeignKey(update = ReferentialAction.RESTRICT, referencedColumn = "id")
+    @ForeignKey(referencedColumn = "id")
     @ManyToOne
     protected CompanyEntity companyId;
 

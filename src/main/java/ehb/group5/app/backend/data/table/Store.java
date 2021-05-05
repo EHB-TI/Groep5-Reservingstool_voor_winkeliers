@@ -13,6 +13,11 @@ public abstract class Store {
     @Generated
     int id;
 
+    @Column(name = "company_id")
+    @ForeignKey(referencedColumn = "id")
+    @ManyToOne
+    CompanyEntity company;
+
     String name;
 
     String adress;
