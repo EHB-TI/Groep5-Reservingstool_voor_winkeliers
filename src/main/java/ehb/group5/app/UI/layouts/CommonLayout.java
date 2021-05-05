@@ -40,7 +40,7 @@ public abstract class CommonLayout extends VerticalLayout {
 
         // Website title
         val navTitle = new Anchor();
-        navTitle.setHref("#");
+        navTitle.setHref("/");
         navTitle.setText("Logo");
         navContainer.add(navTitle);
 
@@ -71,7 +71,7 @@ public abstract class CommonLayout extends VerticalLayout {
         collapseDiv.add(ulNav);
 
         val homeLi = new ListItem();
-        val homeAnchor = new Anchor("#", "Dashboard");
+        val homeAnchor = new Anchor("", "Dashboard");
         homeLi.addClassNames("nav-item");
         homeAnchor.addClassNames("nav-link");
         if (VaadinUtils.isAtLocation(""))
@@ -80,7 +80,7 @@ public abstract class CommonLayout extends VerticalLayout {
         ulNav.add(homeLi);
 
         val storeLi = new ListItem();
-        val storeAnchor = new Anchor("#", "Winkel");
+        val storeAnchor = new Anchor("/store", "Winkel");
         storeLi.addClassNames("nav-item");
         storeAnchor.addClassNames("nav-link");
         if (VaadinUtils.isAtLocation("/store"))
@@ -89,7 +89,7 @@ public abstract class CommonLayout extends VerticalLayout {
         ulNav.add(storeLi);
 
         val statsLi = new ListItem();
-        val statsAnchor = new Anchor("#", "Statistieken");
+        val statsAnchor = new Anchor("/stats", "Statistieken");
         statsLi.addClassNames("nav-item");
         statsAnchor.addClassNames("nav-link");
         if (VaadinUtils.isAtLocation("/stats"))
@@ -98,7 +98,7 @@ public abstract class CommonLayout extends VerticalLayout {
         ulNav.add(statsLi);
 
         val supportLi = new ListItem();
-        val supportAnchor = new Anchor("#", "Support");
+        val supportAnchor = new Anchor("/support", "Support");
         supportLi.addClassNames("nav-item");
         supportAnchor.addClassNames("nav-link");
         if (VaadinUtils.isAtLocation("/support"))
@@ -115,7 +115,7 @@ public abstract class CommonLayout extends VerticalLayout {
 
         val profileLi = new ListItem();
         profileLi.addClassNames("nav-item");
-        val profileAnchor = new Anchor("#", "Profiel");
+        val profileAnchor = new Anchor("/profile", "Profiel");
         profileAnchor.addClassNames("nav-link");
         if (VaadinUtils.isAtLocation("/profile"))
             profileAnchor.addClassNames("active");
