@@ -14,12 +14,12 @@ public abstract class Reservation {
     int id;
 
     @Column(name = "store_id")
-    @ForeignKey(update = ReferentialAction.RESTRICT, referencedColumn = "id")
+    @ForeignKey(referencedColumn = "id")
     @ManyToOne
     StoreEntity store;
 
     @Column(name = "customer_id")
-    @ForeignKey(update = ReferentialAction.RESTRICT, referencedColumn = "id")
+    @ForeignKey(referencedColumn = "id")
     @ManyToOne
     CustomerEntity customer;
 

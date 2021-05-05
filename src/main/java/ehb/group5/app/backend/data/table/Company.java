@@ -1,7 +1,9 @@
 package ehb.group5.app.backend.data.table;
 
+import ehb.group5.app.backend.data.DatabaseService;
 import io.requery.*;
 import io.requery.query.MutableResult;
+import io.requery.query.Result;
 import lombok.ToString;
 
 @Entity
@@ -22,4 +24,15 @@ public abstract class Company {
 
     @OneToMany
     MutableResult<BillEntity> bills;
+
+    @OneToMany
+    MutableResult<StoreEntity> stores;
+
+    public static CompanyEntity getCompanyById(int id){
+        return DatabaseService.getCompaniesStore()
+                .select(CompanyEntity.class)
+                .where(CompanyEntity.ID.eq(id))
+                .get()
+                .firstOrNull();
+    }
 }

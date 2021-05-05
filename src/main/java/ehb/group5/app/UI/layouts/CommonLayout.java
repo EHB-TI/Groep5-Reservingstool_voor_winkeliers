@@ -1,4 +1,4 @@
-package ehb.group5.app.UI;
+package ehb.group5.app.UI.layouts;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -15,13 +15,14 @@ import java.time.LocalDate;
 @StyleSheet("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css")
 @JavaScript("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js")
 @CssImport("./styles/commonStyle.css")
-public abstract class CommonView extends VerticalLayout {
+public abstract class CommonLayout extends VerticalLayout {
 
     @Getter
     private Div container;
 
-    public CommonView() {
+    public CommonLayout() {
         setWidth("100%");
+        setMinHeight("100%");
         getStyle().set("padding", "0");
 
         /**
@@ -123,7 +124,7 @@ public abstract class CommonView extends VerticalLayout {
 
         val disconnectLi = new ListItem();
         disconnectLi.addClassNames("nav-item");
-        val disconnectAnchor = new Anchor("#", "Uitloggen");
+        val disconnectAnchor = new Anchor("/logout", "Uitloggen");
         disconnectAnchor.addClassNames("nav-link");
         disconnectLi.add(disconnectAnchor);
         rightUl.add(disconnectLi);
@@ -134,12 +135,15 @@ public abstract class CommonView extends VerticalLayout {
         container = new Div();
         container.addClassNames("main-container");
         add(container);
+
+
+        addAttachListener(event -> placeFooter());
     }
 
     /**
      * Footer
      */
-    public void placeFooter() {
+    private void placeFooter() {
         val footer = new Footer();
         footer.addClassNames("bg-light", "text-center", "text-lg-start");
         footer.setWidth("100%");
