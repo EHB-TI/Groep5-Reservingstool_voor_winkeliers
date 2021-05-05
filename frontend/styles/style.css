@@ -3,10 +3,17 @@
     box-sizing: border-box;
 }
 
+img {
+    width:100%;
+}
 
 .centered-content {
   margin: 0 auto;
   max-width: 250px;
+}
+
+h1 {
+    padding: 2%
 }
 
 div {
@@ -27,6 +34,12 @@ section {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: blue;
+    align-items: center;
+    background-color: #34ed94;
+}
+
+.navbar img {
+    width: 15%;
+    height: 50%;
 }
 
