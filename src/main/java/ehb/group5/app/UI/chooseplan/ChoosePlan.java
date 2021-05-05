@@ -18,6 +18,8 @@ public class ChoosePlan extends VerticalLayout {
         Span navbar = new Span();
         navbar.addClassName("navbar");
         navbar.setWidth("100%");
+        Image image = new Image("https://dummyimage.com/200x100/000/fff", "DummyImage");
+        navbar.add(image);
         navbar.add(new H1("xdddd"));
         navbar.add(new H1("wow"));
         navbar.add(new H1("lol"));
