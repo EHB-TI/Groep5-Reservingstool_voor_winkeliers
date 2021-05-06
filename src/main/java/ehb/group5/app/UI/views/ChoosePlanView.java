@@ -1,4 +1,4 @@
-package ehb.group5.app.UI.chooseplan;
+package ehb.group5.app.UI.views;
 
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.*;
@@ -6,12 +6,13 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
+import ehb.group5.app.UI.layouts.CommonLayout;
 
 @Route("chooseplan")
 @PageTitle("Choose your payment")
 @CssImport("./styles/style.css")
 
-public class ChoosePlan extends VerticalLayout {
+public class ChoosePlanView extends CommonLayout {
 
     /*
      Author: De Vogel Ryan
@@ -19,22 +20,7 @@ public class ChoosePlan extends VerticalLayout {
      Read the README.md bellow the file pom.xml
     */
 
-    public ChoosePlan() {
-
-        Span navbar = new Span();
-        navbar.addClassName("navbar");
-        navbar.setWidth("100%");
-        //The image needs to be in the folder webapp/frontend/
-        //I have tried different ways but this one seems to be the only one that works
-        Image image = new Image("/frontend/logo.png", "logo");
-        navbar.add(image);
-        //This is to navigate to a different page.
-        //Be carefully when adding new pages because when I do I get an error that I have the same route twice apparantly it's not legal to have the same routes
-        navbar.add(new RouterLink("Home", Home.class));
-        navbar.add(new RouterLink("Test1", Home1.class));
-        navbar.add(new RouterLink("Test2", Home.class));
-        add(navbar);
-
+    public ChoosePlanView() {
         add(new H1("Kies uw plan"));
 
         Div div = new Div();
@@ -60,7 +46,7 @@ public class ChoosePlan extends VerticalLayout {
         div.add(left);
         div.add(middel);
         div.add(right);
-        add(div);
+        getContainer().add(div);
 
     }
 

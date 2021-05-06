@@ -5,7 +5,6 @@ import lombok.Cleanup;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 import lombok.val;
-import lombok.var;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
