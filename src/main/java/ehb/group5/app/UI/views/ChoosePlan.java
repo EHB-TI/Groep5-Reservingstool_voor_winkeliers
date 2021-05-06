@@ -31,7 +31,7 @@ public class ChoosePlan extends VerticalLayout {
         //This is to navigate to a different page.
         //Be carefully when adding new pages because when I do I get an error that I have the same route twice apparantly it's not legal to have the same routes
         navbar.add(new RouterLink("Home", Home.class));
-        navbar.add(new RouterLink("Test1", Home.class));
+        navbar.add(new RouterLink("Test1", Home1.class));
         navbar.add(new RouterLink("Test2", Home.class));
         add(navbar);
 
