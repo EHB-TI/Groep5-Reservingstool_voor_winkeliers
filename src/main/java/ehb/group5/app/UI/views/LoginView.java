@@ -34,6 +34,8 @@ public class LoginView extends VerticalLayout {
         // Creating button
         Button button = new Button("Inloggen");
 
+
+
         // Listen to button actions
         button.addClickListener(event -> {
             // Get the company by id
