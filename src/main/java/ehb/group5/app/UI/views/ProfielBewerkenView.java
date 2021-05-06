@@ -1,4 +1,4 @@
-package ehb.group5.app.vieuws;
+package ehb.group5.app.UI.views;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -10,44 +10,40 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
+import ehb.group5.app.UI.layouts.CommonLayout;
 
-@Route("profiel")
+@Route("profiel/edit")
 @PageTitle("ProfielBewerken")
 @CssImport("./styles/ProfielBewerken.css")
-@Theme(value = Lumo.class, variant = Lumo.DARK)
-
-
-
-
-public class ProfielBewerkenView extends VerticalLayout{
+public class ProfielBewerkenView extends CommonLayout {
 
     public ProfielBewerkenView(){
 
 
-        add(new H1("Profiel bewerken"));
+        getContainer().add(new H1("Profiel bewerken"));
 
         TextField labelField = new TextField();
         labelField.setLabel("Nieuwe Email");
 
-        add(labelField);
+        getContainer().add(labelField);
 
         TextField labelField2 = new TextField();
         labelField2.setLabel("Nieuwe Voornaam");
 
-        add(labelField2);
+        getContainer().add(labelField2);
 
         TextField labelField3 = new TextField();
         labelField3.setLabel("Nieuwe Achternaam");
 
-        add(labelField3);
+        getContainer().add(labelField3);
 
         TextField labelField4 = new TextField();
         labelField4.setLabel("Nieuwe Wachtwoord");
 
-        add(labelField4);
+        getContainer().add(labelField4);
 
         Button button = new Button("Save");
-        add(button);
+        getContainer().add(button);
 
         addClassName("centered-content");
 
