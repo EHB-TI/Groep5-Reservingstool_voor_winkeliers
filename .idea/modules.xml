@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Groep5-Reservingstool_voor_winkeliers.iml" filepath="$PROJECT_DIR$/Groep5-Reservingstool_voor_winkeliers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Reservingstool_voor_winkeliers.iml" filepath="$PROJECT_DIR$/Reservingstool_voor_winkeliers.iml" />
     </modules>
   </component>
 </project>
