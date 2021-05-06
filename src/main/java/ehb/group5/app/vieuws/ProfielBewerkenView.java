@@ -1,4 +1,4 @@
-package ehb.group5.app.UI.login;
+package ehb.group5.app.vieuws;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -23,7 +23,6 @@ public class ProfielBewerkenView extends VerticalLayout{
 
     public ProfielBewerkenView(){
 
-        Div div = new Div();
 
         add(new H1("Profiel bewerken"));
 
@@ -49,8 +48,6 @@ public class ProfielBewerkenView extends VerticalLayout{
 
         Button button = new Button("Save");
         add(button);
-
-
 
         addClassName("centered-content");
 

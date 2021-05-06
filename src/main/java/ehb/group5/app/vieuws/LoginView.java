@@ -1,4 +1,4 @@
-package ehb.group5.app.UI.login;
+package ehb.group5.app.vieuws;
 
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
