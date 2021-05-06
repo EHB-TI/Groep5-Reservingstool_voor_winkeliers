@@ -15,37 +15,57 @@ import ehb.group5.app.UI.layouts.CommonLayout;
 @Route("profiel/edit")
 @PageTitle("ProfielBewerken")
 @CssImport("./styles/ProfielBewerken.css")
+
 public class ProfielBewerkenView extends CommonLayout {
+
+     /*
+     Author: Zakaria Lamsakam
+     email: zakaria.lamsakam@student.ehb.be
+     */
 
     public ProfielBewerkenView(){
 
+        Div div = new Div();
 
-        getContainer().add(new H1("Profiel bewerken"));
+        //Titel aanmaken
+        div.add(new H1("Profiel bewerken"));
 
+        //Invoeren van gegevens aanmaken
         TextField labelField = new TextField();
+
+        //Label initialiseren
         labelField.setLabel("Nieuwe Email");
 
-        getContainer().add(labelField);
+        //De maximum limiet van letters implementeren
+        labelField.setMaxLength(30);
+
+        div.add(labelField);
 
         TextField labelField2 = new TextField();
         labelField2.setLabel("Nieuwe Voornaam");
+        labelField2.setMaxLength(20);
 
-        getContainer().add(labelField2);
+        div.add(labelField2);
 
         TextField labelField3 = new TextField();
         labelField3.setLabel("Nieuwe Achternaam");
+        labelField3.setMaxLength(20);
 
-        getContainer().add(labelField3);
+        div.add(labelField3);
 
         TextField labelField4 = new TextField();
         labelField4.setLabel("Nieuwe Wachtwoord");
+        labelField4.setMaxLength(50);
 
-        getContainer().add(labelField4);
+        div.add(labelField4);
 
+        //knop aanmaken
         Button button = new Button("Save");
-        getContainer().add(button);
+        div.add(button);
 
-        addClassName("centered-content");
+        div.addClassName("centered-content");
+        getContainer().add(div);
+
 
 
     }
