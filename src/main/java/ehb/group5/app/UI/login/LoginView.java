@@ -51,6 +51,8 @@ public class LoginView extends VerticalLayout {
                 // TODO Fout of bestaat niet
             }
         });
+
+        add(idField, passwordField, passwordField);
     }
 
 }
