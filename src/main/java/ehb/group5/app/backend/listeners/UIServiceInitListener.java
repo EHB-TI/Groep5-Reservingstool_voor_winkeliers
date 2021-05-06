@@ -6,7 +6,7 @@ import com.vaadin.flow.router.RouteNotFoundError;
 import com.vaadin.flow.server.ServiceInitEvent;
 import com.vaadin.flow.server.VaadinServiceInitListener;
 import com.vaadin.flow.server.VaadinSession;
-import ehb.group5.app.UI.views.LoginView;
+import ehb.group5.app.UI.login.LoginView;
 import ehb.group5.app.UI.views.NoteFoundView;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +27,6 @@ public class UIServiceInitListener implements VaadinServiceInitListener {
     }
 
     private void authenticateNavigation(BeforeEnterEvent event) {
-        System.out.println(event.getNavigationTarget());
         if (!event.getNavigationTarget().equals(LoginView.class)
                 && VaadinSession.getCurrent().getAttribute("company") == null) {
             event.forwardTo(LoginView.class);
