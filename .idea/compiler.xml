@@ -7,19 +7,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Groep5-Reservingstool_voor_winkeliers" />
-        <module name="Reservingstool_voor_winkeliers" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Groep5-Reservingstool_voor_winkeliers" target="1.8" />
       <module name="Java-code" target="8" />
-      <module name="Reservingstool_voor_winkeliers" target="10" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Groep5-Reservingstool_voor_winkeliers" options="-parameters" />
-      <module name="Reservingstool_voor_winkeliers" options="-parameters" />
     </option>
   </component>
 </project>
