@@ -17,25 +17,37 @@ import ehb.group5.app.UI.layouts.CommonLayout;
 @CssImport("./styles/support.css")
 public class SupportView extends CommonLayout {
 
+     /*
+     Author: Zakaria Lamsakam
+     email: zakaria.lamsakam@student.ehb.be
+     */
+
     public SupportView(){
 
-        getContainer().add(new H1("Support services"));
+        Div div = new Div();
 
+        //Titel aanmaken
+        div.add(new H1("Support services"));
 
+        //Knoppen aanmaken
         Button button = new Button("Ik heb een probleem met de facturatie");
-        getContainer().add(button);
+        div.add(button);
 
         Button button2 = new Button("Ik heb een probleem met de betaling");
-        getContainer().add(button2);
+        div.add(button2);
 
         Button button3 = new Button("Ik heb een probleem met het bewerken van de informatie ");
-        getContainer().add(button3);
+        div.add(button3);
 
         Button button4 = new Button("Ik heb een probleem met de agenda");
-        getContainer().add(button4);
+        div.add(button4);
 
         Button button5 = new Button("Andere probleem");
-        getContainer().add(button5);
+        div.add(button5);
+
+        div.addClassName("centered-content");
+
+        getContainer().add(div);
     }
 
 }
