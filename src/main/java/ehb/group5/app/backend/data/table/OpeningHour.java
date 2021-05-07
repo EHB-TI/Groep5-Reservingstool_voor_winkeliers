@@ -11,19 +11,19 @@ import java.sql.Time;
 public abstract class OpeningHour {
 
     @Key @Generated
-    protected int id;
+     int id;
 
     @Column(name = "store_id")
     @ForeignKey(referencedColumn = "id")
     @ManyToOne
-    protected StoreEntity store;
+     StoreEntity store;
 
     @Column(name = "week_day")
-    protected int weekDay;
+     int weekDay;
 
     @Column(name = "begin_hour")
-    protected Time beginHour;
+     Time beginHour;
 
     @Column(name = "end_hour")
-    protected Time endHour;
+     Time endHour;
 }

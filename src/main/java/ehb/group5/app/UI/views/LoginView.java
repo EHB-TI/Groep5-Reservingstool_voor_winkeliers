@@ -10,6 +10,7 @@ import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.NumberField;
+import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -30,7 +31,7 @@ public class LoginView extends VerticalLayout {
         logindiv.add(new H1("Login"));
         // Creating id & password fields
         NumberField idField = new NumberField();
-        TextField passwordField = new TextField();
+        PasswordField passwordField = new PasswordField();
 
         // Placing a placeholder to the fields
         idField.setPlaceholder("Bedrijfsnummer");
@@ -40,26 +41,36 @@ public class LoginView extends VerticalLayout {
         Hr hr1 = new Hr();
         // Creating button
         Button button1 = new Button("Inloggen");
+        button1.addClickShortcut(Key.ENTER);
         Button button2 = new Button("Sign up");
 
         H5 titel3 = new H5("Nog geen account ?");
 
+        idField.setAutofocus(true);
+
 
         // Listen to button actions
         button1.addClickListener(event -> {
-            // Get the company by id
-            val company = Company.getCompanyById((int) ((double) idField.getValue()));
+            if (idField.getValue()!= null){
+                // Get the company by id
+                val company = Company.getCompanyById((int) ((double) idField.getValue()));
 
-            // Checking password
-            if (company != null && passwordField.getValue().equals(company.getPassword())) {
-                // Route to dashboard view
-                UI.getCurrent().getPage().setLocation("test ");
+                // Checking password
+                if (company != null && passwordField.getValue().equals(company.getPassword())) {
+                    // Route to dashboard view
+                    UI.getCurrent().getPage().setLocation("test ");
 
-                // Saving company to the current session
-                VaadinSession.getCurrent().setAttribute("company", company);
-            } else {
-                // TODO Fout of bestaat niet
+                    // Saving company to the current session
+                    VaadinSession.getCurrent().setAttribute("company", company);
+                } else {
+                    Notification.show("Wachtwoord of bedrijfsnummer niet geldig");
+                }
             }
+            else {
+                Notification.show("Vakken zijn niet goed ingevuld");
+            }
+
+
         });
         button2.addClickListener(event -> {
             UI.getCurrent().getPage().setLocation("signup");
