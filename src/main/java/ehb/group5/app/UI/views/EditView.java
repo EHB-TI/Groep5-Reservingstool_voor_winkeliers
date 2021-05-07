@@ -10,8 +10,6 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.select.Select;
-import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.timepicker.TimePicker;
@@ -24,95 +22,87 @@ import com.vaadin.flow.component.html.H1;
 
 @Route("edit")
 @PageTitle("Profiel")
-@CssImport("./styles/edit.css")
+@CssImport("./styles/style.css")
 public class EditView extends CommonLayout {
 
+     /*
+     Author: Zakaria Lamsakam
+     email: zakaria.lamsakam@student.ehb.be
+     */
+
     public EditView(){
+
         CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
 
         Div div = new Div();
-        div.addClassNames("edit-content");
 
-        /**
-         * Top DIV
-         * */
-        Div topDiv = new Div();
-        topDiv.addClassNames("edit-content-top");
+        //Titel aanmaken
+        div.add(new H1("Edit"));
 
-        topDiv.add(new H1("Edit"));
 
         Image image = new Image("https://dummyimage.com/400x400/000/fff", "DummyImage");
-        Button button = new Button("Afbeelding uploaden");
+        div.add(image);
 
-        TextArea descriptionField = new TextArea("Omschrijving");
-        descriptionField.setPlaceholder("Schrijf hier");
+        //Afbeelding toevoegen
+        Button button = new Button("browse picture");
+        div.add(button);
 
-        topDiv.add(image, button, descriptionField);
+        //omschrijving toevoegen
+        TextArea textArea = new TextArea("Omschrijving");
+        textArea.setPlaceholder("Schrijf hier");
+
+        div.add(textArea);
+
+        //Adres toevoegen
+        TextField adres = new TextField("Adres");
+        div.add(adres);
+
+        //Vaadin icon toevoegen
+        Icon edit = new Icon(VaadinIcon.HOME);
+        div.add(edit);
+
+        //Telefoonnummer toevoegen
+        TextField telefoon = new TextField("Telefoonnummer");
+        div.add(telefoon);
+
+        //Vaadin icon toevoegen
+        Icon edit1 = new Icon(VaadinIcon.PHONE);
+        div.add(edit1);
+
+        ComboBox<String> openingdagen = new ComboBox<>();
+        openingdagen.setItems("Maandag", "Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag");
+        openingdagen.setLabel("openingdagen ");
+
+        //openinguren en sluitinguren toevoegen
+        TimePicker openinguren = new TimePicker();
+        openinguren.setLabel("openinguren");
+        TimePicker sluitinguren = new TimePicker();
+        sluitinguren.setLabel("sluitinguren");
 
 
-        /**
-         * Left DIV
-         * */
-        Div leftDiv = new Div();
-        leftDiv.addClassNames("edit-content-left");
+        div.add(openingdagen,openinguren,sluitinguren);
 
-        TextField adressField = new TextField("Adres");
-
-        leftDiv.add(adressField, createNewOpeningClosures());
-
-        /**
-         * Right DIV
-         * */
-        Div rightDiv = new Div();
-        rightDiv.addClassNames("edit-content-right");
-
-        TextField phoneField = new TextField("Telefoonnummer");
-
-        Button saveButton = new Button("Save Changes");
-
-        rightDiv.add(phoneField, createNewSpecialClosures(), saveButton);
+        //Speciale sluiting toevoegen
+        DatePicker datePicker = new DatePicker();
+        datePicker.setLabel("Speciale sluiting");
 
 
-        
-        div.add(topDiv, leftDiv, rightDiv);
+
+        div.add(datePicker);
+
+        //oorzaak toevoegen
+        TextArea oorzaak = new TextArea("De oorzaak");
+        textArea.setPlaceholder("Schrijf hier");
+
+        div.add(oorzaak);
+
+        Button button1 = new Button("save changes");
+        div.add(button1);
+
+
+        div.addClassName("centered-content");
         getContainer().add(div);
+
     }
 
-    private Div createNewSpecialClosures(){
-        Div div = new Div();
-        div.addClassNames("card", "card-body", "mt-2");
-
-        Icon closeIcon = new Icon(VaadinIcon.CLOSE_SMALL);
-        closeIcon.addClassNames("close");
-
-        DatePicker specialClosuresDatePicker = new DatePicker();
-        specialClosuresDatePicker.setLabel("Speciale sluiting");
-
-        TextArea specialClosuresReasonField = new TextArea("Reden");
-
-        div.add(closeIcon, specialClosuresDatePicker, specialClosuresReasonField);
-        return div;
-    }
-
-    private Div createNewOpeningClosures(){
-        Div div = new Div();
-        div.addClassNames("card", "card-body", "mt-2");
-
-        Icon closeIcon = new Icon(VaadinIcon.CLOSE_SMALL);
-        closeIcon.addClassNames("close");
-
-        Select<String> openingHourSelect = new Select<>();
-        openingHourSelect.setItems("Maandag", "Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag");
-        openingHourSelect.setLabel("Openingdagen");
-
-        TimePicker openingHourStartTimePicker = new TimePicker();
-        openingHourStartTimePicker.setLabel("Openinguren");
-        TimePicker openingHourEndTimePicker = new TimePicker();
-        openingHourEndTimePicker.setLabel("Sluitinguren");
-        openingHourEndTimePicker.addClassNames("timepicker");
-        NumberField maxklantenField = new NumberField();
-
-        div.add(closeIcon, openingHourSelect, openingHourStartTimePicker, openingHourEndTimePicker);
-        return div;
-    }
 }
