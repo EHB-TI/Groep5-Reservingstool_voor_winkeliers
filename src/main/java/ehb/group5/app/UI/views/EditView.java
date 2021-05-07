@@ -96,7 +96,7 @@ public class EditView extends CommonLayout {
 
         div.add(oorzaak);
 
-        Button button1 = new Button("save changes");
+        Button button1 = new Button("Save changes");
         div.add(button1);
 
 
