@@ -7,6 +7,16 @@
     "day month";
 }
 
+@media screen and (max-width: 800px){
+    #dashboard_grid {
+        grid-template-columns: auto;
+        grid-auto-columns: auto;
+        grid-template-areas:
+            "day"
+            "month";
+    }
+}
+
 #dashboard_grid > #day {
     grid-area: day;
 }
