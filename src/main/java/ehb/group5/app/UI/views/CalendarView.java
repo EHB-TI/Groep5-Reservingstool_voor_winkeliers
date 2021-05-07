@@ -26,7 +26,7 @@ public class CalendarView extends CommonLayout {
         // Create a new calendar instance and attach it to our layout
         FullCalendar calendar = FullCalendarBuilder.create().build();
         getContainer().add(calendar);
-        setFlexGrow(1, calendar);
+        /*setFlexGrow(1, calendar);*/
 
 // Create a initial sample entry
         Entry entry = new Entry();
