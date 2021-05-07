@@ -11,19 +11,19 @@ import java.sql.Timestamp;
 public abstract class Bill {
 
     @Key @Generated
-     int id;
+    int id;
 
     @Column(name = "company_id")
     @ForeignKey(referencedColumn = "id")
     @ManyToOne
-     CompanyEntity company;
+    CompanyEntity company;
 
     @Column
-     double amount;
+    double amount;
 
     @Column(value = "CURRENT_TIMESTAMP")
-     Timestamp date;
+    Timestamp date;
 
     @Column(length = 10)
-     String method;
+    String method;
 }

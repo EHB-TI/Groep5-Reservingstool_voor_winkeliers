@@ -12,13 +12,13 @@ import java.sql.Timestamp;
 public class Ticket {
 
     @Key @Generated
-     int id;
+    int id;
 
     @Column(name = "date_created")
     Timestamp dateCreated;
 
-     int status;
+    int status;
 
     @OneToMany(mappedBy = "ticket_id")
-     MutableResult<TicketMessageEntity> ticketMessages;
+    MutableResult<TicketMessageEntity> ticketMessages;
 }
