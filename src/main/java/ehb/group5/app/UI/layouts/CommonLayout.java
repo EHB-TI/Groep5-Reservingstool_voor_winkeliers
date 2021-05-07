@@ -6,30 +6,33 @@ import com.vaadin.flow.component.dependency.JavaScript;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.server.VaadinSession;
+import ehb.group5.app.backend.data.DatabaseService;
+import ehb.group5.app.backend.data.table.CompanyEntity;
+import ehb.group5.app.backend.data.table.StoreEntity;
 import ehb.group5.app.backend.utils.VaadinUtils;
 import lombok.Getter;
 import lombok.val;
 
+import java.awt.*;
 import java.time.LocalDate;
 
 @StyleSheet("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css")
 @JavaScript("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js")
 @CssImport("./styles/commonStyle.css")
-public abstract class CommonLayout extends VerticalLayout {
+public abstract class CommonLayout extends Div {
 
     @Getter
     private Div container;
 
     public CommonLayout() {
-        setWidth("100%");
-        setHeight("100vh");
-        getStyle().set("padding", "0");
+        addClassName("common_layout");
 
         /**
          * NAVBAR
          */
         val nav = new Nav();
-        nav.addClassNames("navbar", "navbar-expand-lg", "navbar-light", "bg-light");
+        nav.addClassNames("navbar", "navbar-expand-lg", "navbar-light", "bg-light", "common_layout_nav", "m-0");
         nav.setWidth("100%");
         add(nav);
 
@@ -89,7 +92,7 @@ public abstract class CommonLayout extends VerticalLayout {
         ulNav.add(storeLi);
 
         val statsLi = new ListItem();
-        val statsAnchor = new Anchor("/stats", "Statistieken");
+        val statsAnchor = new Anchor("/calendar", "Calender");
         statsLi.addClassNames("nav-item");
         statsAnchor.addClassNames("nav-link");
         if (VaadinUtils.isAtLocation("/stats"))
@@ -133,19 +136,22 @@ public abstract class CommonLayout extends VerticalLayout {
          * Main Container
          */
         container = new Div();
-        container.addClassNames("main-container");
-        add(container);
+        container.addClassNames("main-container", "common_layout_main");
 
+        add(getContainer());
+        placeFooter();
 
-        addAttachListener(event -> placeFooter());
+        addAttachListener(event -> {
+
+        });
     }
 
     /**
      * Footer
      */
-    private void placeFooter() {
+    public void placeFooter() {
         val footer = new Footer();
-        footer.addClassNames("bg-light", "text-center", "text-lg-start");
+        footer.addClassNames("bg-light", "text-center", "text-lg-start", "common_layout_footer");
         footer.setWidth("100%");
         val div = new Div();
         div.addClassNames("text-center", "p-3");
