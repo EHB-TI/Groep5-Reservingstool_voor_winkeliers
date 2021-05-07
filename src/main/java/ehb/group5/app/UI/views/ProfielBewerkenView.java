@@ -6,6 +6,7 @@ import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -29,7 +30,6 @@ public class ProfielBewerkenView extends CommonLayout {
 
     public ProfielBewerkenView(){
 
-
         CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
 
         Div div = new Div();
@@ -37,17 +37,18 @@ public class ProfielBewerkenView extends CommonLayout {
         //Titel aanmaken
         div.add(new H1("Profiel bewerken"));
 
-        //Invoeren van gegevens aanmaken
-        TextField labelField = new TextField();
 
-        //Label initialiseren
-        labelField.setLabel("Nieuwe Email");
-        labelField.setValue(company.getEmail());
+        //Email initialiseren
+        EmailField emailField = new EmailField("Nieuwe Email");
+        emailField.setValue(company.getEmail());
+        emailField.setClearButtonVisible(true);
+        emailField.setErrorMessage("Please enter a valid email address");
+
 
         //De maximum limiet van letters implementeren
-        labelField.setMaxLength(30);
+        emailField.setMaxLength(30);
 
-        div.add(labelField);
+        div.add(emailField);
 
         /*TextField labelField2 = new TextField();
         labelField2.setLabel("Nieuwe Voornaam");
@@ -71,7 +72,7 @@ public class ProfielBewerkenView extends CommonLayout {
         Button button = new Button("Save");
         div.add(button);
         button.addClickListener(buttonClickEvent ->{
-            company.setEmail(labelField.getValue());
+            company.setEmail(emailField.getValue());
             company.setPassword(labelField4.getValue());
             DatabaseService.getCompaniesStore().update(company);
             UI.getCurrent().getPage().setLocation("profiel");
