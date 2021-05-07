@@ -8,6 +8,7 @@ import com.vaadin.flow.server.VaadinServiceInitListener;
 import com.vaadin.flow.server.VaadinSession;
 import ehb.group5.app.UI.views.LoginView;
 import ehb.group5.app.UI.views.NoteFoundView;
+import ehb.group5.app.UI.views.SignInView;
 import org.springframework.stereotype.Component;
 
 /**
@@ -28,6 +29,7 @@ public class UIServiceInitListener implements VaadinServiceInitListener {
 
     private void authenticateNavigation(BeforeEnterEvent event) {
         if (!event.getNavigationTarget().equals(LoginView.class)
+                && !event.getNavigationTarget().equals(SignInView.class)
                 && VaadinSession.getCurrent().getAttribute("company") == null) {
             event.forwardTo(LoginView.class);
         } else if (event.getNavigationTarget().equals(RouteNotFoundError.class)) {

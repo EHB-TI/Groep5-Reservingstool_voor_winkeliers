@@ -1,0 +1,10 @@
+#logindiv{
+    margin: auto ;
+}
+#logindiv > * {
+    text-align: center;
+}
+#logindiv {
+    display: flex;
+    flex-direction: column;
+}
