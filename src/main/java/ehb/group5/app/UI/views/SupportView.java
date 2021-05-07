@@ -38,7 +38,8 @@ public class SupportView extends CommonLayout {
         //notificatie tonen wanneer er op een button wordt gedrukt.
         Dialog dialog = new Dialog();
         dialog.add(new Text("Uw factuur bereikt zijn bestemming niet door onjuiste gegevens. Vraag vooraf alle gegevens op, begin met het e-mailadres van de verantwoordelijke voor de betaling van de facturen.\"" +
-                ""+" Andere problemen bel dan deze telefoonnummer voor support: 0124592598"));
+                ""+" Andere problemen bel dan deze telefoonnummer voor support: 0124592598"),
+               new Button("Close", e -> dialog.close()));
 
         dialog.setWidth("600px");
         dialog.setHeight("250px");
@@ -51,7 +52,8 @@ public class SupportView extends CommonLayout {
 
         Dialog dialog2 = new Dialog();
         dialog2.add(new Text("U kan dit oplossen door één of meerdere minder dringende overschrijvingen uit te vinken.\n" +
-                " Vervolgens tekent u enkel de aangevinkte verrichtingen. "+" Andere problemen bel dan deze telefoonnummer voor support: 0124392594"));
+                " Vervolgens tekent u enkel de aangevinkte verrichtingen. "+" Andere problemen bel dan deze telefoonnummer voor support: 0124392594"),
+                    new Button("Close", e -> dialog2.close()));
 
         dialog.setWidth("600px");
         dialog.setHeight("250px");
@@ -64,7 +66,9 @@ public class SupportView extends CommonLayout {
 
 
         Dialog dialog3 = new Dialog();
-        dialog3.add(new Text("BIC code (Bank Identification Code) is een unieke code die één welbepaalde bank identificeert en bestaat meestal uit 8 of 11 tekens."+" Andere problemen bel dan deze telefoonnummer voor support: 0184592599"));
+        dialog3.add(new Text("BIC code (Bank Identification Code) is een unieke code die één welbepaalde bank identificeert en bestaat meestal uit 8 of 11 tekens."
+                +" Andere problemen bel dan deze telefoonnummer voor support: 0184592599"),
+                new Button("Close", e -> dialog3.close()));
 
         dialog.setWidth("600px");
         dialog.setHeight("250px");
@@ -76,8 +80,9 @@ public class SupportView extends CommonLayout {
 
 
         Dialog dialog4 = new Dialog();
-        dialog4.add(new Text("1. Zorg ervoor dat je verbinding met internet hebt, controleer of de agenda zichtbaar is, zorg dat nieuwe afspraken worden toegevoegd aan je Google Agenda."
-                +" Andere problemen bel dan deze telefoonnummer voor support: 0124692298"));
+        dialog4.add(new Text("Zorg ervoor dat je verbinding met internet hebt, controleer of de agenda zichtbaar is, zorg dat nieuwe afspraken worden toegevoegd aan je Google Agenda."
+                +" Andere problemen bel dan deze telefoonnummer voor support: 0124692298"),
+                new Button("Close", e -> dialog4.close()));
 
         dialog.setWidth("600px");
         dialog.setHeight("250px");
@@ -90,7 +95,8 @@ public class SupportView extends CommonLayout {
 
 
         Dialog dialog5 = new Dialog();
-        dialog5.add(new Text("Andere problemen bel dan deze telefoonnummer voor support: 0174992568"));
+        dialog5.add(new Text("Andere problemen bel dan deze telefoonnummer voor support: 0174992568"),
+                new Button("Close", e -> dialog5.close()));
 
         dialog.setWidth("600px");
         dialog.setHeight("250px");
