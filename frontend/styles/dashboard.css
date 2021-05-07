@@ -1,0 +1,16 @@
+#dashboard_grid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    grid-auto-columns: auto;
+    grid-template-areas:
+    "day month";
+}
+
+#dashboard_grid > #day {
+    grid-area: day;
+}
+
+#dashboard_grid > #month {
+    grid-area: month;
+}
