@@ -24,8 +24,6 @@ public class ChoosePlanView extends CommonLayout {
 
     public ChoosePlanView() {
 
-        StoreEntity store = new StoreEntity();
-
         Div div = new Div();
         div.setClassName("chooseplan-container");
         H1 h1 = new H1("Kies uw plan");
