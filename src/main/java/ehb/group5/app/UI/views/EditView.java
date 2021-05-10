@@ -73,6 +73,15 @@ public class EditView extends CommonLayout {
         openingdagen.setItems("Maandag", "Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag");
         openingdagen.setLabel("openingdagen ");
 
+
+        //maximum tijd implementeren in de winkel
+
+        ComboBox<String> maximumtijd = new ComboBox<>();
+        openingdagen.setItems("5 minuten", "10 minuten","15 minuten","20 minuten","25 minuten","30 minuten","35 minuten");
+        openingdagen.setLabel("maximumtijd in de winkel ");
+
+
+
         //openinguren en sluitinguren toevoegen
         TimePicker openinguren = new TimePicker();
         openinguren.setLabel("openinguren");
