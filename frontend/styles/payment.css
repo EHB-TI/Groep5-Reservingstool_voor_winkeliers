@@ -1,0 +1,26 @@
+
+.payment-heading {
+    padding: 5%
+}
+
+.payment-textfield, .payment-container, .buttondiv {
+    margin-left: 5%;
+    width: 90%;
+}
+
+.payment-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment-textfield-small,payment-button {
+    width: 30%;
+}
+
+.buttondiv {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
