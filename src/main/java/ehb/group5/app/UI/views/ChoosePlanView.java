@@ -5,8 +5,11 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.server.VaadinSession;
 import ehb.group5.app.UI.layouts.CommonLayout;
 import ehb.group5.app.backend.data.table.StoreEntity;
 
@@ -14,7 +17,7 @@ import ehb.group5.app.backend.data.table.StoreEntity;
 @PageTitle("Choose your payment")
 @CssImport("./styles/chooseplan.css")
 
-public class ChoosePlanView extends CommonLayout {
+public class ChoosePlanView extends VerticalLayout {
 
     /*
      Author: De Vogel Ryan
@@ -47,28 +50,48 @@ public class ChoosePlanView extends CommonLayout {
         Paragraph pp = new Paragraph("* 30 day money back guarantie");
         Paragraph pp1 = new Paragraph("* 30 day money back guarantie");
         Paragraph pp2 = new Paragraph("* 30 day money back guarantie");
-        Button xd = new Button("Kies dit plan");
-        xd.addClickListener(
-        event -> {
-            UI.getCurrent().getPage().setLocation("http://www.google.com");
+
+
+        Button button = new Button("1 maand");
+        // Listen to button actions
+        button.addClickListener(event -> {
+            VaadinSession.getCurrent().setAttribute("parameter", "1 maand");
+            UI.getCurrent().getPage().setLocation("payment");
         });
-        Button xd1 = new Button("Kies dit plan");
-        Button xd2 = new Button("Kies dit plan");
+
+        Button button1 = new Button("6 maanden");
+        // Listen to button actions
+        button1.addClickListener(event -> {
+            VaadinSession.getCurrent().setAttribute("parameter", "6 maanden");
+            UI.getCurrent().getPage().setLocation("payment");
+        });
+
+        Button button2 = new Button("12 maanden");
+        // Listen to button actions
+        button2.addClickListener(event -> {
+            VaadinSession.getCurrent().setAttribute("parameter", "12 maanden");
+            UI.getCurrent().getPage().setLocation("payment");
+        });
+
 
         s.add(a);
         s.add(p);
         s.add(pp);
-        s.add(xd);
+        s.add(button);
+
+
 
         s1.add(b);
         s1.add(p1);
         s1.add(pp1);
-        s1.add(xd1);
+        s1.add(button1);
+
 
         s2.add(c);
         s2.add(p2);
         s2.add(pp2);
-        s2.add(xd2);
+        s2.add(button2);
+
 
         group.add(s);
         group.add(s1);
