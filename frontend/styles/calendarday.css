@@ -1,0 +1,31 @@
+.calendarday-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.calendarday{
+    background-color: dimgrey;
+    height: 40px;
+    padding: 10px;
+    margin: 10px;
+}
+.calendarday > #uur {
+    float: left;
+    color: white;
+}
+.calendarday > #klanten {
+    float: right;
+    color: white;
+}
+
+.calendar-title {
+    display: flex;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 800px) {
+    .calendarday{
+        padding: 10px;
+        margin: 10px;
+    }
+}

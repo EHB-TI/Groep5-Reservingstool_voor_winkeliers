@@ -16,37 +16,39 @@ public abstract class Store {
     @Column(name = "company_id")
     @ForeignKey(referencedColumn = "id")
     @ManyToOne
-    protected CompanyEntity company;
+    CompanyEntity company;
 
-    protected String name;
+    String name;
 
-    protected String adress;
+    String adress;
 
     @Column(name = "post_code")
-    protected String postCode;
-
-    protected String description;
+    String postCode;
+    String description;
 
     @Column(name = "phone_number")
-    protected String phoneNumber;
+    String phoneNumber;
 
-    protected String postbus;
+    String postbus;
 
     @Column(name = "max_customers")
-    protected int maxCustomers;
+    int maxCustomers;
+
+    @Column(name = "max_time")
+    int maxTime;
 
     @Column(name = "logo_id")
-    protected int logoId;
+    int logoId;
 
     @Column(name = "banner_id")
-    protected int bannerId;
+    int bannerId;
 
     @OneToMany(mappedBy = "store_id")
-    protected MutableResult<ReservationEntity> reservations;
+    MutableResult<ReservationEntity> reservations;
 
     @OneToMany(mappedBy = "store_id")
-    protected MutableResult<OpeningHourEntity> openingHours;
+    MutableResult<OpeningHourEntity> openingHours;
 
     @OneToMany(mappedBy = "store_id")
-    protected MutableResult<SpecialClosureEntity> specialClosures;
+    MutableResult<SpecialClosureEntity> specialClosures;
 }
