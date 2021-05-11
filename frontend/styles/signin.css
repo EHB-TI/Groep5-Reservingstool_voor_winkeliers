@@ -1,0 +1,14 @@
+#signinid{
+    margin: auto ;
+}
+#signinid > hr {width:500px; margin: auto; margin-top: 35px; margin-bottom: 0px;}
+#signinid > * {
+    text-align: center;
+}
+#signinid {
+    display: flex;
+    flex-direction: column;
+}
+#adressid {
+    display: block;
+}

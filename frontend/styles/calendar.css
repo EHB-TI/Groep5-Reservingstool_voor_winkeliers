@@ -2,13 +2,29 @@ html{
     --fc-unthemed_tdfc-today-background: #F5F5F5 !important;
     --fc_th-border-width: 0px !important;
     --fc_td-border-width: 0px !important;
+
 }
 
-#calendar-container, #calendar {
-    width: 50vw;
+.calendar_page {
+    max-width: 65vw;
+    margin: auto;
+}
+
+.calendar-legend {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+}
+
+.calendar-legend-item {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 800px) {
+    .calendar_page {
+        max-width: 100vw;
+        margin: 10px;
+    }
 }

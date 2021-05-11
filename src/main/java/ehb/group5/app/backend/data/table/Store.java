@@ -23,7 +23,7 @@ public abstract class Store {
     String adress;
 
     @Column(name = "post_code")
-    int postCode;
+    String postCode;
 
     String description;
 
@@ -40,6 +40,9 @@ public abstract class Store {
 
     @Column(name = "banner_id")
     int bannerId;
+
+    @Column(name = "max_time")
+    int maxTime;
 
     @OneToMany(mappedBy = "store_id")
     MutableResult<ReservationEntity> reservations;

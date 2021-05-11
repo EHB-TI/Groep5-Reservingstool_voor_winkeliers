@@ -1,8 +1,3 @@
-.main-container {
-    margin: 10px auto;
-    max-width: 90%;
-    height: calc(100vh - 50px);
-}
 .first {
     height: 0px !important;
     width: 0px !important;
@@ -18,12 +13,6 @@
             "nav"
             "main-content"
             "footer";
-}
-.common_layout_nav {
-    grid-area: nav;
-}
-.common_layout_main {
-    grid-area: main-content;
 }
 
 .common_layout_nav {
