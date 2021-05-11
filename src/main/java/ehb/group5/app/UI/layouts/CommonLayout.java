@@ -83,7 +83,7 @@ public abstract class CommonLayout extends Div {
         ulNav.add(homeLi);
 
         val storeLi = new ListItem();
-        val storeAnchor = new Anchor("/store", "Winkel");
+        val storeAnchor = new Anchor("/edit", "Winkel");
         storeLi.addClassNames("nav-item");
         storeAnchor.addClassNames("nav-link");
         if (VaadinUtils.isAtLocation("/store"))
@@ -118,7 +118,7 @@ public abstract class CommonLayout extends Div {
 
         val profileLi = new ListItem();
         profileLi.addClassNames("nav-item");
-        val profileAnchor = new Anchor("/profile", "Profiel");
+        val profileAnchor = new Anchor("/profiel", "Profiel");
         profileAnchor.addClassNames("nav-link");
         if (VaadinUtils.isAtLocation("/profile"))
             profileAnchor.addClassNames("active");

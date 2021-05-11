@@ -19,8 +19,6 @@ public class DatabaseService {
     @Getter
     private final static Logger logger = Logger.getLogger(DatabaseService.class.getName());
     @Getter
-    private static EntityDataStore<BillEntity> billsStore;
-    @Getter
     private static EntityDataStore<CompanyEntity> companiesStore;
     @Getter
     private static EntityDataStore<CustomerEntity> customersStore;
@@ -50,7 +48,6 @@ public class DatabaseService {
         getLogger().info(LogUtils.GREEN + "Connection etablised");
 
         getLogger().info(LogUtils.YELLOW + "Setting up Entities Data Store...");
-        billsStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         companiesStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         customersStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         openingHoursStore = new EntityDataStore<>(hikari, Models.DEFAULT);
