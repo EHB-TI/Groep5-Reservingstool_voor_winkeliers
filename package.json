@@ -56,7 +56,9 @@
       "moment": "2.24.0",
       "@fullcalendar/daygrid": "4.4.2",
       "moment-timezone": "0.5.28",
-      "@fullcalendar/moment": "4.4.2"
+      "@fullcalendar/moment": "4.4.2",
+      "apexcharts": "3.25.0",
+      "onecolor": "3.1.0"
     },
     "devDependencies": {
       "webpack-babel-multi-target-plugin": "2.3.3",
@@ -71,7 +73,7 @@
       "ts-loader": "8.0.12",
       "typescript": "4.0.3"
     },
-    "hash": "869ebacc48f5e0e1259a92e3a993d2a7225632935ea4729b1e8a1779eb7295a0"
+    "hash": "f823eaec2406455f3c5585af6e8dd3ac46a246b3026d9942b6169acbbdae417c"
   },
   "dependencies": {
     "lit-element": "2.4.0",
@@ -127,7 +129,9 @@
     "moment": "2.24.0",
     "@fullcalendar/daygrid": "4.4.2",
     "moment-timezone": "0.5.28",
-    "@fullcalendar/moment": "4.4.2"
+    "@fullcalendar/moment": "4.4.2",
+    "apexcharts": "3.25.0",
+    "onecolor": "3.1.0"
   },
   "devDependencies": {
     "webpack-babel-multi-target-plugin": "2.3.3",
