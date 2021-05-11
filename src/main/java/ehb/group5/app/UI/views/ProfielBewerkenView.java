@@ -16,6 +16,7 @@ import com.vaadin.flow.theme.lumo.Lumo;
 import ehb.group5.app.UI.layouts.CommonLayout;
 import ehb.group5.app.backend.data.DatabaseService;
 import ehb.group5.app.backend.data.table.CompanyEntity;
+import lombok.Getter;
 
 @Route("profiel/edit")
 @PageTitle("ProfielBewerken")
@@ -27,6 +28,8 @@ public class ProfielBewerkenView extends CommonLayout {
      Author: Zakaria Lamsakam
      email: zakaria.lamsakam@student.ehb.be
      */
+
+
 
     public ProfielBewerkenView(){
 
@@ -80,6 +83,8 @@ public class ProfielBewerkenView extends CommonLayout {
 
         div.addClassName("centered-content");
         getContainer().add(div);
+
+
 
     }
 
