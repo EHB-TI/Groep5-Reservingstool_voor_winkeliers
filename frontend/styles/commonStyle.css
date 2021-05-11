@@ -7,6 +7,7 @@
     height: 0px !important;
     width: 0px !important;
 }
+
 .common_layout {
     width: 100%;
     display: grid;
@@ -24,6 +25,15 @@
 .common_layout_main {
     grid-area: main-content;
 }
+
+.common_layout_nav {
+    grid-area: nav;
+}
+
+.common_layout_main {
+    grid-area: main-content;
+}
+
 .common_layout_footer {
     grid-area: footer;
 }

@@ -11,17 +11,17 @@ import java.sql.Timestamp;
 public abstract class Reservation {
 
     @Key @Generated
-    protected int id;
+    int id;
 
     @Column(name = "store_id")
     @ForeignKey(referencedColumn = "id")
     @ManyToOne
-    protected StoreEntity store;
+    StoreEntity store;
 
     @Column(name = "customer_id")
     @ForeignKey(referencedColumn = "id")
     @ManyToOne
-    protected CustomerEntity customer;
+    CustomerEntity customer;
 
-    protected Timestamp date;
+    Timestamp date;
 }
