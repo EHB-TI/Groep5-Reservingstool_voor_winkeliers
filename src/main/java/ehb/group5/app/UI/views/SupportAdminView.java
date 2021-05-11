@@ -15,7 +15,7 @@ import ehb.group5.app.UI.layouts.CommonLayout;
 
 import java.awt.*;
 
-@Route("support/admin")
+@Route("Support/Admin")
 @PageTitle("Support/Admin")
 @CssImport("./styles/SupportAdmin.css")
 
