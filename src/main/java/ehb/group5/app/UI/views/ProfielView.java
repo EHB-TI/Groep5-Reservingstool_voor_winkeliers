@@ -1,5 +1,6 @@
 package ehb.group5.app.UI.views;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.*;
 import com.vaadin.flow.component.button.Button;
@@ -7,22 +8,26 @@ import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 import ehb.group5.app.UI.layouts.CommonLayout;
 
-@Route("Profiel")
-@PageTitle("Profiel")
+@Route("profiel")
+@PageTitle("profiel")
 @CssImport("./styles/profiel.css")
 public class ProfielView extends CommonLayout {
 
 
-        public ProfielView() {
+
+
+    public ProfielView() {
 
             VerticalLayout v1 = new VerticalLayout();
             add(v1);
             v1.setId("v10");
 
+            //profiel aanmaken
             v1.add(new H1("profiel"));
-            v1.add(new H3("email:"));
+            v1.add(new H3("email: "));
             v1.add(new H3("voornaam:"));
             v1.add(new H3("achternaam:"));
             v1.add(new H3("wachtwoord:"));
@@ -34,6 +39,7 @@ public class ProfielView extends CommonLayout {
             add(v2);
             v2.setId("v20");
 
+            //knoppen aanmaken
             Button b1 = new Button("profiel bewerken");
             v2.add(b1);
             b1.setId("button1");
@@ -49,5 +55,4 @@ public class ProfielView extends CommonLayout {
             getContainer().add(v1,v2);
 
         }
-
 }
