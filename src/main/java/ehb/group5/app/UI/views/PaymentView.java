@@ -5,6 +5,9 @@ import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -27,30 +30,37 @@ public class PaymentView extends CommonLayout {
             H1 h = new H1("Uw totaal is: €20");
             h.setClassName("payment-heading");
             add(h);
-            createHtml();
-            createbutton("€20");
+            createHtml("€20");
         }
         else if(VaadinSession.getCurrent().getAttribute("parameter") == "6"){
             H1 h = new H1("Uw totaal is: €38");
             h.setClassName("payment-heading");
             add(h);
-            createHtml();
-            createbutton("€38");
+            createHtml("€38");
         }
         else if(VaadinSession.getCurrent().getAttribute("parameter") == "12"){
             H1 h = new H1("Uw totaal is: €50");
             h.setClassName("payment-heading");
             add(h);
-            createHtml();
-            createbutton("€50");
+            createHtml("€50");
         }
 
     }
 
-    public void createHtml(){
+    public void createHtml(String value){
         H3 h = new H3("Betaal veilig met een credit card of PayPal");
         h.setClassName("payment-heading");
         add(h);
+
+        Div choose = new Div();
+        choose.setClassName("payment-image-div");
+        Image image = new Image("/frontend/paypal.png", "paypal");
+        image.setClassName("payment-image");
+        H1 paypal = new H1("PayPal");
+        paypal.setClassName("payment-paypal");
+        choose.add(image);
+        choose.add(paypal);
+        add(choose);
 
         TextField email = new TextField();
         email.setClassName("payment-textfield");
@@ -88,15 +98,24 @@ public class PaymentView extends CommonLayout {
         d.add(Zip);
         add(d);
 
-    }
-
-    public void createbutton(String text){
         Div buttondiv = new Div();
         buttondiv.setClassName("buttondiv");
-        Button button = new Button("Betaal " + text);
+        Button button = new Button("Betaal " + value);
         button.setClassName("payment-button");
+        button.addClickListener(event -> {
+            if(email.getValue().length() < 8 || name.getValue().length() < 1 || number.getValue().length() < 8 ||
+                    tijd.getValue().length() < 4 || Cvc.getValue().length() < 3 || Zip.getValue().length() < 4){
+                Notification.show("Je moet alles invullen !");
+            }
+            else {
+                Notification.show("Goedzo !");
+            }
+        });
         buttondiv.add(button);
         add(buttondiv);
+
+
     }
+
 
 }
