@@ -58,7 +58,7 @@ public class LoginView extends VerticalLayout {
                 // Checking password
                 if (company != null && passwordField.getValue().equals(company.getPassword())) {
                     // Route to dashboard view
-                    UI.getCurrent().getPage().setLocation("test ");
+                    UI.getCurrent().getPage().setLocation("");
 
                     // Saving company to the current session
                     VaadinSession.getCurrent().setAttribute("company", company);

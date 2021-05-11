@@ -9,7 +9,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import ehb.group5.app.UI.layouts.CommonLayout;
 
-@Route("Profiel")
+@Route("profiel")
 @PageTitle("Profiel")
 @CssImport("./styles/profiel.css")
 public class ProfielView extends CommonLayout {

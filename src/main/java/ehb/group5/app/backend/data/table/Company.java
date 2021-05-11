@@ -3,7 +3,6 @@ package ehb.group5.app.backend.data.table;
 import ehb.group5.app.backend.data.DatabaseService;
 import io.requery.*;
 import io.requery.query.MutableResult;
-import io.requery.query.Result;
 import lombok.ToString;
 
 @Entity
@@ -21,9 +20,6 @@ public abstract class Company {
     String password;
 
     int credits;
-
-    @OneToMany(mappedBy = "company_id")
-    MutableResult<BillEntity> bills;
 
     @OneToMany(mappedBy = "company_id")
     MutableResult<StoreEntity> stores;
