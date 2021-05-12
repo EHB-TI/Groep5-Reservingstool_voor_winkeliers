@@ -44,7 +44,7 @@ public class CalendarDayView extends CommonLayout {
 
         Button titleButton = new Button("<--");
         titleButton.addClickListener(event -> {
-           UI.getCurrent().getPage().setLocation("calendar");
+           UI.getCurrent().navigate(CalendarView.class);
         });
 
         H1 h1 = new H1();

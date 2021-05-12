@@ -103,7 +103,7 @@ public class SignInView extends VerticalLayout {
         Button button2 = new Button("Log dan hier in.");
 
         button2.addClickListener(event -> {
-            UI.getCurrent().getPage().setLocation("login");
+            UI.getCurrent().navigate(LoginView.class);
         });
         button.addClickListener(event -> {
             if (emailField.getValue()!= null
