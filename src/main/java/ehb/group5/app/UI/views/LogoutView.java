@@ -11,7 +11,7 @@ public class LogoutView extends VerticalLayout implements BeforeEnterObserver {
 
     @Override
     public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
-        beforeEnterEvent.forwardTo("login");
+        beforeEnterEvent.forwardTo(LoginView.class);
         VaadinSession.getCurrent().getSession().invalidate();
         VaadinSession.getCurrent().close();
     }
