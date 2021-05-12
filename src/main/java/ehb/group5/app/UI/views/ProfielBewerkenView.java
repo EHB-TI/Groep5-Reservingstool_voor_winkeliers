@@ -1,54 +1,86 @@
 package ehb.group5.app.UI.views;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
 import ehb.group5.app.UI.layouts.CommonLayout;
+import ehb.group5.app.backend.data.DatabaseService;
+import ehb.group5.app.backend.data.table.CompanyEntity;
 
 @Route("profiel/edit")
 @PageTitle("ProfielBewerken")
 @CssImport("./styles/ProfielBewerken.css")
+
 public class ProfielBewerkenView extends CommonLayout {
+
+     /*
+     Author: Zakaria Lamsakam
+     email: zakaria.lamsakam@student.ehb.be
+     */
 
     public ProfielBewerkenView(){
 
+        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
 
-        getContainer().add(new H1("Profiel bewerken"));
+        Div div = new Div();
 
-        TextField labelField = new TextField();
-        labelField.setLabel("Nieuwe Email");
+        //Titel aanmaken
+        div.add(new H1("Profiel bewerken"));
 
-        getContainer().add(labelField);
 
-        TextField labelField2 = new TextField();
+        //Email initialiseren
+        EmailField emailField = new EmailField("Nieuwe Email");
+        emailField.setValue(company.getEmail());
+        emailField.setClearButtonVisible(true);
+        emailField.setErrorMessage("Please enter a valid email address");
+
+
+        //De maximum limiet van letters implementeren
+        emailField.setMaxLength(30);
+
+        div.add(emailField);
+
+        /*TextField labelField2 = new TextField();
         labelField2.setLabel("Nieuwe Voornaam");
+        labelField2.setMaxLength(20);
 
-        getContainer().add(labelField2);
+        div.add(labelField2);
 
         TextField labelField3 = new TextField();
         labelField3.setLabel("Nieuwe Achternaam");
+        labelField3.setMaxLength(20);
 
-        getContainer().add(labelField3);
+        div.add(labelField3);*/
 
         TextField labelField4 = new TextField();
         labelField4.setLabel("Nieuwe Wachtwoord");
+        labelField4.setMaxLength(50);
 
-        getContainer().add(labelField4);
+        div.add(labelField4);
 
+        //knop aanmaken
         Button button = new Button("Save");
-        getContainer().add(button);
+        div.add(button);
+        button.addClickListener(buttonClickEvent ->{
+            company.setEmail(emailField.getValue());
+            company.setPassword(labelField4.getValue());
+            DatabaseService.getCompaniesStore().update(company);
+            UI.getCurrent().getPage().setLocation("profiel");
+        });
 
-        addClassName("centered-content");
-
+        div.addClassName("centered-content");
+        getContainer().add(div);
 
     }
-
 
 }

@@ -11,14 +11,14 @@ import java.sql.Date;
 public class SpecialClosure {
 
     @Key @Generated
-     int id;
+    int id;
 
     @Column(name = "store_id")
     @ForeignKey(referencedColumn = "id")
     @ManyToOne
-     StoreEntity store;
+    StoreEntity store;
 
-     Date date;
+    Date date;
 
-     String reason;
+    String reason;
 }

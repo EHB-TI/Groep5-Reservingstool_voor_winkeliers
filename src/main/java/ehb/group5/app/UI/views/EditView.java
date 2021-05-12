@@ -75,7 +75,7 @@ public class EditView extends CommonLayout {
         rightDiv.add(phoneField, createNewSpecialClosures(), saveButton);
 
 
-        
+
         div.add(topDiv, leftDiv, rightDiv);
         getContainer().add(div);
     }

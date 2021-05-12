@@ -60,7 +60,7 @@ public class LoginView extends VerticalLayout {
                 // Checking password
                 if (company != null && passwordField.getValue().equals(company.getPassword())) {
                     // Route to dashboard view
-                    UI.getCurrent().getPage().setLocation("test ");
+                    UI.getCurrent().navigate(DashboardView.class);
 
                     // Saving company to the current session
                     VaadinSession.getCurrent().setAttribute("company", company);
@@ -75,7 +75,7 @@ public class LoginView extends VerticalLayout {
 
         });
         button2.addClickListener(event -> {
-            UI.getCurrent().getPage().setLocation("signup");
+            UI.getCurrent().navigate(SignInView.class);
         });
 
         logindiv.add(idField, passwordField, hr1, button1, titel3, button2);

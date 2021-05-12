@@ -1,0 +1,45 @@
+
+.payment-heading {
+    padding: 1%
+}
+
+.payment-textfield, .payment-container, .buttondiv {
+    margin-left: 5%;
+    width: 90%;
+}
+
+
+.payment-image-div {
+    width: 90%;
+    margin-left: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10% 0 10%;
+}
+
+
+.payment-image {
+    width: 25%
+}
+
+.payment-paypal {
+    font-size: 6em;
+}
+
+.payment-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment-textfield-small,payment-button {
+    width: 30%;
+}
+
+.buttondiv {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+

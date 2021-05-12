@@ -1,0 +1,36 @@
+#button{
+    height: 150px;
+    width: 100%;
+    padding: 0;
+    margin: 1px;
+    background-color: lightgray;
+}
+
+#v1 {
+    background-color: gray;
+    padding: 0;
+    margin: 95px 0 0 30px;
+    width: 750px;
+}
+
+#v2 {
+    padding: 0;
+    margin: 0 0 0 20px;
+}
+
+#v2 > H1{
+    margin: 25px 0 25px 0;
+    font-size: 50px;
+}
+
+#v1 > H3{
+    margin: 25px 0 0 25px;
+}
+/*
+.main-container{
+    display: inline-grid;
+    grid-template-columns: 25% 75%;
+    margin: 0;
+    width: 100%;
+    align-content: center;
+}*/

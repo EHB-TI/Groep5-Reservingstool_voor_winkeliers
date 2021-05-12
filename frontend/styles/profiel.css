@@ -1,0 +1,19 @@
+/*.main-container{
+    display: flex;
+    flex-direction: row;
+}*/
+
+#button1{
+    border-radius: 20px;
+    width: 200px;
+    height: 45px;
+}
+
+#v20{
+    display: flex;
+    align-items: flex-end;
+}
+
+#v10 > H1{
+    margin: 0 0 80px 0;
+}

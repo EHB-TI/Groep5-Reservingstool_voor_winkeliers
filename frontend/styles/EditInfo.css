@@ -1,0 +1,18 @@
+.editinfo-heading {
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.editinfo-heading, .editinfo-p {
+    margin-left: 2%;
+}
+
+.editinfo-image {
+    margin-left:2%;
+    margin-right: 2%;
+    width: 95%;
+    height: 90%;
+}
+.editinfo-button {
+    padding: 2%;
+}
