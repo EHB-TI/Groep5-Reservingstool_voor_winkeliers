@@ -25,6 +25,8 @@ import lombok.val;
 
 import java.net.HttpRetryException;
 
+/* Gemaakt door ZOETARDT Craig */
+
 @Route("signup")
 @PageTitle("Registreren als winkelier")
 @CssImport("./styles/signin.css")

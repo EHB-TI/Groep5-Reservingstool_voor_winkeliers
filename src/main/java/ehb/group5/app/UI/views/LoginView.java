@@ -18,6 +18,8 @@ import com.vaadin.flow.server.VaadinSession;
 import ehb.group5.app.backend.data.table.Company;
 import lombok.val;
 
+/* Gemaakt door ZOETARDT Craig */
+
 @Route("login")
 @PageTitle("Aanmelden als winkelier")
 @CssImport("./styles/login.css")

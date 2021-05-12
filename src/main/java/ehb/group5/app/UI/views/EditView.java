@@ -22,6 +22,8 @@ import ehb.group5.app.UI.layouts.CommonLayout;
 import ehb.group5.app.backend.data.table.CompanyEntity;
 import com.vaadin.flow.component.html.H1;
 
+/* Gemaakt door ZOETARDT Craig (backend) en FAILLE Arnaud (frontend) */
+
 @Route("edit")
 @PageTitle("Profiel")
 @CssImport("./styles/edit.css")
