@@ -12,7 +12,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Groep5-Reservingstool_voor_winkeliers" target="10" />
+      <module name="Groep5-Reservingstool_voor_winkeliers" target="1.8" />
       <module name="Java-code" target="8" />
       <module name="Reservingstool_voor_winkeliers" target="10" />
     </bytecodeTargetLevel>

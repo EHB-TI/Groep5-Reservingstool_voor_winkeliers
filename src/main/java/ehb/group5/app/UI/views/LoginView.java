@@ -5,10 +5,12 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.NumberField;
+import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -18,41 +20,65 @@ import lombok.val;
 
 @Route("login")
 @PageTitle("Aanmelden als winkelier")
-@CssImport("./styles/style.css")
+@CssImport("./styles/login.css")
 public class LoginView extends VerticalLayout {
 
 
     public LoginView() {
+        Div logindiv = new Div();
+        logindiv.setId("logindiv");
+
+        logindiv.add(new H1("Login"));
         // Creating id & password fields
         NumberField idField = new NumberField();
-        TextField passwordField = new TextField();
+        PasswordField passwordField = new PasswordField();
 
         // Placing a placeholder to the fields
-        idField.setPlaceholder("Id");
-        passwordField.setPlaceholder("Passwoord");
+        idField.setPlaceholder("Bedrijfsnummer");
+        passwordField.setPlaceholder("Wachtwoord");
 
+        idField.setWidth("100%");
+        Hr hr1 = new Hr();
         // Creating button
-        Button button = new Button("Inloggen");
+        Button button1 = new Button("Inloggen");
+        button1.addClickShortcut(Key.ENTER);
+        Button button2 = new Button("Sign up");
+
+        H5 titel3 = new H5("Nog geen account ?");
+
+        idField.setAutofocus(true);
+
 
         // Listen to button actions
-        button.addClickListener(event -> {
-            // Get the company by id
-            val company = Company.getCompanyById((int)((double)idField.getValue()));
+        button1.addClickListener(event -> {
+            if (idField.getValue()!= null){
+                // Get the company by id
+                val company = Company.getCompanyById((int) ((double) idField.getValue()));
 
-            // Checking password
-            if(company != null && passwordField.getValue().equals(company.getPassword())){
-                // Route to dashboard view
-                UI.getCurrent().getPage().setLocation("test ");
+                // Checking password
+                if (company != null && passwordField.getValue().equals(company.getPassword())) {
+                    // Route to dashboard view
+                    UI.getCurrent().getPage().setLocation("");
 
-                // Saving company to the current session
-                VaadinSession.getCurrent().setAttribute("company", company);
+                    // Saving company to the current session
+                    VaadinSession.getCurrent().setAttribute("company", company);
+                } else {
+                    Notification.show("Wachtwoord of bedrijfsnummer niet geldig");
+                }
             }
-            else{
-                // TODO Fout of bestaat niet
+            else {
+                Notification.show("Vakken zijn niet goed ingevuld");
             }
+
+
+        });
+        button2.addClickListener(event -> {
+            UI.getCurrent().getPage().setLocation("signup");
         });
 
-        add(idField, passwordField, button);
+        logindiv.add(idField, passwordField, hr1, button1, titel3, button2);
+        add(logindiv);
+
     }
 
 }
