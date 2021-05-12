@@ -18,7 +18,11 @@ import com.vaadin.flow.server.VaadinSession;
 import ehb.group5.app.backend.data.table.Company;
 import lombok.val;
 
-/* Gemaakt door ZOETARDT Craig */
+/*
+     Author: ZOETARDT Craig
+     email: craig.zoetardt@student.ehb.be
+     */
+
 
 @Route("login")
 @PageTitle("Aanmelden als winkelier")

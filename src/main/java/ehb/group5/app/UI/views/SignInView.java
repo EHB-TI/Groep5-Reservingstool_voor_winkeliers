@@ -25,7 +25,10 @@ import lombok.val;
 
 import java.net.HttpRetryException;
 
-/* Gemaakt door ZOETARDT Craig */
+/*
+     Author: ZOETARDT Craig
+     email: craig.zoetardt@student.ehb.be
+     */
 
 @Route("signup")
 @PageTitle("Registreren als winkelier")

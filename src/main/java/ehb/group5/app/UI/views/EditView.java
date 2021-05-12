@@ -22,7 +22,10 @@ import ehb.group5.app.UI.layouts.CommonLayout;
 import ehb.group5.app.backend.data.table.CompanyEntity;
 import com.vaadin.flow.component.html.H1;
 
-/* Gemaakt door ZOETARDT Craig (backend) en FAILLE Arnaud (frontend) */
+/*
+     Author: ZOETARDT Craig (backend), FAILLE Arnaud (frontend)
+     email: craig.zoetardt@student.ehb.be , arnaud.faille@student.ehb.be
+     */
 
 @Route("edit")
 @PageTitle("Profiel")
