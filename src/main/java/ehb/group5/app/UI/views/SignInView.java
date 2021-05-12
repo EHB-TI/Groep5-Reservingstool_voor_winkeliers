@@ -36,7 +36,11 @@ import java.net.HttpRetryException;
 
 public class SignInView extends VerticalLayout {
 
-    public SignInView(){
+    public SignInView() {
+
+        setHeight("100vh");
+        addClassName("signup-cont");
+
         Div signindiv = new Div();
         signindiv.setId("signinid");
         Div adressdiv = new Div();
@@ -68,12 +72,12 @@ public class SignInView extends VerticalLayout {
         postcodeField.setPlaceholder("Postcode/Gemeente");
         gsmField.setPlaceholder("Telefoon nummer");
 
-        emailField.getElement().setAttribute("title","Voorbeeld: JohnSnow@gmail.com");
-        postbusField.getElement().setAttribute("title","Voorbeeld: 18A");
-        naamField.getElement().setAttribute("title","Voorbeeld: John Snow");
-        adresField.getElement().setAttribute("title","Voorbeeld: Nijverheidskaai 170");
-        gsmField.getElement().setAttribute("title","Voorbeeld: 02 523 37 37");
-        postcodeField.getElement().setAttribute("title","Voorbeeld: 1070 Anderlecht ");
+        emailField.getElement().setAttribute("title", "Voorbeeld: JohnSnow@gmail.com");
+        postbusField.getElement().setAttribute("title", "Voorbeeld: 18A");
+        naamField.getElement().setAttribute("title", "Voorbeeld: John Snow");
+        adresField.getElement().setAttribute("title", "Voorbeeld: Nijverheidskaai 170");
+        gsmField.getElement().setAttribute("title", "Voorbeeld: 02 523 37 37");
+        postcodeField.getElement().setAttribute("title", "Voorbeeld: 1070 Anderlecht ");
 
         emailField.setAutofocus(true);
 
@@ -111,7 +115,8 @@ public class SignInView extends VerticalLayout {
             UI.getCurrent().navigate(LoginView.class);
         });
         button.addClickListener(event -> {
-            if (emailField.getValue()!= null
+
+            if (emailField.getValue() != null
                     && passwordField.getValue() != null
                     && naamField.getValue() != null
                     && adresField.getValue() != null
@@ -124,36 +129,48 @@ public class SignInView extends VerticalLayout {
                     && !adresField.getValue().isEmpty()
                     && !postbusField.getValue().isEmpty()
                     && !postcodeField.getValue().isEmpty()
-                    && !gsmField.getValue().isEmpty()
+                    && !gsmField.getValue().isEmpty()) {
 
-            ){
-                CompanyEntity company = new CompanyEntity();
-                company.setEmail(emailField.getValue());
-                company.setPassword(passwordField.getValue());
+                //Bestaat
 
-                StoreEntity store = new StoreEntity();
-                store.setCompany(company);
-                store.setAdress(adresField.getValue());
-                store.setPostCode(postcodeField.getValue());
-                store.setPhoneNumber(gsmField.getValue());
-                store.setName(naamField.getValue());
-                DatabaseService.getCompaniesStore().insert(company);
-                DatabaseService.getStoresStore().insert(store);
-            }
-            else {
+                if (DatabaseService.getCompaniesStore()
+                        .count(CompanyEntity.class)
+                        .where(CompanyEntity.EMAIL.eq(emailField.getValue()))
+                        .get().value() == 0) {
+                    CompanyEntity company = new CompanyEntity();
+                    company.setEmail(emailField.getValue());
+                    company.setPassword(passwordField.getValue());
+
+                    StoreEntity store = new StoreEntity();
+                    store.setCompany(company);
+                    store.setAdress(adresField.getValue());
+                    store.setPostbus(postbusField.getValue());
+                    store.setPostCode(postcodeField.getValue());
+                    store.setPhoneNumber(gsmField.getValue());
+                    store.setName(naamField.getValue());
+
+                    DatabaseService.getCompaniesStore().insert(company);
+                    DatabaseService.getStoresStore().insert(store);
+
+                    VaadinSession.getCurrent().setAttribute("company", company);
+                    UI.getCurrent().navigate(ChoosePlanView.class);
+
+                } else {
+                    Notification.show("E-mail al in gebruik" );
+                }
+            } else {
                 Notification.show("Alles is niet correct ingevuld.");
             }
-
         });
 
-        adressdiv.add(adresField,postbusField);
+        adressdiv.add(adresField, postbusField);
         signindiv.add(new H1("Sign up"));
         signindiv.add(titel1);
-        signindiv.add(emailField,passwordField);
+        signindiv.add(emailField, passwordField);
         signindiv.add(hr1);
         signindiv.add(titel2);
-        signindiv.add(naamField,adressdiv,postcodeField,gsmField,button);
-        signindiv.add(titel3,button2);
+        signindiv.add(naamField, adressdiv, postcodeField, gsmField, button);
+        signindiv.add(titel3, button2);
         add(signindiv);
     }
 }

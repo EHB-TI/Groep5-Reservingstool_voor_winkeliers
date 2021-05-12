@@ -10,6 +10,7 @@ import lombok.ToString;
 @ToString
 public abstract class Company {
 
+
     @Key @Generated
     int id;
 
@@ -28,6 +29,13 @@ public abstract class Company {
         return DatabaseService.getCompaniesStore()
                 .select(CompanyEntity.class)
                 .where(CompanyEntity.ID.eq(id))
+                .get()
+                .firstOrNull();
+    }
+    public static CompanyEntity getCompanyByEmail(String email){
+        return DatabaseService.getCompaniesStore()
+                .select(CompanyEntity.class)
+                .where(CompanyEntity.EMAIL.eq(email))
                 .get()
                 .firstOrNull();
     }
