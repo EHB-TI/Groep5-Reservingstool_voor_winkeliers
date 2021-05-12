@@ -15,13 +15,13 @@ import ehb.group5.app.UI.layouts.CommonLayout;
 
 import java.awt.*;
 
+//gemaakt door jason devedeleer
+
 @Route("support/admin")
 @PageTitle("Support/Admin")
 @CssImport("./styles/SupportAdmin.css")
 
 public class SupportAdminView extends CommonLayout {
-
-    String beschrijving;
 
     public SupportAdminView(){
 

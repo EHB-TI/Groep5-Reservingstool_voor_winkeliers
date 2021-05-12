@@ -15,6 +15,8 @@ import ehb.group5.app.backend.data.DatabaseService;
 import ehb.group5.app.backend.data.table.CompanyEntity;
 import ehb.group5.app.backend.data.table.StoreEntity;
 
+//gemaakt door jason devedeleer
+
 @Route("profiel")
 @PageTitle("profiel")
 @CssImport("./styles/profiel.css")
