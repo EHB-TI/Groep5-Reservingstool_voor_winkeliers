@@ -26,14 +26,15 @@ public class SupportView extends CommonLayout {
 
     public SupportView(){
 
-        Div div = new Div();
+        Div Supportdiv = new Div();
+        Supportdiv.setId("supportid");
 
         //Titel aanmaken
-        div.add(new H1("Support services"));
+        Supportdiv.add(new H1("Support services"));
 
         //Knoppen aanmaken
         Button button = new Button("Ik heb een probleem met de facturatie");
-        div.add(button);
+        Supportdiv.add(button);
 
         //notificatie tonen wanneer er op een button wordt gedrukt.
         Dialog dialog = new Dialog();
@@ -48,7 +49,7 @@ public class SupportView extends CommonLayout {
 
 
         Button button2 = new Button("Ik heb een probleem met de betaling");
-        div.add(button2);
+        Supportdiv.add(button2);
 
         Dialog dialog2 = new Dialog();
         dialog2.add(new Text("U kan dit oplossen door één of meerdere minder dringende overschrijvingen uit te vinken.\n" +
@@ -61,7 +62,7 @@ public class SupportView extends CommonLayout {
         button2.addClickListener(event -> dialog2.open());
 
         Button button3 = new Button("Ik heb een probleem met het bewerken van de informatie ");
-        div.add(button3);
+        Supportdiv.add(button3);
 
 
 
@@ -76,7 +77,7 @@ public class SupportView extends CommonLayout {
         button3.addClickListener(event -> dialog3.open());
 
         Button button4 = new Button("Ik heb een probleem met de agenda");
-        div.add(button4);
+        Supportdiv.add(button4);
 
 
         Dialog dialog4 = new Dialog();
@@ -90,7 +91,7 @@ public class SupportView extends CommonLayout {
         button4.addClickListener(event -> dialog4.open());
 
         Button button5 = new Button("Andere probleem");
-        div.add(button5);
+        Supportdiv.add(button5);
 
 
 
@@ -103,8 +104,8 @@ public class SupportView extends CommonLayout {
 
         button5.addClickListener(event -> dialog5.open());
 
-        div.addClassName("centered-content");
-        getContainer().add(div);
+        Supportdiv.addClassName("centered-content");
+        getContainer().add(Supportdiv);
     }
 
 }

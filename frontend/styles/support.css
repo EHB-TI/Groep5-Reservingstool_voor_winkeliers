@@ -1,7 +1,14 @@
-
-.centered-content {
-    margin: 0 auto;
-    max-width: 250px;
+#supportid{
+    margin: auto;
+}
+#supportid > hr{margin: auto; margin-top: 35px; margin-bottom: 5px; width: 550px;
+}
+#supportid > * {
+    text-align: center;
+}
+#supportid {
+    flex-direction: column;
+    display: flex;
 }
 
 

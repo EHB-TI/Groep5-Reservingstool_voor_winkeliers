@@ -1,7 +1,12 @@
-
-.centered-content {
-    margin: 0 auto;
-    max-width: 250px;
+#contentid{
+    margin: auto;
 }
-
-
+#contentid > hr{margin: auto; margin-top: 35px; margin-bottom: 5px; width: 550px;
+}
+#contentid > * {
+    text-align: center;
+}
+#contentid {
+    flex-direction: column;
+    display: flex;
+}

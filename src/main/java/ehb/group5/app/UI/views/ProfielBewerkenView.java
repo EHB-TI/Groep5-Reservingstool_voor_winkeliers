@@ -29,16 +29,15 @@ public class ProfielBewerkenView extends CommonLayout {
      email: zakaria.lamsakam@student.ehb.be
      */
 
-
-
     public ProfielBewerkenView(){
 
         CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
 
-        Div div = new Div();
+        Div Contentdiv = new Div();
+        Contentdiv.setId("contentid");
 
         //Titel aanmaken
-        div.add(new H1("Profiel bewerken"));
+        Contentdiv.add(new H1("Profiel bewerken"));
 
 
         //Email initialiseren
@@ -51,7 +50,7 @@ public class ProfielBewerkenView extends CommonLayout {
         //De maximum limiet van letters implementeren
         emailField.setMaxLength(30);
 
-        div.add(emailField);
+        Contentdiv.add(emailField);
 
         /*TextField labelField2 = new TextField();
         labelField2.setLabel("Nieuwe Voornaam");
@@ -69,11 +68,11 @@ public class ProfielBewerkenView extends CommonLayout {
         labelField4.setLabel("Nieuwe Wachtwoord");
         labelField4.setMaxLength(50);
 
-        div.add(labelField4);
+        Contentdiv.add(labelField4);
 
         //knop aanmaken
         Button button = new Button("Save");
-        div.add(button);
+        Contentdiv.add(button);
         button.addClickListener(buttonClickEvent ->{
             company.setEmail(emailField.getValue());
             company.setPassword(labelField4.getValue());
@@ -81,8 +80,8 @@ public class ProfielBewerkenView extends CommonLayout {
             UI.getCurrent().getPage().setLocation("profiel");
         });
 
-        div.addClassName("centered-content");
-        getContainer().add(div);
+        Contentdiv.addClassName("centered-content");
+        getContainer().add(Contentdiv);
 
 
 
