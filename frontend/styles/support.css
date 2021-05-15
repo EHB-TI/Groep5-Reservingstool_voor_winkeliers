@@ -1,14 +1,15 @@
 #supportid{
     margin: auto;
-}
-#supportid > hr{margin: auto; margin-top: 35px; margin-bottom: 5px; width: 550px;
-}
-#supportid > * {
-    text-align: center;
-}
-#supportid {
+    max-width: 700px;
+    display:flex;
     flex-direction: column;
-    display: flex;
+    margin-bottom: 500px;
+}
+
+#supportid > H1{
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 45px;
 }
 
 

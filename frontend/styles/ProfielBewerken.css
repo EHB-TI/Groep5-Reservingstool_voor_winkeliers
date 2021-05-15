@@ -1,12 +1,12 @@
 #contentid{
     margin: auto;
+    max-width: 300px;
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 500px;
 }
-#contentid > hr{margin: auto; margin-top: 35px; margin-bottom: 5px; width: 550px;
-}
-#contentid > * {
+
+#contentid > H1{
     text-align: center;
 }
-#contentid {
-    flex-direction: column;
-    display: flex;
-}
+
