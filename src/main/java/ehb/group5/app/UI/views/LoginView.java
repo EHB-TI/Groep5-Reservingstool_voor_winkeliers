@@ -57,7 +57,11 @@ public class LoginView extends VerticalLayout {
         H5 titel3 = new H5("Nog geen account ?");
 
         emailField.setAutofocus(true);
+        emailField.setErrorMessage("Hier moet een werkende e-mail adress staan.");
 
+        //TODO temporary
+        emailField.setValue("1@gmail.com");
+        passwordField.setValue("1");
 
         // Listen to button actions
         button1.addClickListener(event -> {
