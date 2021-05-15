@@ -6,7 +6,9 @@ import com.vaadin.flow.component.dependency.JavaScript;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.VaadinSession;
+import ehb.group5.app.UI.views.*;
 import ehb.group5.app.backend.data.DatabaseService;
 import ehb.group5.app.backend.data.table.CompanyEntity;
 import ehb.group5.app.backend.data.table.StoreEntity;
@@ -74,7 +76,7 @@ public abstract class CommonLayout extends Div {
         collapseDiv.add(ulNav);
 
         val homeLi = new ListItem();
-        val homeAnchor = new Anchor("", "Dashboard");
+        val homeAnchor = new RouterLink("Dashboard", DashboardView.class);
         homeLi.addClassNames("nav-item");
         homeAnchor.addClassNames("nav-link");
         if (VaadinUtils.isAtLocation(""))
@@ -83,7 +85,7 @@ public abstract class CommonLayout extends Div {
         ulNav.add(homeLi);
 
         val storeLi = new ListItem();
-        val storeAnchor = new Anchor("/edit", "Winkel");
+        val storeAnchor = new RouterLink("Winkel", EditView.class);
         storeLi.addClassNames("nav-item");
         storeAnchor.addClassNames("nav-link");
         if (VaadinUtils.isAtLocation("/store"))
@@ -92,7 +94,7 @@ public abstract class CommonLayout extends Div {
         ulNav.add(storeLi);
 
         val statsLi = new ListItem();
-        val statsAnchor = new Anchor("/calendar", "Calender");
+        val statsAnchor = new RouterLink("Calender", CalendarView.class);
         statsLi.addClassNames("nav-item");
         statsAnchor.addClassNames("nav-link");
         if (VaadinUtils.isAtLocation("/stats"))
@@ -101,7 +103,7 @@ public abstract class CommonLayout extends Div {
         ulNav.add(statsLi);
 
         val supportLi = new ListItem();
-        val supportAnchor = new Anchor("/support", "Support");
+        val supportAnchor = new RouterLink("Support", SupportView.class);
         supportLi.addClassNames("nav-item");
         supportAnchor.addClassNames("nav-link");
         if (VaadinUtils.isAtLocation("/support"))
@@ -118,7 +120,7 @@ public abstract class CommonLayout extends Div {
 
         val profileLi = new ListItem();
         profileLi.addClassNames("nav-item");
-        val profileAnchor = new Anchor("/profiel", "Profiel");
+        val profileAnchor = new RouterLink("Profiel", ProfielView.class);
         profileAnchor.addClassNames("nav-link");
         if (VaadinUtils.isAtLocation("/profile"))
             profileAnchor.addClassNames("active");
@@ -127,7 +129,7 @@ public abstract class CommonLayout extends Div {
 
         val disconnectLi = new ListItem();
         disconnectLi.addClassNames("nav-item");
-        val disconnectAnchor = new Anchor("/logout", "Uitloggen");
+        val disconnectAnchor = new RouterLink("Uitloggen", LogoutView.class);
         disconnectAnchor.addClassNames("nav-link");
         disconnectLi.add(disconnectAnchor);
         rightUl.add(disconnectLi);

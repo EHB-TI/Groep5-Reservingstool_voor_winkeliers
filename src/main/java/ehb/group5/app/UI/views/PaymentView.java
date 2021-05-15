@@ -1,5 +1,6 @@
 package ehb.group5.app.UI.views;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
@@ -13,6 +14,9 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
 import ehb.group5.app.UI.layouts.CommonLayout;
+import ehb.group5.app.backend.data.DatabaseService;
+import ehb.group5.app.backend.data.table.CompanyEntity;
+import ehb.group5.app.backend.data.table.StoreEntity;
 
 @Route("payment")
 @PageTitle("payment")
@@ -109,6 +113,9 @@ public class PaymentView extends CommonLayout {
             }
             else {
                 Notification.show("Goedzo !");
+                CompanyEntity companyEntity = new CompanyEntity();
+                companyEntity.setEmail("xd");
+                UI.getCurrent().getPage().setLocation("EditInfo");
             }
         });
         buttondiv.add(button);

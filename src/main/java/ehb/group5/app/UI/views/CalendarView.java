@@ -55,7 +55,7 @@ public class CalendarView extends CommonLayout {
                LocalDateTime ldt = event.getEntry().getStart();
                VaadinSession.getCurrent().setAttribute("calendarStore", entryStoreEntityMap.get(event.getEntry()));
                VaadinSession.getCurrent().setAttribute("calendarDate", LocalDate.of(ldt.getYear(), ldt.getMonthValue(), ldt.getDayOfMonth()));
-               UI.getCurrent().getPage().setLocation("calendarday");
+               UI.getCurrent().navigate(CalendarDayView.class);
            }
         });
 
