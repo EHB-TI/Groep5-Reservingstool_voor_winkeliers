@@ -5,6 +5,8 @@ import io.requery.*;
 import io.requery.query.MutableResult;
 import lombok.ToString;
 
+import java.security.Timestamp;
+
 @Entity
 @Table(name = "companies")
 @ToString
@@ -20,6 +22,9 @@ public abstract class Company {
     String password;
 
     int credits;
+
+    @Column(name = "subscription_expires_date")
+    Timestamp subscriptionExpiresDate;
 
     @OneToMany(mappedBy = "company_id")
     MutableResult<StoreEntity> stores;

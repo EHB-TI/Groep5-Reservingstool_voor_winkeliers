@@ -61,7 +61,7 @@ public class ProfielView extends CommonLayout {
             v1.add(new H3("email: " + company.getEmail()));
             v1.add(new H3("wachtwoord: " + company.getPassword()));
             v1.add(new H3("Uw bedrijfsnummer: " + company.getId()));
-            v1.add(new H3("Uw abonnement is geldig tot " + company.getCredits()));
+            v1.add(new H3("Uw abonnement is geldig tot " + company.getSubscriptionExpiresDate()));
 
             mainDiv.add(v1, v2);
             getContainer().add(mainDiv);
