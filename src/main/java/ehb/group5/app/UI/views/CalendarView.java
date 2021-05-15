@@ -45,11 +45,12 @@ public class CalendarView extends CommonLayout {
         FullCalendar calendar = FullCalendarBuilder.create().build();
         getContainer().add(calendar);
 
-
+        //legende onderaan kalender
         Div legendDiv = new Div();
         legendDiv.addClassName("calendar-legend");
         getContainer().add(legendDiv);
 
+        //events
         calendar.addEntryClickedListener(event -> {
            if(entryStoreEntityMap.get(event.getEntry()) != null){
                LocalDateTime ldt = event.getEntry().getStart();
@@ -68,7 +69,7 @@ public class CalendarView extends CommonLayout {
         });*/
 
 
-
+        //kalender zelf
         CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
         for (StoreEntity store : company.getStores()) {
             Random rand = new Random(store.getId());
@@ -106,6 +107,7 @@ public class CalendarView extends CommonLayout {
                 entryStoreEntityMap.put(calendarEntry, store);
             }
 
+            //legende styling
             Span legendItemSpan = new Span(store.getName());
             legendItemSpan.addClassName("calendar-legend-item");
             legendItemSpan.getStyle().set("background-color", String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue()));
