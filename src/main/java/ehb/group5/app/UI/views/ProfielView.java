@@ -28,6 +28,10 @@ public class ProfielView extends CommonLayout {
             CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
             StoreEntity store = (StoreEntity) VaadinSession.getCurrent().getAttribute("store");
 
+            //main container
+            Div mainDiv = new Div();
+            mainDiv.addClassNames("profiel-content");
+
             //container voor de knoppen
             VerticalLayout v2 = new VerticalLayout();
             add(v2);
@@ -57,10 +61,10 @@ public class ProfielView extends CommonLayout {
             v1.add(new H3("email: " + company.getEmail()));
             v1.add(new H3("wachtwoord: " + company.getPassword()));
             v1.add(new H3("Uw bedrijfsnummer: " + company.getId()));
-            v1.add(new H3("Uw abonnement is geldig tot "));
+            v1.add(new H3("Uw abonnement is geldig tot " + company.getCredits()));
 
-            getContainer().add(v1);
-            getContainer().add(v2);
+            mainDiv.add(v1, v2);
+            getContainer().add(mainDiv);
         }
 
 }

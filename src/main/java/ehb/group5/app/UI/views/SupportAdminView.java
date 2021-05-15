@@ -25,16 +25,16 @@ public class SupportAdminView extends CommonLayout {
 
     public SupportAdminView(){
 
+        //main container
         Div mainDiv = new Div();
         mainDiv.addClassNames("main-content");
 
-        //container voor de verschillende tickets
+        //container in de main voor de verschillende tickets
         Div v1 = new Div();
         add(v1);
         v1.setId("v1");
 
         v1.add(new H1("Ticket"));
-
 
         Button b1 = new Button("Ticket#1");
         v1.add(b1);
@@ -52,7 +52,7 @@ public class SupportAdminView extends CommonLayout {
         v1.add(b4);
         b4.setId("button321");
 
-        //container probleem beschrijving
+        //container in de main voor probleem beschrijving
         Div v2 = new Div();
         add(v2);
         v2.setId("v2");
