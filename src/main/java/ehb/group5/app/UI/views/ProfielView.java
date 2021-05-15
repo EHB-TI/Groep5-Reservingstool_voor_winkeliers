@@ -28,9 +28,29 @@ public class ProfielView extends CommonLayout {
             CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
             StoreEntity store = (StoreEntity) VaadinSession.getCurrent().getAttribute("store");
 
+            //top container
+            Div topDiv = new Div();
+            topDiv.addClassNames("top-profiel-content");
+
             //main container
             Div mainDiv = new Div();
             mainDiv.addClassNames("profiel-content");
+
+            //top-profiel container
+            Div d1 = new Div();
+            d1.setId("d1");
+
+            d1.add(new H1("profiel"));
+
+            //main-profiel-container
+            VerticalLayout v1 = new VerticalLayout();
+            add(v1);
+            v1.setId("v10");
+
+            v1.add(new H3("email: " + company.getEmail()));
+            v1.add(new H3("wachtwoord: " + company.getPassword()));
+            v1.add(new H3("Uw bedrijfsnummer: " + company.getId()));
+            v1.add(new H3("Uw abonnement is geldig tot " + company.getSubscriptionExpiresDate()));
 
             //container voor de knoppen
             VerticalLayout v2 = new VerticalLayout();
@@ -52,17 +72,11 @@ public class ProfielView extends CommonLayout {
             v2.add(b3);
             b3.setId("button1");
 
-            //profiel container
-            VerticalLayout v1 = new VerticalLayout();
-            add(v1);
-            v1.setId("v10");
+            //aanmaken top container
+            topDiv.add(d1);
+            getContainer().add(topDiv);
 
-            v1.add(new H1("profiel"));
-            v1.add(new H3("email: " + company.getEmail()));
-            v1.add(new H3("wachtwoord: " + company.getPassword()));
-            v1.add(new H3("Uw bedrijfsnummer: " + company.getId()));
-            v1.add(new H3("Uw abonnement is geldig tot " + company.getSubscriptionExpiresDate()));
-
+            //aanmaken main container
             mainDiv.add(v1, v2);
             getContainer().add(mainDiv);
         }

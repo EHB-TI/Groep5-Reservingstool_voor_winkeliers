@@ -61,6 +61,7 @@ public class SupportAdminView extends CommonLayout {
         v2.add(new H3("naam"));
         v2.add(new H3("beschrijving probleem"));
 
+
         mainDiv.add(v1, v2);
         getContainer().add(mainDiv);
     }
