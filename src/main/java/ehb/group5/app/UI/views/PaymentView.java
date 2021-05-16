@@ -16,7 +16,11 @@ import com.vaadin.flow.server.VaadinSession;
 import ehb.group5.app.UI.layouts.CommonLayout;
 import ehb.group5.app.backend.data.DatabaseService;
 import ehb.group5.app.backend.data.table.CompanyEntity;
-import ehb.group5.app.backend.data.table.StoreEntity;
+
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
+
 
 @Route("payment")
 @PageTitle("payment")
@@ -52,6 +56,9 @@ public class PaymentView extends CommonLayout {
     }
 
     public void createHtml(String value){
+
+        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
+
         H3 h = new H3("Betaal veilig met een credit card of PayPal");
         h.setClassName("payment-heading");
         add(h);
@@ -65,11 +72,6 @@ public class PaymentView extends CommonLayout {
         choose.add(image);
         choose.add(paypal);
         add(choose);
-
-        TextField email = new TextField();
-        email.setClassName("payment-textfield");
-        email.setPlaceholder("Email");
-        add(email);
 
         TextField name = new TextField();
         name.setClassName("payment-textfield");
@@ -107,15 +109,32 @@ public class PaymentView extends CommonLayout {
         Button button = new Button("Betaal " + value);
         button.setClassName("payment-button");
         button.addClickListener(event -> {
-            if(email.getValue().length() < 8 || name.getValue().length() < 1 || number.getValue().length() < 8 ||
+            if(name.getValue().length() < 1 || number.getValue().length() < 8 ||
                     tijd.getValue().length() < 4 || Cvc.getValue().length() < 3 || Zip.getValue().length() < 4){
                 Notification.show("Je moet alles invullen !");
             }
             else {
                 Notification.show("Goedzo !");
-                CompanyEntity companyEntity = new CompanyEntity();
-                companyEntity.setEmail("xd");
-                UI.getCurrent().getPage().setLocation("EditInfo");
+
+                Calendar date = Calendar.getInstance();
+                date.setTime(new Date());
+
+                if(VaadinSession.getCurrent().getAttribute("parameter") == "1") {
+                    date.add(Calendar.MONTH, 1 /* AANTAL MAANDEN*/);
+                }
+                else if(VaadinSession.getCurrent().getAttribute("parameter") == "6") {
+                    date.add(Calendar.MONTH, 6 /* AANTAL MAANDEN*/);
+                }
+
+                else if(VaadinSession.getCurrent().getAttribute("parameter") == "12") {
+                    date.add(Calendar.MONTH, 12 /* AANTAL MAANDEN*/);
+                }
+
+                company.setSubscriptionExpiresDate(new Timestamp(date.getTime().getTime()));
+
+                DatabaseService.getCompaniesStore().update();
+
+                UI.getCurrent().navigate(DashboardView.class);
             }
         });
         buttondiv.add(button);
