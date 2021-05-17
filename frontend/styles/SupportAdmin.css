@@ -1,36 +1,40 @@
-#button{
+/*gemaakt door jason devedeleer*/
+
+#button321{
     height: 150px;
-    width: 100%;
+    width: 80%;
     padding: 0;
     margin: 1px;
     background-color: lightgray;
 }
 
 #v1 {
-    background-color: gray;
+    display: flex;
+    flex-direction: column;
     padding: 0;
-    margin: 95px 0 0 30px;
-    width: 750px;
+    margin: 25px 0 0 30px;
 }
 
 #v2 {
     padding: 0;
-    margin: 0 0 0 20px;
+    margin: 80px 25px 0 20px;
+    background-color: gray;
+    border-radius: 5px;
 }
 
-#v2 > H1{
-    margin: 25px 0 25px 0;
-    font-size: 50px;
+#v2 > H3{
+    margin: 25px 25px 25px 25px;
+    font-size: 25px;
 }
 
 #v1 > H3{
     margin: 25px 0 0 25px;
 }
-/*
-.main-container{
+
+.main-content{
     display: inline-grid;
     grid-template-columns: 25% 75%;
-    margin: 0;
+    margin: 0 0 25px 0;
     width: 100%;
     align-content: center;
-}*/
+}
