@@ -1,6 +1,7 @@
 package ehb.group5.app.UI.views;
 
 import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -9,9 +10,12 @@ import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
 import ehb.group5.app.UI.layouts.CommonLayout;
+import ehb.group5.app.backend.data.DatabaseService;
+import ehb.group5.app.backend.data.table.CompanyEntity;
 
 
 @Route("support")
@@ -25,6 +29,8 @@ public class SupportView extends CommonLayout {
      */
 
     public SupportView(){
+
+        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
 
         Div Supportdiv = new Div();
         Supportdiv.setId("supportid");
@@ -92,17 +98,11 @@ public class SupportView extends CommonLayout {
 
         Button button5 = new Button("Andere probleem");
         Supportdiv.add(button5);
+        button5.addClickListener(buttonClickEvent ->{
+            UI.getCurrent().navigate(TicketView.class);
+        });
 
 
-
-        Dialog dialog5 = new Dialog();
-        dialog5.add(new Text("Andere problemen bel dan deze telefoonnummer voor support: 0174992568"),
-                new Button("Close", e -> dialog5.close()));
-
-        dialog.setWidth("600px");
-        dialog.setHeight("250px");
-
-        button5.addClickListener(event -> dialog5.open());
 
         Supportdiv.addClassName("centered-content");
         getContainer().add(Supportdiv);
