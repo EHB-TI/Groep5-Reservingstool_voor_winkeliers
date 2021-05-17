@@ -11,6 +11,10 @@
     "bottom bottom";
 }
 
+#adrespostdiv{
+    display: flex;
+}
+
 .edit-content-top {
     grid-area: top;
     display: flex;

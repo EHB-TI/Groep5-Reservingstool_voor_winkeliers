@@ -1,6 +1,7 @@
 package ehb.group5.app.UI.views;
 
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -75,14 +76,20 @@ public class EditView extends CommonLayout {
          * */
         leftDiv = new Div();
         leftDiv.addClassNames("edit-content-left");
+        Div adressdiv = new Div();
+        adressdiv.setId("adrespostdiv");
 
         TextField adressField = new TextField("Adres");
+        TextField postbusField = new TextField("Postcode");
+
+        adressField.setWidth("74%");
+        postbusField.setWidth("25%");
 
         Button addOpeningHourButton = new Button("Openingsuur toevoegen", event -> {
             leftDiv.add(createNewOpeningClosures(store, null));
         });
-
-        leftDiv.add(adressField, addOpeningHourButton);
+        adressdiv.add(adressField, postbusField);
+        leftDiv.add(adressdiv, addOpeningHourButton);
 
         /**
          * Right DIV
@@ -96,6 +103,9 @@ public class EditView extends CommonLayout {
             rightDiv.add(createNewSpecialClosures(store, null));
         });
 
+        phoneField.setMaxLength(14);
+        phoneField.setMinLength(11);
+        phoneField.setErrorMessage("Een Belgisch gsm nummer telt 11 nummers of 14 als je +32 gebruikt.");
 
         rightDiv.add(phoneField, addbutton);
 
@@ -131,7 +141,7 @@ public class EditView extends CommonLayout {
             } catch (RowCountException e) {
 
             }
-
+            UI.getCurrent().navigate(DashboardView.class);
         });
 
         bottomDib.add(saveButton);
@@ -155,6 +165,9 @@ public class EditView extends CommonLayout {
         adressField.setClearButtonVisible(true);
         phoneField.setValue(store.getPhoneNumber());
         phoneField.setClearButtonVisible(true);
+        postbusField.setValue(store.getPostbus());
+        postbusField.setClearButtonVisible(true);
+
 
     }
 
