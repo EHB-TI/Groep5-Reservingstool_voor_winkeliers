@@ -1,5 +1,6 @@
 package ehb.group5.app.backend.data.table;
 
+import ehb.group5.app.backend.data.DatabaseService;
 import io.requery.*;
 import io.requery.query.MutableResult;
 import lombok.ToString;
@@ -25,12 +26,15 @@ public abstract class Customer {
     @Column
     String password;
 
-    @Column
-    int type;
-
     @OneToMany(mappedBy = "customer_id")
     MutableResult<ReservationEntity> reservations;
 
     @OneToMany(mappedBy = "customer_id")
     MutableResult<ReviewEntity> reviews;
+
+    @OneToMany(mappedBy = "customer_id")
+    MutableResult<TicketEntity> tickets;
+
+    @OneToMany(mappedBy = "customer_id")
+    MutableResult<TicketMessageEntity> ticketMessages;
 }
