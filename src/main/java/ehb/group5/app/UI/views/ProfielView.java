@@ -48,7 +48,6 @@ public class ProfielView extends CommonLayout {
             v1.setId("v10");
 
             v1.add(new H3("email: " + company.getEmail()));
-            v1.add(new H3("wachtwoord: " + company.getPassword()));
             v1.add(new H3("Uw bedrijfsnummer: " + company.getId()));
             v1.add(new H3("Uw abonnement is geldig tot " + company.getSubscriptionExpiresDate()));
 
@@ -63,14 +62,6 @@ public class ProfielView extends CommonLayout {
                 UI.getCurrent().getPage().setLocation("profiel/edit");
             });
             b1.setId("button1");
-
-            Button b2 = new Button("nieuwe medewerker");
-            v2.add(b2);
-            b2.setId("button1");
-
-            Button b3 = new Button("verwijder medewerker");
-            v2.add(b3);
-            b3.setId("button1");
 
             //aanmaken top container
             topDiv.add(d1);

@@ -4,6 +4,8 @@
     border-radius: 20px;
     width: 200px;
     height: 45px;
+    margin: 0 0 0 0;
+
 }
 
 #v20{
@@ -11,8 +13,12 @@
     align-items: flex-end;
 }
 
+#v10{
+    margin: 25px 0 0 0;
+}
+
 #d1 > H1{
-    margin: 10px 0 50px 15px;
+    margin: 10px 0 25px 15px;
 }
 
 .profiel-content{
