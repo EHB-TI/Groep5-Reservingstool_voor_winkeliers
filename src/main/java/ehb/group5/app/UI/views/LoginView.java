@@ -71,11 +71,11 @@ public class LoginView extends VerticalLayout {
 
                 // Checking password
                 if (company != null && passwordField.getValue().equals(company.getPassword())) {
-                    // Route to dashboard view
-                    UI.getCurrent().navigate(DashboardView.class);
-
                     // Saving company to the current session
                     VaadinSession.getCurrent().setAttribute("company", company);
+
+                    // Route to dashboard view
+                    UI.getCurrent().navigate(DashboardView.class);
                 } else {
                     Notification.show("Wachtwoord of email niet geldig");
                 }

@@ -19,6 +19,8 @@ public class DatabaseService {
     @Getter
     private final static Logger logger = Logger.getLogger(DatabaseService.class.getName());
     @Getter
+    private static EntityDataStore<AdminEntity> adminStore;
+    @Getter
     private static EntityDataStore<CompanyEntity> companiesStore;
     @Getter
     private static EntityDataStore<CustomerEntity> customersStore;
@@ -33,9 +35,9 @@ public class DatabaseService {
     @Getter
     private static EntityDataStore<StoreEntity> storesStore;
     @Getter
-    private static EntityDataStore<TicketEntity> ticketsStore;
+    private static EntityDataStore<TicketEntity> ticketStore;
     @Getter
-    private static EntityDataStore<TicketMessageEntity> ticketMessagesStore;
+    private static EntityDataStore<TicketMessageEntity> ticketMessageStore;
     @Getter
     private HikariDataSource hikari;
 
@@ -48,6 +50,7 @@ public class DatabaseService {
         getLogger().info(LogUtils.GREEN + "Connection etablised");
 
         getLogger().info(LogUtils.YELLOW + "Setting up Entities Data Store...");
+        adminStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         companiesStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         customersStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         openingHoursStore = new EntityDataStore<>(hikari, Models.DEFAULT);
@@ -55,8 +58,8 @@ public class DatabaseService {
         reviewsStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         specialClosuresStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         storesStore = new EntityDataStore<>(hikari, Models.DEFAULT);
-        ticketsStore = new EntityDataStore<>(hikari, Models.DEFAULT);
-        ticketMessagesStore = new EntityDataStore<>(hikari, Models.DEFAULT);
+        ticketStore = new EntityDataStore<>(hikari, Models.DEFAULT);
+        ticketMessageStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         getLogger().info(LogUtils.GREEN + "Entities Data Store DONE");
     }
 }

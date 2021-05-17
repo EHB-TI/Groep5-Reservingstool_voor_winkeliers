@@ -5,7 +5,7 @@ import io.requery.*;
 import io.requery.query.MutableResult;
 import lombok.ToString;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "companies")
@@ -16,7 +16,7 @@ public abstract class Company {
     @Key @Generated
     int id;
 
-    @Column(length = 30)
+    @Column(length = 50)
     String email;
 
     @Column(length = 50)
@@ -27,8 +27,15 @@ public abstract class Company {
     @Column(name = "subscription_expires_date")
     Timestamp subscriptionExpiresDate;
 
+
     @OneToMany(mappedBy = "company_id")
     MutableResult<StoreEntity> stores;
+
+    @OneToMany(mappedBy = "customer_id")
+    MutableResult<TicketEntity> tickets;
+
+    @OneToMany(mappedBy = "customer_id")
+    MutableResult<TicketMessageEntity> ticketMessages;
 
     public static CompanyEntity getCompanyById(int id){
         return DatabaseService.getCompaniesStore()
