@@ -8,19 +8,14 @@
     display: grid;
     min-height: 100%;
     grid-template-columns: 100%;
-    grid-template-rows: 50px auto 56px;
+    grid-template-rows: auto 56px;
     grid-template-areas:
-            "nav"
-            "main-content"
+            "top-content"
             "footer";
 }
 
-.common_layout_nav {
-    grid-area: nav;
-}
-
-.common_layout_main {
-    grid-area: main-content;
+.common_layout_top {
+    grid-area: top-content;
 }
 
 .common_layout_footer {

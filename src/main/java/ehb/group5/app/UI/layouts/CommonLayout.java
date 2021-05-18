@@ -5,18 +5,14 @@ import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JavaScript;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.*;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.VaadinSession;
 import ehb.group5.app.UI.views.*;
-import ehb.group5.app.backend.data.DatabaseService;
-import ehb.group5.app.backend.data.table.CompanyEntity;
-import ehb.group5.app.backend.data.table.StoreEntity;
+import ehb.group5.app.backend.listeners.UIServiceInitListener;
 import ehb.group5.app.backend.utils.VaadinUtils;
 import lombok.Getter;
 import lombok.val;
 
-import java.awt.*;
 import java.time.LocalDate;
 
 @StyleSheet("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css")
@@ -30,13 +26,19 @@ public abstract class CommonLayout extends Div {
     public CommonLayout() {
         addClassName("common_layout");
 
+        val account = VaadinSession.getCurrent().getAttribute("account");
+
+        Div top = new Div();
+        top.addClassNames("common_layout_top");
+        add(top);
+
         /**
          * NAVBAR
          */
         val nav = new Nav();
-        nav.addClassNames("navbar", "navbar-expand-lg", "navbar-light", "bg-light", "common_layout_nav", "m-0");
+        nav.addClassNames("navbar", "navbar-expand-lg", "navbar-light", "bg-light", "m-0");
         nav.setWidth("100%");
-        add(nav);
+        top.add(nav);
 
         // Nav conatainer
         val navContainer = new Div();
@@ -44,10 +46,10 @@ public abstract class CommonLayout extends Div {
         nav.add(navContainer);
 
         // Website title
-        val navTitle = new Anchor();
-        navTitle.setHref("/");
-        navTitle.setText("Logo");
-        navContainer.add(navTitle);
+        val navLogo = new Image("/frontend/logo.png", "Website logo");
+        navLogo.setWidth("80px");
+        navLogo.setHeight("45px");
+        navContainer.add(navLogo);
 
         // Toggle button for smaller screens
         val togglerSpan = new Span();
@@ -75,41 +77,60 @@ public abstract class CommonLayout extends Div {
         ulNav.addClassNames("navbar-nav", "me-auto", "mb-2", "mb-lg-0");
         collapseDiv.add(ulNav);
 
-        val homeLi = new ListItem();
-        val homeAnchor = new RouterLink("Dashboard", DashboardView.class);
-        homeLi.addClassNames("nav-item");
-        homeAnchor.addClassNames("nav-link");
-        if (VaadinUtils.isAtLocation(""))
-            homeAnchor.addClassNames("active");
-        homeLi.add(homeAnchor);
-        ulNav.add(homeLi);
+        if (UIServiceInitListener.hasAcces(account.getClass(), DashboardView.class)) {
+            val homeLi = new ListItem();
+            val homeAnchor = new RouterLink("Dashboard", DashboardView.class);
+            homeLi.addClassNames("nav-item");
+            homeAnchor.addClassNames("nav-link");
+            if (VaadinUtils.isAtLocation(""))
+                homeAnchor.addClassNames("active");
+            homeLi.add(homeAnchor);
+            ulNav.add(homeLi);
+        }
 
-        val storeLi = new ListItem();
-        val storeAnchor = new RouterLink("Winkel", EditView.class);
-        storeLi.addClassNames("nav-item");
-        storeAnchor.addClassNames("nav-link");
-        if (VaadinUtils.isAtLocation("/store"))
-            storeAnchor.addClassNames("active");
-        storeLi.add(storeAnchor);
-        ulNav.add(storeLi);
+        if (UIServiceInitListener.hasAcces(account.getClass(), EditView.class)) {
+            val storeLi = new ListItem();
+            val storeAnchor = new RouterLink("Winkel", EditView.class);
+            storeLi.addClassNames("nav-item");
+            storeAnchor.addClassNames("nav-link");
+            if (VaadinUtils.isAtLocation("/store"))
+                storeAnchor.addClassNames("active");
+            storeLi.add(storeAnchor);
+            ulNav.add(storeLi);
+        }
 
-        val statsLi = new ListItem();
-        val statsAnchor = new RouterLink("Calender", CalendarView.class);
-        statsLi.addClassNames("nav-item");
-        statsAnchor.addClassNames("nav-link");
-        if (VaadinUtils.isAtLocation("/stats"))
-            statsAnchor.addClassNames("active");
-        statsLi.add(statsAnchor);
-        ulNav.add(statsLi);
+        if (UIServiceInitListener.hasAcces(account.getClass(), CalendarView.class)) {
+            val statsLi = new ListItem();
+            val statsAnchor = new RouterLink("Calender", CalendarView.class);
+            statsLi.addClassNames("nav-item");
+            statsAnchor.addClassNames("nav-link");
+            if (VaadinUtils.isAtLocation("/stats"))
+                statsAnchor.addClassNames("active");
+            statsLi.add(statsAnchor);
+            ulNav.add(statsLi);
+        }
 
-        val supportLi = new ListItem();
-        val supportAnchor = new RouterLink("Support", SupportView.class);
-        supportLi.addClassNames("nav-item");
-        supportAnchor.addClassNames("nav-link");
-        if (VaadinUtils.isAtLocation("/support"))
-            supportAnchor.addClassNames("active");
-        supportLi.add(supportAnchor);
-        ulNav.add(supportLi);
+        if (UIServiceInitListener.hasAcces(account.getClass(), SupportView.class)) {
+            val supportLi = new ListItem();
+            val supportAnchor = new RouterLink("Support", SupportView.class);
+            supportLi.addClassNames("nav-item");
+            supportAnchor.addClassNames("nav-link");
+            if (VaadinUtils.isAtLocation("/support"))
+                supportAnchor.addClassNames("active");
+            supportLi.add(supportAnchor);
+            ulNav.add(supportLi);
+        }
+
+        if (UIServiceInitListener.hasAcces(account.getClass(), SupportAdminView.class)) {
+            val ticketsLi = new ListItem();
+            val ticketsAnchor = new RouterLink("Tickets", SupportAdminView.class);
+            ticketsLi.addClassNames("nav-item");
+            ticketsAnchor.addClassNames("nav-link");
+            if (VaadinUtils.isAtLocation("/support/admin"))
+                ticketsAnchor.addClassNames("active");
+            ticketsLi.add(ticketsAnchor);
+            ulNav.add(ticketsLi);
+        }
 
         /**
          * Right Item list
@@ -118,14 +139,16 @@ public abstract class CommonLayout extends Div {
         rightUl.addClassNames("navbar-nav");
         collapseDiv.add(rightUl);
 
-        val profileLi = new ListItem();
-        profileLi.addClassNames("nav-item");
-        val profileAnchor = new RouterLink("Profiel", ProfielView.class);
-        profileAnchor.addClassNames("nav-link");
-        if (VaadinUtils.isAtLocation("/profile"))
-            profileAnchor.addClassNames("active");
-        profileLi.add(profileAnchor);
-        rightUl.add(profileLi);
+        if (UIServiceInitListener.hasAcces(account.getClass(), ProfielView.class)) {
+            val profileLi = new ListItem();
+            profileLi.addClassNames("nav-item");
+            val profileAnchor = new RouterLink("Profiel", ProfielView.class);
+            profileAnchor.addClassNames("nav-link");
+            if (VaadinUtils.isAtLocation("/profile"))
+                profileAnchor.addClassNames("active");
+            profileLi.add(profileAnchor);
+            rightUl.add(profileLi);
+        }
 
         val disconnectLi = new ListItem();
         disconnectLi.addClassNames("nav-item");
@@ -138,9 +161,9 @@ public abstract class CommonLayout extends Div {
          * Main Container
          */
         container = new Div();
-        container.addClassNames("main-container", "common_layout_main");
+        container.addClassNames("main-container");
 
-        add(getContainer());
+        top.add(getContainer());
 
         /**
          * Footer
