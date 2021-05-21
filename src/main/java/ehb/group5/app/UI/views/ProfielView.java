@@ -25,8 +25,7 @@ public class ProfielView extends CommonLayout {
 
         public ProfielView() {
 
-            CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
-            StoreEntity store = (StoreEntity) VaadinSession.getCurrent().getAttribute("store");
+            CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
 
             //top container
             Div topDiv = new Div();

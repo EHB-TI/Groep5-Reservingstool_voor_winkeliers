@@ -152,7 +152,7 @@ public class SignInView extends VerticalLayout {
                     DatabaseService.getCompaniesStore().insert(company);
                     DatabaseService.getStoresStore().insert(store);
 
-                    VaadinSession.getCurrent().setAttribute("company", company);
+                    VaadinSession.getCurrent().setAttribute("account", company);
                     UI.getCurrent().navigate(ChoosePlanView.class);
 
                 } else {

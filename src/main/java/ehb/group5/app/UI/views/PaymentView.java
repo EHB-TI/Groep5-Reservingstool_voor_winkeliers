@@ -57,7 +57,7 @@ public class PaymentView extends CommonLayout {
 
     public void createHtml(String value){
 
-        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
+        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
 
         H3 h = new H3("Betaal veilig met een credit card of PayPal");
         h.setClassName("payment-heading");

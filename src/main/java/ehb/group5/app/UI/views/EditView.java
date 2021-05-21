@@ -48,7 +48,7 @@ public class EditView extends CommonLayout {
     private ArrayList<SpecialClosureEntity> specialClosures = new ArrayList<>();
 
     public EditView() {
-        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
+        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
         StoreEntity store = company.getStores().firstOrNull();
 
         Div div = new Div();
