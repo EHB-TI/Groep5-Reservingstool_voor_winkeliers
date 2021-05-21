@@ -42,6 +42,7 @@ public class CalendarDayView extends CommonLayout {
         Div titleDiv = new Div();
         titleDiv.addClassName("calendar-title");
 
+        //button om terug te gaan naar kalender
         Button titleButton = new Button("<--");
         titleButton.addClickListener(event -> {
            UI.getCurrent().navigate(CalendarView.class);
@@ -63,10 +64,12 @@ public class CalendarDayView extends CommonLayout {
         Calendar cal = Calendar.getInstance();
         cal.set(date.getYear(), date.getMonthValue() - 1, date.getDayOfMonth());
 
+        //locale datum van de kalender
         h1.setText(cal.get(Calendar.DAY_OF_MONTH) + " " + MONTHS_OF_YEAR[cal.get(Calendar.MONTH)] + " " + cal.get(Calendar.YEAR));
         mainDiv.add(titleDiv);
         getContainer().add(mainDiv);
 
+        //database "linken"
         for (StoreEntity store : company.getStores()) {
             if(!store.equals(choosenStore)){
                 continue;
@@ -83,7 +86,7 @@ public class CalendarDayView extends CommonLayout {
                             datesPerDay.add(reservationDate);
                         }
             });
-
+            //database "linken"
             OpeningHourEntity openingHour = null;
 
             for (OpeningHourEntity hour : store.getOpeningHours()) {
@@ -117,7 +120,7 @@ public class CalendarDayView extends CommonLayout {
                         openingHour.getBeginHour().getMinutes());
                 nextDate.add(Calendar.MINUTE, store.getMaxTime());
 
-
+                //de tijd op dagelijkse kalender, als het nog geen openingsuren heeft geeft het een error
                 for(int i = 0; i < times; i++){
                     int amount = 0;
                     for (Calendar entry : datesPerDay) {
@@ -137,6 +140,7 @@ public class CalendarDayView extends CommonLayout {
             }
         }
     }
+    // waar er klanten zijn wordt het groen geen klanten blijft het grijs
     public void insertHour(String hour, int klanten) {
         Div div = new Div();
         if(klanten > 0)
