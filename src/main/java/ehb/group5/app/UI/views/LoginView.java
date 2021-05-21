@@ -16,6 +16,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
+import ehb.group5.app.backend.data.table.Admin;
 import ehb.group5.app.backend.data.table.Company;
 import lombok.val;
 
@@ -68,6 +69,7 @@ public class LoginView extends VerticalLayout {
             if (emailField.getValue()!= null){
                 // Get the company by id
                 val company = Company.getCompanyByEmail(emailField.getValue());
+                val admin = Admin.getAdminByEmail(emailField.getValue());
 
                 // Checking password
                 if (company != null && passwordField.getValue().equals(company.getPassword())) {
@@ -76,13 +78,22 @@ public class LoginView extends VerticalLayout {
 
                     // Route to dashboard view
                     UI.getCurrent().navigate(DashboardView.class);
-                } else {
+                }
+                else if (admin != null && passwordField.getValue().equals(admin.getPassword())) {
+                    // Route to dashboard view
+                    UI.getCurrent().navigate(SupportAdminView.class);
+
+                    // Saving company to the current session
+                    VaadinSession.getCurrent().setAttribute("account", admin);
+                }
+                else {
                     Notification.show("Wachtwoord of email niet geldig");
                 }
             }
             else {
                 Notification.show("Vakken zijn niet goed ingevuld");
             }
+
 
 
         });
