@@ -31,10 +31,10 @@ public abstract class Company {
     @OneToMany(mappedBy = "company_id")
     MutableResult<StoreEntity> stores;
 
-    @OneToMany(mappedBy = "customer_id")
+    @OneToMany(mappedBy = "company_id")
     MutableResult<TicketEntity> tickets;
 
-    @OneToMany(mappedBy = "customer_id")
+    @OneToMany(mappedBy = "company_id")
     MutableResult<TicketMessageEntity> ticketMessages;
 
     public static CompanyEntity getCompanyById(int id){

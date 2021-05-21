@@ -22,6 +22,9 @@ public class Ticket {
     @Column(name = "date_created")
     Timestamp dateCreated;
 
+    @OneToMany(mappedBy = "ticket_id")
+    MutableResult<TicketMessageEntity> ticketMessages;
+
     @Column(name = "company_id", nullable = true)
     @ForeignKey(referencedColumn = "id")
     @ManyToOne
@@ -33,9 +36,6 @@ public class Ticket {
     CustomerEntity customer;
 
     int status;
-
-    @OneToMany(mappedBy = "ticket_id")
-    MutableResult<TicketMessageEntity> ticketMessages;
 
     public static Result<TicketEntity> getAllTickets(){
         return DatabaseService.getTicketStore()
