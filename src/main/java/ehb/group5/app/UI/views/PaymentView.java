@@ -132,7 +132,7 @@ public class PaymentView extends CommonLayout {
 
                 company.setSubscriptionExpiresDate(new Timestamp(date.getTime().getTime()));
 
-                DatabaseService.getCompaniesStore().update();
+                DatabaseService.getCompaniesStore().update(company);
 
                 UI.getCurrent().navigate(DashboardView.class);
             }
