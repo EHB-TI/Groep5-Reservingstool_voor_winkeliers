@@ -42,7 +42,8 @@ public class UIServiceInitListener implements VaadinServiceInitListener {
                 ProfielView.class,
                 SignInView.class,
                 SupportAdminView.class,
-                SupportView.class));
+                SupportView.class,
+                TicketView.class));
     }
 
     @Override
