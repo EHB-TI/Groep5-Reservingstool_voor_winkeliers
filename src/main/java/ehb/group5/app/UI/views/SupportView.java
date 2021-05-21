@@ -24,7 +24,7 @@ import ehb.group5.app.backend.data.table.CompanyEntity;
 public class SupportView extends CommonLayout {
 
      /*
-     Author: Zakaria Lamsakam
+     Author: LAMSAKAM Zakaria
      email: zakaria.lamsakam@student.ehb.be
      */
 
@@ -38,28 +38,35 @@ public class SupportView extends CommonLayout {
         //Titel aanmaken
         Supportdiv.add(new H1("Support services"));
 
-        //Knoppen aanmaken
+        //Knop aanmaken voor de eerste probleem
         Button button = new Button("Ik heb een probleem met de facturatie");
-        Supportdiv.add(button);
 
-        //notificatie tonen wanneer er op een button wordt gedrukt.
+        //Notificatie tonen wanneer er op een button wordt geklikt.
         Dialog dialog = new Dialog();
         dialog.add(new Text("Uw factuur bereikt zijn bestemming niet door onjuiste gegevens. Vraag vooraf alle gegevens op, begin met het e-mailadres van de verantwoordelijke voor de betaling van de facturen.\"" +
                 ""+" Andere problemen bel dan deze telefoonnummer voor support: 0124592598"),
+
+                //Event toevoegen om de button de sluiten
                new Button("Close", e -> dialog.close()));
 
+
+        //De breedte en lengte van de notificatie initialiseren.
         dialog.setWidth("600px");
         dialog.setHeight("250px");
 
+        //Event toevoegen om de button de opnenen
         button.addClickListener(event -> dialog.open());
 
-
+        //Knop aanmaken voor de tweede probleem
         Button button2 = new Button("Ik heb een probleem met de betaling");
-        Supportdiv.add(button2);
+
 
         Dialog dialog2 = new Dialog();
+
+        //Hier wordt de text die in de noficatie zitten geïnstalleerd.
         dialog2.add(new Text("U kan dit oplossen door één of meerdere minder dringende overschrijvingen uit te vinken.\n" +
-                " Vervolgens tekent u enkel de aangevinkte verrichtingen. "+" Andere problemen bel dan deze telefoonnummer voor support: 0124392594"),
+                             " Vervolgens tekent u enkel de aangevinkte verrichtingen. "+" " +
+                             "Andere problemen bel dan deze telefoonnummer voor support: 0124392594"),
                     new Button("Close", e -> dialog2.close()));
 
         dialog.setWidth("600px");
@@ -67,14 +74,14 @@ public class SupportView extends CommonLayout {
 
         button2.addClickListener(event -> dialog2.open());
 
+        //Knop aanmaken voor de derde probleem.
         Button button3 = new Button("Ik heb een probleem met het bewerken van de informatie ");
-        Supportdiv.add(button3);
 
 
 
         Dialog dialog3 = new Dialog();
         dialog3.add(new Text("BIC code (Bank Identification Code) is een unieke code die één welbepaalde bank identificeert en bestaat meestal uit 8 of 11 tekens."
-                +" Andere problemen bel dan deze telefoonnummer voor support: 0184592599"),
+                            +" Andere problemen bel dan deze telefoonnummer voor support: 0184592599"),
                 new Button("Close", e -> dialog3.close()));
 
         dialog.setWidth("600px");
@@ -82,13 +89,13 @@ public class SupportView extends CommonLayout {
 
         button3.addClickListener(event -> dialog3.open());
 
+        //Knop aanmaken voor de vierde probleem.
         Button button4 = new Button("Ik heb een probleem met de agenda");
-        Supportdiv.add(button4);
 
 
         Dialog dialog4 = new Dialog();
         dialog4.add(new Text("Zorg ervoor dat je verbinding met internet hebt, controleer of de agenda zichtbaar is, zorg dat nieuwe afspraken worden toegevoegd aan je Google Agenda."
-                +" Andere problemen bel dan deze telefoonnummer voor support: 0124692298"),
+                            +" Andere problemen bel dan deze telefoonnummer voor support: 0124692298"),
                 new Button("Close", e -> dialog4.close()));
 
         dialog.setWidth("600px");
@@ -96,14 +103,16 @@ public class SupportView extends CommonLayout {
 
         button4.addClickListener(event -> dialog4.open());
 
+        //Laatste knop aanmaken voor de vijfde probleem.
         Button button5 = new Button("Andere probleem");
-        Supportdiv.add(button5);
+
+        //Wanneer er geklikt wordt op de button gaan we gestuurd zijn naar de pagina van de klasse die geplaats word.
         button5.addClickListener(buttonClickEvent ->{
             UI.getCurrent().navigate(TicketView.class);
         });
 
-
-
+        //Alle buttons toevoegen aan de supportdiv.
+        Supportdiv.add(button, button2,button3,button4,button5);
         Supportdiv.addClassName("centered-content");
         getContainer().add(Supportdiv);
     }

@@ -27,7 +27,7 @@ import java.util.Date;
 public class TicketView extends CommonLayout {
 
     /*
-     Author: Zakaria Lamsakam
+     Author: LAMSAKAM Zakaria
      email: zakaria.lamsakam@student.ehb.be
      */
 
@@ -54,9 +54,12 @@ public class TicketView extends CommonLayout {
 
         //knop aanmaken
         Button buttonT = new Button("Save");
+        //Hier wordt er geinisialiseerd dat je ook met de enter van uw toetsenbord mag drukken.
         buttonT.addClickShortcut(Key.ENTER);
 
 
+        //Hier gaan de textfield en de textarea worden toegevoegd aan de database namelijk aan de company.
+        //De timestamp wordt gebruikt om de datum te initialiseren wanneer de informatie wordt toegevoegd in de database.
         buttonT.addClickListener(buttonClickEvent ->{
             TicketEntity ticket = new TicketEntity();
             ticket.setTitle(textField1.getValue());
@@ -68,10 +71,12 @@ public class TicketView extends CommonLayout {
             ticketmessenger.setDate(new Timestamp(new Date().getTime()));
             ticketmessenger.setTicket(ticket);
             DatabaseService.getTicketMessageStore().insert(ticketmessenger);
+
+            //Wanneer er geklikt wordt op de button gaan we gestuurd zijn naar de pagina van de klasse die geplaats word.
             UI.getCurrent().navigate(SupportAdminView.class);
         });
 
-
+        //Alles in de TicketContentdiv toevoegen
         TicketContentdiv.add(textField1,textArea1);
         TicketContentdiv.add(buttonT);
         getContainer().add(TicketContentdiv);
