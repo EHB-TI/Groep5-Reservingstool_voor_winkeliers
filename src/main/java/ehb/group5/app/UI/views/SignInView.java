@@ -20,6 +20,7 @@ import ehb.group5.app.backend.data.DatabaseService;
 import ehb.group5.app.backend.data.table.Company;
 import ehb.group5.app.backend.data.table.CompanyEntity;
 import ehb.group5.app.backend.data.table.StoreEntity;
+import ehb.group5.app.backend.security.PasswordAuthentication;
 import lombok.Data;
 import lombok.val;
 
@@ -139,7 +140,7 @@ public class SignInView extends VerticalLayout {
                         .get().value() == 0) {
                     CompanyEntity company = new CompanyEntity();
                     company.setEmail(emailField.getValue());
-                    company.setPassword(passwordField.getValue());
+                    company.setPassword(new PasswordAuthentication().hash(passwordField.getValue().toCharArray()));
 
                     StoreEntity store = new StoreEntity();
                     store.setCompany(company);
@@ -149,7 +150,7 @@ public class SignInView extends VerticalLayout {
                     store.setPhoneNumber(gsmField.getValue());
                     store.setName(naamField.getValue());
 
-                    DatabaseService.getCompaniesStore().insert(company);
+                   /* DatabaseService.getCompaniesStore().insert(company);*/
                     DatabaseService.getStoresStore().insert(store);
 
                     VaadinSession.getCurrent().setAttribute("account", company);

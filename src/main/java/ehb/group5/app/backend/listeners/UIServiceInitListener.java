@@ -3,6 +3,7 @@ package ehb.group5.app.backend.listeners;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.InternalServerError;
 import com.vaadin.flow.router.RouteNotFoundError;
 import com.vaadin.flow.server.ServiceInitEvent;
 import com.vaadin.flow.server.VaadinServiceInitListener;
@@ -67,6 +68,9 @@ public class UIServiceInitListener implements VaadinServiceInitListener {
                 event.rerouteTo(NotFoundView.class);
                 return;
             }
+
+            if(event.getNavigationTarget().equals(InternalServerError.class))
+                return;
 
             // No subscription -> forward to chooseplan page
             if (VaadinSession.getCurrent().getAttribute("account") instanceof CompanyEntity) {

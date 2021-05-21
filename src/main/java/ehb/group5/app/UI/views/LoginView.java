@@ -16,7 +16,9 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
+import ehb.group5.app.backend.data.table.Admin;
 import ehb.group5.app.backend.data.table.Company;
+import ehb.group5.app.backend.security.PasswordAuthentication;
 import lombok.val;
 
 /*
@@ -60,29 +62,40 @@ public class LoginView extends VerticalLayout {
         emailField.setErrorMessage("Hier moet een werkende e-mail adress staan.");
 
         //TODO temporary
-        emailField.setValue("1@gmail.com");
-        passwordField.setValue("1");
+        emailField.setValue("9@gmail.com");
+        passwordField.setValue("123456");
 
         // Listen to button actions
         button1.addClickListener(event -> {
             if (emailField.getValue()!= null){
                 // Get the company by id
                 val company = Company.getCompanyByEmail(emailField.getValue());
+                val admin = Admin.getAdminByEmail(emailField.getValue());
 
                 // Checking password
-                if (company != null && passwordField.getValue().equals(company.getPassword())) {
+                if (company != null && new PasswordAuthentication().authenticate(passwordField.getValue().toCharArray(), company.getPassword())) {
                     // Saving company to the current session
                     VaadinSession.getCurrent().setAttribute("account", company);
 
                     // Route to dashboard view
                     UI.getCurrent().navigate(DashboardView.class);
-                } else {
+                }
+                else if (admin != null && new PasswordAuthentication().authenticate(passwordField.getValue().toCharArray(), admin.getPassword())) {
+
+
+                    // Saving admin to the current session
+                    VaadinSession.getCurrent().setAttribute("account", admin);
+                    // Route to dashboard view
+                    UI.getCurrent().navigate(SupportAdminView.class);
+                }
+                else {
                     Notification.show("Wachtwoord of email niet geldig");
                 }
             }
             else {
                 Notification.show("Vakken zijn niet goed ingevuld");
             }
+
 
 
         });
