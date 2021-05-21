@@ -26,7 +26,7 @@ import java.util.Date;
 @PageTitle("payment")
 @CssImport("./styles/payment.css")
 
-public class PaymentView extends CommonLayout {
+public class PaymentView extends VerticalLayout {
 
     public PaymentView(){
         checkcontent();
@@ -34,34 +34,37 @@ public class PaymentView extends CommonLayout {
     }
 
     public void checkcontent(){
+        Div container = new Div();
+        container.setClassName("payment-container-parent");
         if(VaadinSession.getCurrent().getAttribute("parameter") == "1"){
             H1 h = new H1("Uw totaal is: €20");
             h.setClassName("payment-heading");
-            add(h);
-            createHtml("€20");
+            container.add(h);
+            createHtml("€20", container);
         }
         else if(VaadinSession.getCurrent().getAttribute("parameter") == "6"){
             H1 h = new H1("Uw totaal is: €38");
             h.setClassName("payment-heading");
-            add(h);
-            createHtml("€38");
+            container.add(h);
+            createHtml("€38", container);
         }
         else if(VaadinSession.getCurrent().getAttribute("parameter") == "12"){
             H1 h = new H1("Uw totaal is: €50");
             h.setClassName("payment-heading");
-            add(h);
-            createHtml("€50");
+            container.add(h);
+            createHtml("€50", container);
         }
 
     }
 
-    public void createHtml(String value){
+    public void createHtml(String value, Div container){
 
         CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
 
+
         H3 h = new H3("Betaal veilig met een credit card of PayPal");
         h.setClassName("payment-heading");
-        add(h);
+        container.add(h);
 
         Div choose = new Div();
         choose.setClassName("payment-image-div");
@@ -71,18 +74,18 @@ public class PaymentView extends CommonLayout {
         paypal.setClassName("payment-paypal");
         choose.add(image);
         choose.add(paypal);
-        add(choose);
+        container.add(choose);
 
         TextField name = new TextField();
         name.setClassName("payment-textfield");
         name.setPlaceholder("Name on the card");
-        add(name);
+        container.add(name);
 
 
         TextField number = new TextField();
         number.setClassName("payment-textfield");
         number.setPlaceholder("Card number");
-        add(number);
+        container.add(number);
 
         Div d = new Div();
         d.setClassName("payment-container");
@@ -102,7 +105,7 @@ public class PaymentView extends CommonLayout {
         d.add(tijd);
         d.add(Cvc);
         d.add(Zip);
-        add(d);
+        container.add(d);
 
         Div buttondiv = new Div();
         buttondiv.setClassName("buttondiv");
@@ -138,7 +141,8 @@ public class PaymentView extends CommonLayout {
             }
         });
         buttondiv.add(button);
-        add(buttondiv);
+        container.add(buttondiv);
+        add(container);
 
 
     }
