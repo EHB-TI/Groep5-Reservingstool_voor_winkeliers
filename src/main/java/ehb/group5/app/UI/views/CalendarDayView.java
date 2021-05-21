@@ -34,7 +34,7 @@ public class CalendarDayView extends CommonLayout {
     private Div mainDiv;
 
     public CalendarDayView() {
-        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
+        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
 
         mainDiv = new Div();
         mainDiv.addClassName("calendarday-content");

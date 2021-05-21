@@ -26,7 +26,7 @@ public class DashboardView extends CommonLayout {
 
     private static final String[] DAYS_OF_WEEK = {"Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"};
     private static final String[] MONTHS_OF_YEAR = {"Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"};
-    private CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
+    private CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
 
     public DashboardView() {
         Div gridDiv = new Div();
@@ -50,7 +50,6 @@ public class DashboardView extends CommonLayout {
 
         gridDiv.add(statDayDiv, statMonthDiv);
         getContainer().add(gridDiv);
-        add(getContainer());
     }
 
 
