@@ -7,7 +7,12 @@
     grid-auto-columns: auto auto;
     grid-template-areas:
     "top top"
-    "left right";
+    "left right"
+    "bottom bottom";
+}
+
+#adrespostdiv{
+    display: flex;
 }
 
 .edit-content-top {
@@ -41,6 +46,10 @@
     flex-direction: column;
     justify-content: flex-start;
     margin-left: 5px;
+}
+
+.edit-content-bottom {
+    grid-area: bottom;
 }
 
 

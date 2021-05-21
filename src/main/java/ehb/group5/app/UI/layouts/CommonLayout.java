@@ -141,17 +141,10 @@ public abstract class CommonLayout extends Div {
         container.addClassNames("main-container", "common_layout_main");
 
         add(getContainer());
-        placeFooter();
 
-        addAttachListener(event -> {
-
-        });
-    }
-
-    /**
-     * Footer
-     */
-    public void placeFooter() {
+        /**
+         * Footer
+         */
         val footer = new Footer();
         footer.addClassNames("bg-light", "text-center", "text-lg-start", "common_layout_footer");
         footer.setWidth("100%");
