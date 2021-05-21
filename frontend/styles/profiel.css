@@ -1,7 +1,4 @@
-/*.main-container{
-    display: flex;
-    flex-direction: row;
-}*/
+/*gemaakt door jason devedeleer*/
 
 #button1{
     border-radius: 20px;
@@ -14,6 +11,11 @@
     align-items: flex-end;
 }
 
-#v10 > H1{
-    margin: 0 0 80px 0;
+#d1 > H1{
+    margin: 10px 0 50px 15px;
+}
+
+.profiel-content{
+    display: flex;
+    flex-direction: row;
 }

@@ -1,3 +1,7 @@
+/*
+     Author: ZOETARDT Craig
+     email: craig.zoetardt@student.ehb.be
+     */
 #signinid{
     margin: auto ;
 }
@@ -8,6 +12,7 @@
 #signinid {
     display: flex;
     flex-direction: column;
+
 }
 #adressid {
     display: block;
