@@ -8,12 +8,18 @@ import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.textfield.TextArea;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
 import ehb.group5.app.UI.layouts.CommonLayout;
 import ehb.group5.app.backend.data.DatabaseService;
 import ehb.group5.app.backend.data.table.CompanyEntity;
+import ehb.group5.app.backend.data.table.TicketEntity;
+import ehb.group5.app.backend.data.table.TicketMessageEntity;
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Route("ticket")
 @PageTitle("profiel")
@@ -36,9 +42,9 @@ public class TicketView extends CommonLayout {
         //Titel aanmaken
         TicketContentdiv.add(new H1("Nieuwe ticket"));
 
-        // Probleem geven in de Textarea
-        TextArea textArea = new TextArea("Het probleem");
-        textArea.getStyle().set("minHeight", "10px");
+        // Probleem geven in de textfield
+        TextField textField1 = new TextField("Het probleem");
+        textField1.getStyle().set("minHeight", "10px");
 
         // Probleem bescrijven in detail in de Textarea
         TextArea textArea1 = new TextArea("Ticket");
@@ -49,16 +55,24 @@ public class TicketView extends CommonLayout {
         //knop aanmaken
         Button buttonT = new Button("Save");
         buttonT.addClickShortcut(Key.ENTER);
-        /*
-        //Nog met de backup van de pagina bezig.
-        buttonT.addClickListener(buttonClickEvent ->{
-            company.setEmail(textArea.getValue());
-            company.setPassword(textArea1.getValue());
-            DatabaseService.getCompaniesStore().insert(company);
-        });
-        */
 
-        TicketContentdiv.add(textArea,textArea1);
+
+        buttonT.addClickListener(buttonClickEvent ->{
+            TicketEntity ticket = new TicketEntity();
+            ticket.setTitle(textField1.getValue());
+            ticket.setCompany(company);
+            ticket.setDateCreated(new Timestamp(new Date().getTime()));
+            TicketMessageEntity ticketmessenger = new TicketMessageEntity();
+            ticketmessenger.setMessage(textArea1.getValue());
+            ticketmessenger.setCompany(company);
+            ticketmessenger.setDate(new Timestamp(new Date().getTime()));
+            ticketmessenger.setTicket(ticket);
+            DatabaseService.getTicketMessageStore().insert(ticketmessenger);
+            UI.getCurrent().navigate(SupportAdminView.class);
+        });
+
+
+        TicketContentdiv.add(textField1,textArea1);
         TicketContentdiv.add(buttonT);
         getContainer().add(TicketContentdiv);
 
