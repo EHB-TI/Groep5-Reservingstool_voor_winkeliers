@@ -8,9 +8,15 @@ import lombok.val;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * @author Arnaud Faille
+ */
 @UtilityClass
 public class VaadinUtils {
 
+    /**
+     * Source from https://github.com/vaadin/flow/issues/1897#issuecomment-473293065
+     */
     public static URI getLocation() {
         VaadinServletRequest request = (VaadinServletRequest) VaadinService.getCurrentRequest();
         StringBuffer uriString = request.getRequestURL();

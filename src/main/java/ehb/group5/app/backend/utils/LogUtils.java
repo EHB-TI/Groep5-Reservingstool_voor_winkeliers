@@ -2,6 +2,9 @@ package ehb.group5.app.backend.utils;
 
 import lombok.experimental.UtilityClass;
 
+/**
+ * @author Arnaud Faille
+ */
 @UtilityClass
 public class LogUtils {
     public static final String RESET = "\u001B[0m";

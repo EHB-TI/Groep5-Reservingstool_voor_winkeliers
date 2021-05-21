@@ -5,6 +5,11 @@ import lombok.ToString;
 
 import java.sql.Date;
 
+/**
+ * Geinspireerd met deze voorbeelden
+ * https://github.com/requery/requery/wiki/Query-examples
+ * @author Arnaud Faille
+ */
 @Entity
 @Table(name = "special_closures")
 @ToString

@@ -4,6 +4,11 @@ import io.requery.*;
 import io.requery.query.MutableResult;
 import lombok.ToString;
 
+/**
+ * Geinspireerd met deze voorbeelden
+ * https://github.com/requery/requery/wiki/Query-examples
+ * @author Arnaud Faille
+ */
 @Entity
 @Table(name = "stores")
 @ToString

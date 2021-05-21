@@ -15,6 +15,10 @@ import lombok.val;
 
 import java.time.LocalDate;
 
+/**
+ * Maakt gebruik van Bootstrap 5 om responsive componenten te hebben
+ * @author Arnaud Faille
+ */
 @StyleSheet("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css")
 @JavaScript("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js")
 @CssImport("./styles/commonStyle.css")

@@ -10,6 +10,9 @@ import com.vaadin.flow.router.RouterLink;
 import ehb.group5.app.UI.layouts.CommonLayout;
 import lombok.val;
 
+/**
+ * @author Arnaud Faille
+ */
 @Route("403")
 @PageTitle("Page not found")
 public class ForbiddenView extends CommonLayout {

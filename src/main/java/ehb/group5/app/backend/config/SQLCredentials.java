@@ -4,6 +4,11 @@ import com.zaxxer.hikari.HikariConfig;
 import lombok.Data;
 import lombok.val;
 
+/**
+ * Geïnspireerd met deze voorbeelden
+ * https://www.programcreek.com/java-api-examples/?api=com.zaxxer.hikari.HikariConfig
+ * @author Arnaud Faille
+ */
 @Data
 public class SQLCredentials {
     private String host, database, username, password = "";

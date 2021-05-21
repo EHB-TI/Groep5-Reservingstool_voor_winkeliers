@@ -14,6 +14,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
+/**
+ * Code die komt van oude project met Ketsu_Sama maakten en verwerkt is naar nodige benodigdheden
+ * @author Arnaud Faille
+ */
 @UtilityClass
 public class Configurations {
 

@@ -18,6 +18,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Arnaud Faille
+ */
 @Component
 public class UIServiceInitListener implements VaadinServiceInitListener {
 
@@ -46,6 +49,9 @@ public class UIServiceInitListener implements VaadinServiceInitListener {
                 TicketView.class));
     }
 
+    /**
+     * Event listener that is added to each page
+     */
     @Override
     public void serviceInit(ServiceInitEvent event) {
         event.getSource().addUIInitListener(uiEvent -> {
@@ -54,6 +60,9 @@ public class UIServiceInitListener implements VaadinServiceInitListener {
         });
     }
 
+    /**
+     * Function that checks autorisation & other depends of type of user
+     */
     private void authenticateNavigation(BeforeEnterEvent event) {
         if (!event.getNavigationTarget().equals(LoginView.class)
                 && !event.getNavigationTarget().equals(SignInView.class)
@@ -70,6 +79,7 @@ public class UIServiceInitListener implements VaadinServiceInitListener {
                 return;
             }
 
+            // If there is an error on the page -> do nothing
             if(event.getNavigationTarget().equals(InternalServerError.class))
                 return;
 

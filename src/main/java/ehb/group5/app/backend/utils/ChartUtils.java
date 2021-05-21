@@ -6,6 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+/**
+ * Een kleine ChartBuilder om de statistieken pagina lighter te maken
+ * Gebruik gemaakt van Vaadin Chart documentatie
+ * https://vaadin.com/components/vaadin-charts/java-examples
+ * @author Arnaud Faille
+ */
 public abstract class ChartUtils {
 
 
