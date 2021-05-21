@@ -21,6 +21,11 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 
+ /**
+ *Author: Tugçe Demir
+ *email: tugce.demir@student.ehb.be
+ */
+
 @Route("calendar")
 @PageTitle("Agenda per maand")
 @CssImport("./styles/calendar.css")
@@ -69,7 +74,7 @@ public class CalendarView extends CommonLayout {
         });*/
 
 
-        //kalender zelf
+        //kalender zelf + de data "linken"
         CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
         for (StoreEntity store : company.getStores()) {
             Random rand = new Random(store.getId());
