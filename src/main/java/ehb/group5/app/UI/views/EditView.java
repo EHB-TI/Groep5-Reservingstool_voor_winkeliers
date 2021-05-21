@@ -31,7 +31,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 
 /*
-     Author: ZOETARDT Craig (backend), FAILLE Arnaud (frontend)
+     Author: ZOETARDT Craig (back end), FAILLE Arnaud (front end)
      email: craig.zoetardt@student.ehb.be , arnaud.faille@student.ehb.be
      */
 
@@ -54,9 +54,7 @@ public class EditView extends CommonLayout {
         Div div = new Div();
         div.addClassNames("edit-content");
 
-        /**
-         * Top DIV
-         * */
+        // top div
         Div topDiv = new Div();
         topDiv.addClassNames("edit-content-top");
 
@@ -71,9 +69,7 @@ public class EditView extends CommonLayout {
         topDiv.add(image, button, descriptionField);
 
 
-        /**
-         * Left DIV
-         * */
+        //Left DIV
         leftDiv = new Div();
         leftDiv.addClassNames("edit-content-left");
         Div adressdiv = new Div();
@@ -91,14 +87,12 @@ public class EditView extends CommonLayout {
         adressdiv.add(adressField, postbusField);
         leftDiv.add(adressdiv, addOpeningHourButton);
 
-        /**
-         * Right DIV
-         * */
+        // right div
         rightDiv = new Div();
         rightDiv.addClassNames("edit-content-right");
 
         TextField phoneField = new TextField("Telefoonnummer");
-
+//create button and add the function to it
         Button addbutton = new Button("Uitzonderlijke sluiting toevoegen", event -> {
             rightDiv.add(createNewSpecialClosures(store, null));
         });
@@ -109,13 +103,11 @@ public class EditView extends CommonLayout {
 
         rightDiv.add(phoneField, addbutton);
 
-        /**
-         * BOttom div
-         */
+        // bottom div
 
         Div bottomDib = new Div();
         bottomDib.addClassNames("edit-content-bottom");
-
+//create button and add event
         Button saveButton = new Button("Save Changes", event -> {
             for (OpeningHourEntity entry : openingHours) {
                 try {
@@ -146,7 +138,7 @@ public class EditView extends CommonLayout {
 
         bottomDib.add(saveButton);
 
-
+//adding everything to a div
         div.add(topDiv, leftDiv, rightDiv, bottomDib);
         getContainer().add(div);
 
@@ -158,7 +150,7 @@ public class EditView extends CommonLayout {
         for (SpecialClosureEntity specialClosure : store.getSpecialClosures()) {
             rightDiv.add(createNewSpecialClosures(store, specialClosure));
         }
-
+// Filling the fields with data that is on the database.
         descriptionField.setValue(store.getDescription() != null? store.getDescription() : "");
         descriptionField.setClearButtonVisible(true);
         adressField.setValue(store.getAdress());
@@ -170,7 +162,7 @@ public class EditView extends CommonLayout {
 
 
     }
-
+//Making the function for special closures
     private Div createNewSpecialClosures(StoreEntity store, SpecialClosureEntity entity) {
         final SpecialClosureEntity finalEntity;
         if (entity == null)
@@ -251,7 +243,7 @@ public class EditView extends CommonLayout {
         openingHourStartTimePicker.addValueChangeListener(event -> {
             finalEntity.setBeginHour(Time.valueOf(openingHourStartTimePicker.getValue()));
         });
-
+//creating new opening's
         TimePicker openingHourEndTimePicker = new TimePicker();
         openingHourEndTimePicker.setLabel("Sluitingsuren");
         openingHourEndTimePicker.addClassNames("timepicker");
