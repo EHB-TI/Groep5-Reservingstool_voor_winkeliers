@@ -14,10 +14,7 @@ import lombok.ToString;
 @Table(name = "customers")
 @ToString
 public abstract class Customer {
-
-    @Key
-    @Generated
-    @Column(name = "id")
+    @Key @Generated @Column(name = "id")
     int id;
 
     @Column(name = "first_name", length = 20)

@@ -239,7 +239,7 @@ public class EditView extends CommonLayout {
         openingHourStartTimePicker.setLabel("Openingsuren");
         if (finalEntity.getBeginHour() != null)
             openingHourStartTimePicker.setValue(finalEntity.getBeginHour().toLocalTime());
-        openingHourStartTimePicker.setStep(Duration.ofMinutes(store.getMaxTime()));
+        openingHourStartTimePicker.setStep(Duration.ofMinutes(store.getMaxTime() != 0? store.getMaxTime() : 10));
         openingHourStartTimePicker.addValueChangeListener(event -> {
             finalEntity.setBeginHour(Time.valueOf(openingHourStartTimePicker.getValue()));
         });
