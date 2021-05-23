@@ -13,5 +13,6 @@
   
 ### Mogelijke probleem
 
-![Vaadin subscription](https://raw.githubusercontent.com/EHB-TI/Groep5-Reservingstool_voor_winkeliers/Main/subscriptionWarning.png?token=ATR37AWGWE473VWQZNGGW2TAWP7CW)`
+https://imgur.com/a/9T5ebQ9
+
 Als u deze bekomt, is er een manier om die weg te maken. Aangezien we sommige componenten gebruiken die enkel in Vaadin Permium werken. Moet met oftewel betalen of zoals in onze geval de student plan kiezen. Hier is een link om de student plan te kunnen kiezen: https://vaadin.com/student-program.
