@@ -33,6 +33,12 @@ public class ProfielBewerkenView extends CommonLayout {
      email: zakaria.lamsakam@student.ehb.be
      */
 
+    /*
+    Ik heb het Vaadin documentatie gebruikt voor de textfield,de emailfield en de passwordfield.
+    https://vaadin.com/docs/v14/
+    */
+
+
     public ProfielBewerkenView(){
 
         CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
@@ -84,7 +90,7 @@ public class ProfielBewerkenView extends CommonLayout {
             company.setPassword(new PasswordAuthentication().hash(passwordField.getValue().toCharArray()));
             DatabaseService.getCompaniesStore().update(company);
 
-            //Wanneer er geklikt wordt op de button gaan we gestuurd zijn naar de pagina van de Route die hier geinisialiseerd word.
+            //Wanneer er geklikt wordt op de button gaan we gestuurd worden naar de pagina van de Route die hier geinisialiseerd word.
             UI.getCurrent().getPage().setLocation("profiel");
             } else {
                 Notification.show("Alles is niet correct ingevuld.");
