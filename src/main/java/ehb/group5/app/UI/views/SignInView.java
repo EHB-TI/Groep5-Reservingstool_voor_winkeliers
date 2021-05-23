@@ -39,7 +39,6 @@ import java.net.HttpRetryException;
 public class SignInView extends VerticalLayout {
 
     public SignInView() {
-
         setHeight("100vh");
         addClassName("signup-cont");
 
