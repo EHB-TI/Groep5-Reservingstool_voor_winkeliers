@@ -1,4 +1,11 @@
 
+.payment-container-parent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .payment-heading {
     padding: 1%
 }
@@ -30,6 +37,10 @@
 .payment-container {
     display: flex;
     justify-content: space-between;
+}
+
+.payment-image-div {
+    width: 70%;
 }
 
 .payment-textfield-small,payment-button {

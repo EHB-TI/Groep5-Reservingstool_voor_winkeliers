@@ -1,11 +1,12 @@
-# Java-code
-Java code fot this project.
-Edit by Ryan.
+# Reservatietool voor winkeliers
 
-If you want to add images place it in the folder: webapp/frontend
-![images](https://user-images.githubusercontent.com/80149519/117155854-70556180-adbd-11eb-98b3-f1f59d081c97.png)
+### Installatie
 
-You can add an Image with the following path:
-![image-path](https://user-images.githubusercontent.com/80149519/117156134-abf02b80-adbd-11eb-97b6-74a00772a7ab.png)
+- Na het pullen/clonen van het project moet er een Maven compilatie gebeuren.
 
+### Gebruik
 
+- Het project gebruikt SpringBoot en de klasse om de applicatie tu kunnen lanceren is Application.java .
+- Indien de server gestart is, moett u dan op http://localhost:8080 gaan
+- Een fake account is op voorand gemmaakt om de statistieken, kalender, ... paginas te kunnen démonstreren. De email is `1@gmail.com` en de passwoord is `123456`
+- Een andere account is beschikbaar om de admin gedeelte te kunnen zien. De email is `admin@gmail.com` en de passwoord `123456`

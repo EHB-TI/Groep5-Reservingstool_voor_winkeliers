@@ -25,6 +25,11 @@ import java.util.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+ /**
+ *Author: Tugçe Demir
+ *email: tugce.demir@student.ehb.be
+ */
+
 @Route("calendarday")
 @PageTitle("Agenda per dag")
 @CssImport("./styles/calendarday.css")
@@ -55,8 +60,7 @@ public class CalendarDayView extends CommonLayout {
         StoreEntity choosenStore = (StoreEntity) VaadinSession.getCurrent().getAttribute("calendarStore");
         LocalDate date = (LocalDate) VaadinSession.getCurrent().getAttribute("calendarDate");
 
-        if (date == null
-                || choosenStore == null) {
+        if (date == null || choosenStore == null) {
             UI.getCurrent().getPage().setLocation("calendar");
             return;
         }
@@ -64,7 +68,7 @@ public class CalendarDayView extends CommonLayout {
         Calendar cal = Calendar.getInstance();
         cal.set(date.getYear(), date.getMonthValue() - 1, date.getDayOfMonth());
 
-        //locale datum van de kalender
+        //locale datum van de kalender weergegeven in tekstvorm
         h1.setText(cal.get(Calendar.DAY_OF_MONTH) + " " + MONTHS_OF_YEAR[cal.get(Calendar.MONTH)] + " " + cal.get(Calendar.YEAR));
         mainDiv.add(titleDiv);
         getContainer().add(mainDiv);
@@ -75,6 +79,7 @@ public class CalendarDayView extends CommonLayout {
                 continue;
             }
             List<Calendar> datesPerDay = new ArrayList<>();
+            //reservaties bij winkel ophalen
             store.getReservations()
                     .forEach(reservation -> {
                         Calendar reservationDate = Calendar.getInstance();
@@ -86,7 +91,7 @@ public class CalendarDayView extends CommonLayout {
                             datesPerDay.add(reservationDate);
                         }
             });
-            //database "linken"
+            //openingsuren en sluitingsuren halen uit de database
             OpeningHourEntity openingHour = null;
 
             for (OpeningHourEntity hour : store.getOpeningHours()) {
@@ -120,7 +125,7 @@ public class CalendarDayView extends CommonLayout {
                         openingHour.getBeginHour().getMinutes());
                 nextDate.add(Calendar.MINUTE, store.getMaxTime());
 
-                //de tijd op dagelijkse kalender, als het nog geen openingsuren heeft geeft het een error
+                //de tijd op dagelijkse kalender weergeven, als het nog geen openingsuren heeft geeft het een error
                 for(int i = 0; i < times; i++){
                     int amount = 0;
                     for (Calendar entry : datesPerDay) {
@@ -140,7 +145,7 @@ public class CalendarDayView extends CommonLayout {
             }
         }
     }
-    // waar er klanten zijn wordt het groen geen klanten blijft het grijs
+    // waar er klanten zijn wordt het groen, geen klanten blijft het grijs
     public void insertHour(String hour, int klanten) {
         Div div = new Div();
         if(klanten > 0)

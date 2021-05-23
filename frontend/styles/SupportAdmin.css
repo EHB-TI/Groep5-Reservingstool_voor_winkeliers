@@ -16,14 +16,18 @@
 }
 
 #v2 {
-    padding: 0;
+    padding: 1em;
     margin: 80px 25px 0 20px;
     background-color: gray;
     border-radius: 5px;
 }
 
+
+#hide-object {
+    opacity: 0;
+}
+
 #v2 > H3{
-    margin: 25px 25px 25px 25px;
     font-size: 25px;
 }
 
@@ -37,4 +41,16 @@
     margin: 0 0 25px 0;
     width: 100%;
     align-content: center;
+}
+
+.adminmessage, .message1 {
+    background-color: #F5F5F5;
+    border-radius: 5px;
+    margin-top: 1em;
+    padding: 1%;
+    width: 95%;
+}
+
+.button-send {
+    background-color: #F5F5F5;
 }

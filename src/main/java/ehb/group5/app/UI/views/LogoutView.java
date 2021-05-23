@@ -6,6 +6,9 @@ import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinSession;
 
+/**
+ * @author Arnaud Faille
+ */
 @Route("logout")
 public class LogoutView extends VerticalLayout implements BeforeEnterObserver {
 
