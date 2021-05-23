@@ -31,8 +31,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 
 /*
-     Author: ZOETARDT Craig (backend), FAILLE Arnaud (frontend)
-     email: craig.zoetardt@student.ehb.be , arnaud.faille@student.ehb.be
+     Author: ZOETARDT Craig (backend), FAILLE Arnaud (frontend),LAMSAKAM Zakaria (frontend),
+     email: craig.zoetardt@student.ehb.be , arnaud.faille@student.ehb.be, zakaria.lamsakam@student.ehb.be
      */
 
 @Route("edit")

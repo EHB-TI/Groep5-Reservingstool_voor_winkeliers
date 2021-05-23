@@ -28,7 +28,7 @@ import lombok.Getter;
 public class ProfielBewerkenView extends CommonLayout {
 
      /*
-     Author: Zakaria Lamsakam
+     Author: LAMSAKAM Zakaria
      email: zakaria.lamsakam@student.ehb.be
      */
 
@@ -49,7 +49,7 @@ public class ProfielBewerkenView extends CommonLayout {
         emailField.setClearButtonVisible(true);
         emailField.setErrorMessage("Please enter a valid email address");
 
-        //De maximum limiet van letters implementeren
+        //De maximum limiet van letters implementeren.
         emailField.setMaxLength(30);
 
         //Password initialiseren
@@ -57,13 +57,18 @@ public class ProfielBewerkenView extends CommonLayout {
         passwordField.setLabel("Nieuwe Wachtwoord");
         passwordField.setClearButtonVisible(true);
         passwordField.setErrorMessage("Uw wachtwoord moet minstens 6 characters bevatten");
+
+        //De maximum en minimum letters worden hier geinisialiseerd.
         passwordField.setMaxLength(50);
         passwordField.setMinLength(6);
 
 
-        //knop aanmaken
+
         Button button = new Button("Save");
         button.addClickShortcut(Key.ENTER);
+        //Hier wordt er geinisialiseerd dat je ook met de enter van uw toetsenbord mag drukken.
+
+        //Als de emailfield of de passwordfield leeg zijn gaat er niks gebeuren omdat ze dan invalid zijn.
         button.addClickListener(buttonClickEvent ->{
             if (emailField.getValue()!= null
                     && passwordField.getValue() != null
@@ -73,15 +78,20 @@ public class ProfielBewerkenView extends CommonLayout {
                     && !passwordField.isInvalid()
             ){
 
+                //  De database wordt hier geüpdatet door de emailfield en de passwordfield te bewerken.
             company.setEmail(emailField.getValue());
             company.setPassword(passwordField.getValue());
             DatabaseService.getCompaniesStore().update(company);
+
+            //Wanneer er geklikt wordt op de button gaan we gestuurd zijn naar de pagina van de Route die hier geinisialiseerd word.
             UI.getCurrent().getPage().setLocation("profiel");
             } else {
                 Notification.show("Alles is niet correct ingevuld.");
             }
 
         });
+
+        //Alles in de contentdiv toevoegen.
 
         Contentdiv.add(emailField);
         Contentdiv.add(passwordField);
