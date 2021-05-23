@@ -20,7 +20,7 @@ import ehb.group5.app.backend.data.table.TicketEntity;
 
 
 @Route("support/admin")
-@PageTitle("Support/Admin")
+@PageTitle("Mijn tickets")
 @CssImport("./styles/SupportAdmin.css")
 
 public class SupportAdminView extends CommonLayout {
@@ -33,7 +33,6 @@ public class SupportAdminView extends CommonLayout {
     public SupportAdminView() {
 
 
-        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
 
         //main container
         Div mainDiv = new Div();
@@ -71,6 +70,7 @@ public class SupportAdminView extends CommonLayout {
         message1.setId("hide-object");
         //logged in as company
         if (VaadinSession.getCurrent().getAttribute("account") instanceof CompanyEntity) {
+            CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
             for(TicketEntity ticket : company.getTickets()) {
                 Button b1 = new Button(ticket.getTitle(), event -> {
                     message1.setId("");

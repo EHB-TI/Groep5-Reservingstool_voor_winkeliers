@@ -19,6 +19,7 @@ public abstract class Company {
 
 
     @Key @Generated
+    @Column(name = "id")
     int id;
 
     @Column(length = 50)

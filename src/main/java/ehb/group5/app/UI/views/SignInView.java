@@ -51,7 +51,7 @@ public class SignInView extends VerticalLayout {
         PasswordField passwordField = new PasswordField();
         TextField naamField = new TextField();
         TextField adresField = new TextField();
-        TextField postcodeField = new TextField();
+        NumberField postcodeField = new NumberField();
         TextField gsmField = new TextField();
         TextField postbusField = new TextField();
 
@@ -92,7 +92,7 @@ public class SignInView extends VerticalLayout {
         naamField.setRequired(true);
         adresField.setRequired(true);
         gsmField.setRequired(true);
-        postcodeField.setRequired(true);
+        postcodeField.setRequiredIndicatorVisible(true);
         passwordField.setRequired(true);
 // Creating error messages
         postbusField.setErrorMessage("Hier moet uw postbus staan");
@@ -129,7 +129,7 @@ public class SignInView extends VerticalLayout {
                     && !naamField.getValue().isEmpty()
                     && !adresField.getValue().isEmpty()
                     && !postbusField.getValue().isEmpty()
-                    && !postcodeField.getValue().isEmpty()
+                    && postcodeField.getValue() != null
                     && !gsmField.getValue().isEmpty()) {
 
                 //Bestaat
@@ -146,7 +146,7 @@ public class SignInView extends VerticalLayout {
                     store.setCompany(company);
                     store.setAdress(adresField.getValue());
                     store.setPostbus(postbusField.getValue());
-                    store.setPostCode(postcodeField.getValue());
+                    store.setPostCode((int) (double)postcodeField.getValue());
                     store.setPhoneNumber(gsmField.getValue());
                     store.setName(naamField.getValue());
 

@@ -19,10 +19,11 @@ import com.vaadin.flow.theme.lumo.Lumo;
 import ehb.group5.app.UI.layouts.CommonLayout;
 import ehb.group5.app.backend.data.DatabaseService;
 import ehb.group5.app.backend.data.table.CompanyEntity;
+import ehb.group5.app.backend.security.PasswordAuthentication;
 import lombok.Getter;
 
 @Route("profiel/edit")
-@PageTitle("ProfielBewerken")
+@PageTitle("Profiel bewerken")
 @CssImport("./styles/ProfielBewerken.css")
 
 public class ProfielBewerkenView extends CommonLayout {
@@ -80,7 +81,7 @@ public class ProfielBewerkenView extends CommonLayout {
 
                 //  De database wordt hier geüpdatet door de emailfield en de passwordfield te bewerken.
             company.setEmail(emailField.getValue());
-            company.setPassword(passwordField.getValue());
+            company.setPassword(new PasswordAuthentication().hash(passwordField.getValue().toCharArray()));
             DatabaseService.getCompaniesStore().update(company);
 
             //Wanneer er geklikt wordt op de button gaan we gestuurd zijn naar de pagina van de Route die hier geinisialiseerd word.

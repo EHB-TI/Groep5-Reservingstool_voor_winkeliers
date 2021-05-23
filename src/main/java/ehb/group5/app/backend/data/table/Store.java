@@ -16,6 +16,7 @@ public abstract class Store {
 
     @Key
     @Generated
+    @Column(name = "id")
     protected int id;
 
     @Column(name = "company_id")
@@ -28,7 +29,7 @@ public abstract class Store {
     String adress;
 
     @Column(name = "post_code")
-    String postCode;
+    int postCode;
 
     String description;
 
