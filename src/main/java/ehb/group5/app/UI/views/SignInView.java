@@ -29,6 +29,7 @@ import java.net.HttpRetryException;
 /*
      Author: ZOETARDT Craig
      email: craig.zoetardt@student.ehb.be
+     inspiration: Vaadin TextField tips (https://www.youtube.com/watch?v=BPcMYbD9eCE)
      */
 
 @Route("signup")
@@ -116,7 +117,7 @@ public class SignInView extends VerticalLayout {
             UI.getCurrent().navigate(LoginView.class);
         });
         signupButton.addClickListener(event -> {
-
+//making sure everything is filled in
             if (emailField.getValue() != null
                     && passwordField.getValue() != null
                     && naamField.getValue() != null
@@ -132,7 +133,7 @@ public class SignInView extends VerticalLayout {
                     && postcodeField.getValue() != null
                     && !gsmField.getValue().isEmpty()) {
 
-                //Bestaat
+                // updating data on database
 
                 if (DatabaseService.getCompaniesStore()
                         .count(CompanyEntity.class)
