@@ -14,11 +14,10 @@ import com.vaadin.flow.shared.Registration;
 import ehb.group5.app.UI.layouts.CommonLayout;
 import ehb.group5.app.backend.data.table.AdminEntity;
 import ehb.group5.app.backend.data.table.CompanyEntity;
+import ehb.group5.app.backend.data.table.CustomerEntity;
 import ehb.group5.app.backend.data.table.TicketEntity;
 
 
-
-//gemaakt door jason devedeleer
 
 @Route("support/admin")
 @PageTitle("Support/Admin")
@@ -26,10 +25,16 @@ import ehb.group5.app.backend.data.table.TicketEntity;
 
 public class SupportAdminView extends CommonLayout {
 
+     /*
+     Authors: Jason Devedeleer, Arnaud Faille, De Vogel Ryan
+     Read the README.md bellow the file pom.xml
+    */
+
     public SupportAdminView() {
 
 
         CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
+
         //main container
         Div mainDiv = new Div();
         mainDiv.addClassNames("main-content");
@@ -60,10 +65,11 @@ public class SupportAdminView extends CommonLayout {
             String message = adminmessage.getValue();
 
         });
+        send.setClassName("button-send");
 
 
         message1.setId("hide-object");
-
+        //logged in as company
         if (VaadinSession.getCurrent().getAttribute("account") instanceof CompanyEntity) {
             for(TicketEntity ticket : company.getTickets()) {
                 Button b1 = new Button(ticket.getTitle(), event -> {
@@ -87,7 +93,7 @@ public class SupportAdminView extends CommonLayout {
                 v2.add(titel, message1);
             }
 
-            //logged in as company
+
         } else if (VaadinSession.getCurrent().getAttribute("account") instanceof AdminEntity) {
             AdminEntity admin = (AdminEntity) VaadinSession.getCurrent().getAttribute("account");
             //logged in as admin

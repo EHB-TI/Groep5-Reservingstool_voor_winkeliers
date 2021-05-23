@@ -28,6 +28,11 @@ import java.util.Date;
 
 public class PaymentView extends VerticalLayout {
 
+    /*
+     Author: De Vogel Ryan
+     Read the README.md bellow the file pom.xml
+    */
+
     public PaymentView(){
         checkcontent();
 
@@ -36,19 +41,19 @@ public class PaymentView extends VerticalLayout {
     public void checkcontent(){
         Div container = new Div();
         container.setClassName("payment-container-parent");
-        if(VaadinSession.getCurrent().getAttribute("parameter") == "1"){
+        if(VaadinSession.getCurrent().getAttribute("parameter") == "1"){//Check the info from the previous page
             H1 h = new H1("Uw totaal is: €20");
             h.setClassName("payment-heading");
             container.add(h);
             createHtml("€20", container);
         }
-        else if(VaadinSession.getCurrent().getAttribute("parameter") == "6"){
+        else if(VaadinSession.getCurrent().getAttribute("parameter") == "6"){//Check the info from the previous page
             H1 h = new H1("Uw totaal is: €38");
             h.setClassName("payment-heading");
             container.add(h);
             createHtml("€38", container);
         }
-        else if(VaadinSession.getCurrent().getAttribute("parameter") == "12"){
+        else if(VaadinSession.getCurrent().getAttribute("parameter") == "12"){//Check the info from the previous page
             H1 h = new H1("Uw totaal is: €50");
             h.setClassName("payment-heading");
             container.add(h);
@@ -68,7 +73,7 @@ public class PaymentView extends VerticalLayout {
 
         Div choose = new Div();
         choose.setClassName("payment-image-div");
-        Image image = new Image("/frontend/paypal.png", "paypal");
+        Image image = new Image("/frontend/creditcard.png", "paypal");
         image.setClassName("payment-image");
         H1 paypal = new H1("PayPal");
         paypal.setClassName("payment-paypal");

@@ -43,19 +43,14 @@
     align-content: center;
 }
 
-.adminmessage {
+.adminmessage, .message1 {
     background-color: #F5F5F5;
     border-radius: 5px;
-    margin-top: 1em;
-    padding: 5%;
-    width: 95%;
-}
-
-
-.message1 {
     margin-top: 1em;
     padding: 1%;
     width: 95%;
+}
+
+.button-send {
     background-color: #F5F5F5;
-    border-radius: 5px;
 }
