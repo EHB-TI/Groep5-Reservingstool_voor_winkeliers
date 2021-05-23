@@ -249,7 +249,7 @@ public class EditView extends CommonLayout {
         openingHourEndTimePicker.addClassNames("timepicker");
         if (finalEntity.getEndHour() != null)
             openingHourEndTimePicker.setValue(finalEntity.getEndHour().toLocalTime());
-        openingHourEndTimePicker.setStep(Duration.ofMinutes(store.getMaxTime()));
+        openingHourEndTimePicker.setStep(Duration.ofMinutes(store.getMaxTime() != 0? store.getMaxTime():10));
         openingHourEndTimePicker.addValueChangeListener(event -> {
             finalEntity.setEndHour(Time.valueOf(openingHourEndTimePicker.getValue()));
         });
