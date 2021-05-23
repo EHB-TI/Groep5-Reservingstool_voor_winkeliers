@@ -21,6 +21,11 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 
+ /**
+ *Author: Tugçe Demir
+ *email: tugce.demir@student.ehb.be
+ */
+
 @Route("calendar")
 @PageTitle("Agenda per maand")
 @CssImport("./styles/calendar.css")

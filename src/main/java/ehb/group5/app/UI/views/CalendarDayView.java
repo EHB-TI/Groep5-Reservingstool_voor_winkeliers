@@ -25,6 +25,11 @@ import java.util.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+ /**
+ *Author: Tugçe Demir
+ *email: tugce.demir@student.ehb.be
+ */
+
 @Route("calendarday")
 @PageTitle("Agenda per dag")
 @CssImport("./styles/calendarday.css")
