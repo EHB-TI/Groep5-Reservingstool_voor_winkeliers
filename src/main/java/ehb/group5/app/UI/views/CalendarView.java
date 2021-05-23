@@ -74,8 +74,8 @@ public class CalendarView extends CommonLayout {
         });*/
 
 
-        //kalender zelf
-        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
+        //kalender zelf + de data "linken"
+        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
         for (StoreEntity store : company.getStores()) {
             Random rand = new Random(store.getId());
             Color color = new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat());
