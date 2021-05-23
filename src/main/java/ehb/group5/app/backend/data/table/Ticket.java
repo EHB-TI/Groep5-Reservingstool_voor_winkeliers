@@ -36,6 +36,7 @@ public class Ticket {
     CompanyEntity company;
 
     @Column(name = "customer_id", nullable = true)
+    
     @ForeignKey(referencedColumn = "id")
     @ManyToOne
     CustomerEntity customer;

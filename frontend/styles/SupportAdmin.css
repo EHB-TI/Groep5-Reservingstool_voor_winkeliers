@@ -23,9 +23,6 @@
 }
 
 
-#hide-object {
-    opacity: 0;
-}
 
 #v2 > H3{
     font-size: 25px;
@@ -53,4 +50,9 @@
 
 .button-send {
     background-color: #F5F5F5;
+    margin-right: 10px;
+}
+
+.message-content {
+    padding-left: 20px;
 }

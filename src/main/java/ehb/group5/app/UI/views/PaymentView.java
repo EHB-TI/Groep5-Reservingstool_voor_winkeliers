@@ -33,6 +33,14 @@ public class PaymentView extends VerticalLayout {
      Read the README.md bellow the file pom.xml
     */
 
+    /*
+     resources:
+     - https://vaadin.com/forum/thread/16986951/redirecting-to-another-page-when-the-notification-x-is-clicked
+     - https://vaadin.com/docs/v8/framework/articles/FindingTheCurrentUIAndPageAndVaadinSession
+     - https://vaadin.com/components/vaadin-image
+     - https://vaadin.com/forum/thread/17467576/image-component-vaadin-12
+     */
+
     public PaymentView(){
         checkcontent();
 
@@ -72,7 +80,7 @@ public class PaymentView extends VerticalLayout {
 
         Div choose = new Div();
         choose.setClassName("payment-image-div");
-        Image image = new Image("/frontend/creditcard.png", "paypal");
+        Image image = new Image("/frontend/creditcard.png", "paypal");//add image from folder: /webapp/frontent/...
         image.setClassName("payment-image");
         H1 paypal = new H1("PayPal");
         paypal.setClassName("payment-paypal");
@@ -117,7 +125,7 @@ public class PaymentView extends VerticalLayout {
         button.setClassName("payment-button");
         button.addClickListener(event -> {
             if(name.getValue().length() < 1 || number.getValue().length() < 8 ||
-                    tijd.getValue().length() < 4 || Cvc.getValue().length() < 3 || Zip.getValue().length() < 4){
+                    tijd.getValue().length() < 4 || Cvc.getValue().length() < 3 || Zip.getValue().length() < 4){//check if user filled in fields
                 Notification.show("Je moet alles invullen !");
             }
             else {
@@ -126,14 +134,14 @@ public class PaymentView extends VerticalLayout {
                 Calendar date = Calendar.getInstance();
                 date.setTime(new Date());
 
-                if(VaadinSession.getCurrent().getAttribute("parameter") == "1") {
+                if(VaadinSession.getCurrent().getAttribute("parameter") == "1") {//check the choiche of the user from previous page
                     date.add(Calendar.MONTH, 1 /* AANTAL MAANDEN*/);
                 }
-                else if(VaadinSession.getCurrent().getAttribute("parameter") == "6") {
+                else if(VaadinSession.getCurrent().getAttribute("parameter") == "6") {//check the choiche of the user from previous page
                     date.add(Calendar.MONTH, 6 /* AANTAL MAANDEN*/);
                 }
 
-                else if(VaadinSession.getCurrent().getAttribute("parameter") == "12") {
+                else if(VaadinSession.getCurrent().getAttribute("parameter") == "12") {//check the choiche of the user from previous page
                     date.add(Calendar.MONTH, 12 /* AANTAL MAANDEN*/);
                 }
 

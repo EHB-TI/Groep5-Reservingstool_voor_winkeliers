@@ -60,21 +60,21 @@ public class ChoosePlanView extends VerticalLayout {
         // Listen to button actions
         button.addClickListener(event -> {
             VaadinSession.getCurrent().setAttribute("parameter", "1");//Pass info to the next page
-            UI.getCurrent().getPage().setLocation("payment");
+            UI.getCurrent().getPage().setLocation("payment");//navigate to next page
         });
 
         Button button1 = new Button("6 maanden");
         // Listen to button actions
         button1.addClickListener(event -> {
             VaadinSession.getCurrent().setAttribute("parameter", "6");//Pass info to the next page
-            UI.getCurrent().getPage().setLocation("payment");
+            UI.getCurrent().getPage().setLocation("payment");//navigate to next page
         });
 
         Button button2 = new Button("12 maanden");
         // Listen to button actions
         button2.addClickListener(event -> {
             VaadinSession.getCurrent().setAttribute("parameter", "12");//Pass info to the next page
-            UI.getCurrent().getPage().setLocation("payment");
+            UI.getCurrent().getPage().setLocation("payment");//navigate to next page
         });
 
 
@@ -89,7 +89,7 @@ public class ChoosePlanView extends VerticalLayout {
         s1.add(p1);
         s1.add(pp1);
         s1.add(button1);
-
+                                //Add items to div and div to page
 
         s2.add(c);
         s2.add(p2);
