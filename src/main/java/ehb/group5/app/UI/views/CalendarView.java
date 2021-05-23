@@ -70,7 +70,7 @@ public class CalendarView extends CommonLayout {
 
 
         //kalender zelf
-        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
+        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
         for (StoreEntity store : company.getStores()) {
             Random rand = new Random(store.getId());
             Color color = new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat());

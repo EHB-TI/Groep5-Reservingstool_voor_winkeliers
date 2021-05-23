@@ -34,7 +34,7 @@ public class ProfielBewerkenView extends CommonLayout {
 
     public ProfielBewerkenView(){
 
-        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
+        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
 
         Div Contentdiv = new Div();
         Contentdiv.setId("contentid");
