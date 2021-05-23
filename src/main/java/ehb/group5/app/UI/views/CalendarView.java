@@ -65,15 +65,6 @@ public class CalendarView extends CommonLayout {
            }
         });
 
-
-        /*calendar.addDayNumberClickedListener(event -> {
-            if(event.getSource().getEntries(event.getDate()).size() > 0) {
-                VaadinSession.getCurrent().setAttribute("calendarDate", event.getDate());
-                UI.getCurrent().getPage().setLocation("calendarday");
-            }
-        });*/
-
-
         //kalender zelf + de data "linken"
         CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
         for (StoreEntity store : company.getStores()) {
