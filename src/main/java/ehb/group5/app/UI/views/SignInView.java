@@ -46,7 +46,7 @@ public class SignInView extends VerticalLayout {
         signindiv.setId("signinid");
         Div adressdiv = new Div();
         adressdiv.setId("adressid");
-
+        // Creating  fields
         EmailField emailField = new EmailField();
         PasswordField passwordField = new PasswordField();
         TextField naamField = new TextField();
@@ -64,7 +64,7 @@ public class SignInView extends VerticalLayout {
         H3 titel2 = new H3("Winkel informatie:");
         H5 titel3 = new H5("Heeft u al een account ?");
         Hr hr1 = new Hr();
-
+// Placing a placeholder to the fields
         postbusField.setPlaceholder("Postbus");
         emailField.setPlaceholder("E-mail");
         passwordField.setPlaceholder("Passwoord");
@@ -72,7 +72,7 @@ public class SignInView extends VerticalLayout {
         adresField.setPlaceholder("Adres");
         postcodeField.setPlaceholder("Postcode/Gemeente");
         gsmField.setPlaceholder("Telefoon nummer");
-
+// Placing mouse attribute
         emailField.getElement().setAttribute("title", "Voorbeeld: JohnSnow@gmail.com");
         postbusField.getElement().setAttribute("title", "Voorbeeld: 18A");
         naamField.getElement().setAttribute("title", "Voorbeeld: John Snow");
@@ -81,20 +81,20 @@ public class SignInView extends VerticalLayout {
         postcodeField.getElement().setAttribute("title", "Voorbeeld: 1070 Anderlecht ");
 
         emailField.setAutofocus(true);
-
+// Creating clear buttons
         postbusField.setClearButtonVisible(true);
         naamField.setClearButtonVisible(true);
         adresField.setClearButtonVisible(true);
         gsmField.setClearButtonVisible(true);
         postcodeField.setClearButtonVisible(true);
-
+// making the fields required
         postbusField.setRequired(true);
         naamField.setRequired(true);
         adresField.setRequired(true);
         gsmField.setRequired(true);
         postcodeField.setRequired(true);
         passwordField.setRequired(true);
-
+// Creating error messages
         postbusField.setErrorMessage("Hier moet uw postbus staan");
         emailField.setErrorMessage("Hier moet een werkende e-mail adress staan.");
         passwordField.setErrorMessage("Uw wachtwoord moet minstens 6 characters bevatten");
@@ -102,20 +102,20 @@ public class SignInView extends VerticalLayout {
         adresField.setErrorMessage("Uw adress moet hier ingevuld worden");
         postcodeField.setErrorMessage("uw postcode/gemeente moet hier staan");
         gsmField.setErrorMessage("Uw gsm nummer moet minstens 11 nummers bevatten of 14 als u +32 gebruikt");
-
+// Making sure password is long enough and phone number too so its real
         passwordField.setMinLength(6);
         gsmField.setMaxLength(14);
         gsmField.setMinLength(11);
 
-
-        Button button = new Button("Sign up");
-        button.addClickShortcut(Key.ENTER);
+// Creating button
+        Button signupButton = new Button("Sign up");
+        signupButton.addClickShortcut(Key.ENTER);
         Button button2 = new Button("Log dan hier in.");
-
+        // Listen to button actions
         button2.addClickListener(event -> {
             UI.getCurrent().navigate(LoginView.class);
         });
-        button.addClickListener(event -> {
+        signupButton.addClickListener(event -> {
 
             if (emailField.getValue() != null
                     && passwordField.getValue() != null
@@ -163,14 +163,14 @@ public class SignInView extends VerticalLayout {
                 Notification.show("Alles is niet correct ingevuld.");
             }
         });
-
+// adding everything together to create the page
         adressdiv.add(adresField, postbusField);
         signindiv.add(new H1("Sign up"));
         signindiv.add(titel1);
         signindiv.add(emailField, passwordField);
         signindiv.add(hr1);
         signindiv.add(titel2);
-        signindiv.add(naamField, adressdiv, postcodeField, gsmField, button);
+        signindiv.add(naamField, adressdiv, postcodeField, gsmField, signupButton);
         signindiv.add(titel3, button2);
         add(signindiv);
     }

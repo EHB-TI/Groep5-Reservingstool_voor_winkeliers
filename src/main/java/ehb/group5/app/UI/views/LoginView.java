@@ -41,7 +41,7 @@ public class LoginView extends VerticalLayout {
         logindiv.setId("logindiv");
 
         logindiv.add(new H1("Login"));
-        // Creating id & password fields
+        // Creating email & password fields
         EmailField emailField = new EmailField();
         PasswordField passwordField = new PasswordField();
 
@@ -52,9 +52,9 @@ public class LoginView extends VerticalLayout {
         emailField.setWidth("100%");
         Hr hr1 = new Hr();
         // Creating button
-        Button button1 = new Button("Inloggen");
-        button1.addClickShortcut(Key.ENTER);
-        Button button2 = new Button("Sign up");
+        Button loginButton = new Button("Inloggen");
+        loginButton.addClickShortcut(Key.ENTER);
+        Button redirectButton = new Button("Sign up");
 
         H5 titel3 = new H5("Nog geen account ?");
 
@@ -66,7 +66,7 @@ public class LoginView extends VerticalLayout {
         passwordField.setValue("123456");
 
         // Listen to button actions
-        button1.addClickListener(event -> {
+        loginButton.addClickListener(event -> {
             if (emailField.getValue()!= null){
                 // Get the company by id
                 val company = Company.getCompanyByEmail(emailField.getValue());
@@ -99,11 +99,11 @@ public class LoginView extends VerticalLayout {
 
 
         });
-        button2.addClickListener(event -> {
+        redirectButton.addClickListener(event -> {
             UI.getCurrent().navigate(SignInView.class);
         });
-
-        logindiv.add(emailField, passwordField, hr1, button1, titel3, button2);
+// adding everything together to create the page
+        logindiv.add(emailField, passwordField, hr1, loginButton, titel3, redirectButton);
         add(logindiv);
 
     }
