@@ -14,7 +14,6 @@ import com.vaadin.flow.shared.Registration;
 import ehb.group5.app.UI.layouts.CommonLayout;
 import ehb.group5.app.backend.data.DatabaseService;
 import ehb.group5.app.backend.data.table.*;
-
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -29,7 +28,14 @@ public class SupportAdminView extends CommonLayout {
      Authors: Jason Devedeleer, Arnaud Faille, De Vogel Ryan
      Read the README.md bellow the file pom.xml
     */
-    private Div v2;
+
+    /*
+    resources:
+    - https://vaadin.com/forum/thread/16986951/redirecting-to-another-page-when-the-notification-x-is-clicked
+    - https://vaadin.com/docs/v8/framework/articles/FindingTheCurrentUIAndPageAndVaadinSession
+    - https://vaadin.com/forum/thread/17170148/change-background-color-vaadin-text-field
+   */
+    private Div v2;//private div
 
     public SupportAdminView() {
         //main container
@@ -98,7 +104,7 @@ public class SupportAdminView extends CommonLayout {
 
         titel.add(new H3("Titel: " + ticket.getTitle()));
 
-        message1.add(new Paragraph("email: " + ticket.getCompany().getEmail()));
+        message1.add(new Paragraph("email: " + ticket.getCompany().getEmail()));//get email from database
         if(ticket.getStatus() == Ticket.Status.OPENED)
             message1.add(new Paragraph("status: open"));
         else
@@ -122,11 +128,11 @@ public class SupportAdminView extends CommonLayout {
             TicketMessageEntity entity = new TicketMessageEntity();
 
             entity.setMessage(message);
-            if(VaadinSession.getCurrent().getAttribute("account") instanceof CompanyEntity) {
+            if(VaadinSession.getCurrent().getAttribute("account") instanceof CompanyEntity) {//check if the user is a company
                 CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
                 entity.setCompany(company);
             }
-            else if (VaadinSession.getCurrent().getAttribute("account") instanceof AdminEntity)  {
+            else if (VaadinSession.getCurrent().getAttribute("account") instanceof AdminEntity)  {//check if the user is a admin
                 AdminEntity admin = (AdminEntity) VaadinSession.getCurrent().getAttribute("account");
                 entity.setAdmin(admin);
             }
@@ -140,7 +146,7 @@ public class SupportAdminView extends CommonLayout {
         });
 
         Button changeStatus = new Button("status veranderen", event-> {
-            if(ticket.getStatus() == Ticket.Status.OPENED)
+            if(ticket.getStatus() == Ticket.Status.OPENED)//check if the ticket is open and then close it.
                 ticket.setStatus(Ticket.Status.CLOSED);
             else
                 ticket.setStatus(Ticket.Status.OPENED);
