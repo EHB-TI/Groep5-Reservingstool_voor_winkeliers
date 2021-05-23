@@ -8,6 +8,11 @@ import lombok.ToString;
 
 import java.sql.Timestamp;
 
+/**
+ * Geinspireerd met deze voorbeelden
+ * https://github.com/requery/requery/wiki/Query-examples
+ * @author Arnaud Faille
+ */
 @Entity
 @Table(name = "tickets")
 @ToString

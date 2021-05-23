@@ -18,7 +18,9 @@ import java.awt.*;
 import java.time.LocalDate;
 import java.util.*;
 
-
+/**
+ * @author Arnaud Faille
+ */
 @Route("")
 @PageTitle("Dashboard")
 @CssImport(value = "./styles/dashboard.css")

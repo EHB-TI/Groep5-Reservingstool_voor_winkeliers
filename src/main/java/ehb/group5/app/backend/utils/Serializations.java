@@ -9,6 +9,7 @@ import lombok.experimental.UtilityClass;
 import lombok.val;
 
 /***
+ * Code komt van een oude project die Ketsu_Sama maakte
  * @author Ketsu_Sama
  */
 @UtilityClass

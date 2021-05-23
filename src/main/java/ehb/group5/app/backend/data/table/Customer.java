@@ -1,10 +1,15 @@
 package ehb.group5.app.backend.data.table;
 
-import ehb.group5.app.backend.data.DatabaseService;
 import io.requery.*;
 import io.requery.query.MutableResult;
 import lombok.ToString;
 
+/**
+ * Geinspireerd met deze voorbeelden
+ * https://github.com/requery/requery/wiki/Query-examples
+ *
+ * @author Arnaud Faille
+ */
 @Entity
 @Table(name = "customers")
 @ToString

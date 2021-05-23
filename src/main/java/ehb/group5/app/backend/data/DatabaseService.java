@@ -13,6 +13,11 @@ import java.util.logging.Logger;
 
 import static ehb.group5.app.backend.utils.Configurations.readOrCreateConfiguration;
 
+/**
+ * Geinspireerd met deze voorbeelden
+ * https://github.com/requery/requery/wiki/Query-examples
+ * @author Arnaud Faille
+ */
 @Service
 public class DatabaseService {
 
