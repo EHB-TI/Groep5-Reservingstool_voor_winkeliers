@@ -15,6 +15,7 @@ import com.vaadin.flow.server.VaadinSession;
 import ehb.group5.app.UI.layouts.CommonLayout;
 import ehb.group5.app.backend.data.DatabaseService;
 import ehb.group5.app.backend.data.table.CompanyEntity;
+import ehb.group5.app.backend.data.table.Ticket;
 import ehb.group5.app.backend.data.table.TicketEntity;
 import ehb.group5.app.backend.data.table.TicketMessageEntity;
 
@@ -69,6 +70,7 @@ public class TicketView extends CommonLayout {
             TicketEntity ticket = new TicketEntity();
             ticket.setTitle(textField1.getValue());
             ticket.setCompany(company);
+            ticket.setStatus(Ticket.Status.OPENED);
             ticket.setDateCreated(new Timestamp(new Date().getTime()));
             TicketMessageEntity ticketmessenger = new TicketMessageEntity();
             ticketmessenger.setMessage(textArea1.getValue());

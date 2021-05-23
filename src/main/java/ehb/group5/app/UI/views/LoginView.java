@@ -28,7 +28,7 @@ import lombok.val;
 
 @Route("login")
 @PageTitle("Aanmelden als winkelier")
-@CssImport("./styles/login.css")
+@CssImport("./styles/Login.css")
 public class LoginView extends VerticalLayout {
 
 

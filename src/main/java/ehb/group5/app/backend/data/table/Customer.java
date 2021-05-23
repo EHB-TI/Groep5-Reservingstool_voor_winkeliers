@@ -17,6 +17,7 @@ public abstract class Customer {
 
     @Key
     @Generated
+    @Column(name = "id")
     int id;
 
     @Column(name = "first_name", length = 20)
