@@ -46,7 +46,7 @@ public class CalendarView extends CommonLayout {
 
         h1.setText(cal.get(Calendar.DAY_OF_MONTH) + " " + MONTHS_OF_YEAR[cal.get(Calendar.MONTH)] + " " + cal.get(Calendar.YEAR));
         getContainer().add(h1);
-        //kalender gehaald uit vaadin
+        // Create a new calendar instance and attach it to our layout
         FullCalendar calendar = FullCalendarBuilder.create().build();
         getContainer().add(calendar);
 
@@ -55,7 +55,7 @@ public class CalendarView extends CommonLayout {
         legendDiv.addClassName("calendar-legend");
         getContainer().add(legendDiv);
 
-        //events bij een klik vaadin + eigen code
+        //events
         calendar.addEntryClickedListener(event -> {
            if(entryStoreEntityMap.get(event.getEntry()) != null){
                LocalDateTime ldt = event.getEntry().getStart();
@@ -64,6 +64,14 @@ public class CalendarView extends CommonLayout {
                UI.getCurrent().navigate(CalendarDayView.class);
            }
         });
+
+
+        /*calendar.addDayNumberClickedListener(event -> {
+            if(event.getSource().getEntries(event.getDate()).size() > 0) {
+                VaadinSession.getCurrent().setAttribute("calendarDate", event.getDate());
+                UI.getCurrent().getPage().setLocation("calendarday");
+            }
+        });*/
 
 
         //kalender zelf + de data "linken"
