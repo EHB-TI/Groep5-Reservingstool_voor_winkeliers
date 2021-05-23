@@ -28,6 +28,11 @@ public class SupportView extends CommonLayout {
      email: zakaria.lamsakam@student.ehb.be
      */
 
+    /*
+    Ik heb het Vaadin documentatie gebruikt voor de textfield,de emailfield en de passwordfield.
+    https://vaadin.com/docs/v14/
+    */
+
     public SupportView(){
 
         CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
@@ -35,10 +40,10 @@ public class SupportView extends CommonLayout {
         Div Supportdiv = new Div();
         Supportdiv.setId("supportid");
 
-        //Titel aanmaken
+        //Titel aanmaken.
         Supportdiv.add(new H1("Support services"));
 
-        //Knop aanmaken voor de eerste probleem
+        //Knop aanmaken voor de eerste probleem.
         Button button = new Button("Ik heb een probleem met de facturatie");
 
         //Notificatie tonen wanneer er op een button wordt geklikt.
@@ -54,10 +59,10 @@ public class SupportView extends CommonLayout {
         dialog.setWidth("600px");
         dialog.setHeight("250px");
 
-        //Event toevoegen om de button de opnenen
+        //Event toevoegen om de notificatie open te doen.
         button.addClickListener(event -> dialog.open());
 
-        //Knop aanmaken voor de tweede probleem
+        //Knop aanmaken voor de tweede probleem.
         Button button2 = new Button("Ik heb een probleem met de betaling");
 
 
@@ -106,7 +111,7 @@ public class SupportView extends CommonLayout {
         //Laatste knop aanmaken voor de vijfde probleem.
         Button button5 = new Button("Andere probleem");
 
-        //Wanneer er geklikt wordt op de button gaan we gestuurd zijn naar de pagina van de klasse die geplaats word.
+        //Wanneer er geklikt wordt op de button gaan we gestuurd worden naar de pagina van de klasse die geplaats word.
         button5.addClickListener(buttonClickEvent ->{
             UI.getCurrent().navigate(TicketView.class);
         });

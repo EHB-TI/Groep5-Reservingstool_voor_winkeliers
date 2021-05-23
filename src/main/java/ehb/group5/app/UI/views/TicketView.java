@@ -31,6 +31,11 @@ public class TicketView extends CommonLayout {
      email: zakaria.lamsakam@student.ehb.be
      */
 
+    /*
+    Ik heb het Vaadin documentatie gebruikt voor de textfield,de emailfield en de passwordfield.
+    https://vaadin.com/docs/v14/
+    */
+
     public TicketView(){
 
         CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
