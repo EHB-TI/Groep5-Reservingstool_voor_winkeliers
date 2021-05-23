@@ -31,7 +31,6 @@ public class ChoosePlanView extends VerticalLayout {
      */
 
     public ChoosePlanView() {
-
         Div div = new Div();
         div.setClassName("chooseplan-container");
         H1 h1 = new H1("Kies uw plan");

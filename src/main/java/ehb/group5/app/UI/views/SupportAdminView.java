@@ -31,9 +31,6 @@ public class SupportAdminView extends CommonLayout {
     */
 
     public SupportAdminView() {
-
-
-
         //main container
         Div mainDiv = new Div();
         mainDiv.addClassNames("main-content");

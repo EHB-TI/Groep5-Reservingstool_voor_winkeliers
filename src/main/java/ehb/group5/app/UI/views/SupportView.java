@@ -34,9 +34,6 @@ public class SupportView extends CommonLayout {
     */
 
     public SupportView(){
-
-        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
-
         Div Supportdiv = new Div();
         Supportdiv.setId("supportid");
 

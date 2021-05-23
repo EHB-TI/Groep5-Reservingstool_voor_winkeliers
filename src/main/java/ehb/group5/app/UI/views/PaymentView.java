@@ -63,7 +63,6 @@ public class PaymentView extends VerticalLayout {
     }
 
     public void createHtml(String value, Div container){
-
         CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
 
 

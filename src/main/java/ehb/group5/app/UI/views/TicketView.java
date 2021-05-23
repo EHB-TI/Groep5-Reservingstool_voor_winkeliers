@@ -38,7 +38,7 @@ public class TicketView extends CommonLayout {
 
     public TicketView(){
 
-        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
+        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
 
         Div TicketContentdiv = new Div();
         TicketContentdiv.setId("ticketContentid");
