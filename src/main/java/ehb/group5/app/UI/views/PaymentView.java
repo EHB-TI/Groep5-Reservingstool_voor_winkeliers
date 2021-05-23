@@ -26,7 +26,12 @@ import java.util.Date;
 @PageTitle("payment")
 @CssImport("./styles/payment.css")
 
-public class PaymentView extends CommonLayout {
+public class PaymentView extends VerticalLayout {
+
+    /*
+     Author: De Vogel Ryan
+     Read the README.md bellow the file pom.xml
+    */
 
     public PaymentView(){
         checkcontent();
@@ -34,55 +39,58 @@ public class PaymentView extends CommonLayout {
     }
 
     public void checkcontent(){
-        if(VaadinSession.getCurrent().getAttribute("parameter") == "1"){
+        Div container = new Div();
+        container.setClassName("payment-container-parent");
+        if(VaadinSession.getCurrent().getAttribute("parameter") == "1"){//Check the info from the previous page
             H1 h = new H1("Uw totaal is: €20");
             h.setClassName("payment-heading");
-            add(h);
-            createHtml("€20");
+            container.add(h);
+            createHtml("€20", container);
         }
-        else if(VaadinSession.getCurrent().getAttribute("parameter") == "6"){
+        else if(VaadinSession.getCurrent().getAttribute("parameter") == "6"){//Check the info from the previous page
             H1 h = new H1("Uw totaal is: €38");
             h.setClassName("payment-heading");
-            add(h);
-            createHtml("€38");
+            container.add(h);
+            createHtml("€38", container);
         }
-        else if(VaadinSession.getCurrent().getAttribute("parameter") == "12"){
+        else if(VaadinSession.getCurrent().getAttribute("parameter") == "12"){//Check the info from the previous page
             H1 h = new H1("Uw totaal is: €50");
             h.setClassName("payment-heading");
-            add(h);
-            createHtml("€50");
+            container.add(h);
+            createHtml("€50", container);
         }
 
     }
 
-    public void createHtml(String value){
+    public void createHtml(String value, Div container){
 
         CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
 
+
         H3 h = new H3("Betaal veilig met een credit card of PayPal");
         h.setClassName("payment-heading");
-        add(h);
+        container.add(h);
 
         Div choose = new Div();
         choose.setClassName("payment-image-div");
-        Image image = new Image("/frontend/paypal.png", "paypal");
+        Image image = new Image("/frontend/creditcard.png", "paypal");
         image.setClassName("payment-image");
         H1 paypal = new H1("PayPal");
         paypal.setClassName("payment-paypal");
         choose.add(image);
         choose.add(paypal);
-        add(choose);
+        container.add(choose);
 
         TextField name = new TextField();
         name.setClassName("payment-textfield");
         name.setPlaceholder("Name on the card");
-        add(name);
+        container.add(name);
 
 
         TextField number = new TextField();
         number.setClassName("payment-textfield");
         number.setPlaceholder("Card number");
-        add(number);
+        container.add(number);
 
         Div d = new Div();
         d.setClassName("payment-container");
@@ -102,7 +110,7 @@ public class PaymentView extends CommonLayout {
         d.add(tijd);
         d.add(Cvc);
         d.add(Zip);
-        add(d);
+        container.add(d);
 
         Div buttondiv = new Div();
         buttondiv.setClassName("buttondiv");
@@ -138,7 +146,8 @@ public class PaymentView extends CommonLayout {
             }
         });
         buttondiv.add(button);
-        add(buttondiv);
+        container.add(buttondiv);
+        add(container);
 
 
     }
