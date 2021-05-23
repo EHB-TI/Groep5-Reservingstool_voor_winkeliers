@@ -16,13 +16,22 @@ import com.vaadin.flow.server.VaadinSession;
 import ehb.group5.app.UI.layouts.CommonLayout;
 import ehb.group5.app.backend.data.DatabaseService;
 import ehb.group5.app.backend.data.table.CompanyEntity;
-import ehb.group5.app.backend.data.table.StoreEntity;
+
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
+
 
 @Route("payment")
 @PageTitle("payment")
 @CssImport("./styles/payment.css")
 
-public class PaymentView extends CommonLayout {
+public class PaymentView extends VerticalLayout {
+
+    /*
+     Author: De Vogel Ryan
+     Read the README.md bellow the file pom.xml
+    */
 
     public PaymentView(){
         checkcontent();
@@ -30,57 +39,58 @@ public class PaymentView extends CommonLayout {
     }
 
     public void checkcontent(){
-        if(VaadinSession.getCurrent().getAttribute("parameter") == "1"){
+        Div container = new Div();
+        container.setClassName("payment-container-parent");
+        if(VaadinSession.getCurrent().getAttribute("parameter") == "1"){//Check the info from the previous page
             H1 h = new H1("Uw totaal is: €20");
             h.setClassName("payment-heading");
-            add(h);
-            createHtml("€20");
+            container.add(h);
+            createHtml("€20", container);
         }
-        else if(VaadinSession.getCurrent().getAttribute("parameter") == "6"){
+        else if(VaadinSession.getCurrent().getAttribute("parameter") == "6"){//Check the info from the previous page
             H1 h = new H1("Uw totaal is: €38");
             h.setClassName("payment-heading");
-            add(h);
-            createHtml("€38");
+            container.add(h);
+            createHtml("€38", container);
         }
-        else if(VaadinSession.getCurrent().getAttribute("parameter") == "12"){
+        else if(VaadinSession.getCurrent().getAttribute("parameter") == "12"){//Check the info from the previous page
             H1 h = new H1("Uw totaal is: €50");
             h.setClassName("payment-heading");
-            add(h);
-            createHtml("€50");
+            container.add(h);
+            createHtml("€50", container);
         }
 
     }
 
-    public void createHtml(String value){
+    public void createHtml(String value, Div container){
+
+        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
+
+
         H3 h = new H3("Betaal veilig met een credit card of PayPal");
         h.setClassName("payment-heading");
-        add(h);
+        container.add(h);
 
         Div choose = new Div();
         choose.setClassName("payment-image-div");
-        Image image = new Image("/frontend/paypal.png", "paypal");
+        Image image = new Image("/frontend/creditcard.png", "paypal");
         image.setClassName("payment-image");
         H1 paypal = new H1("PayPal");
         paypal.setClassName("payment-paypal");
         choose.add(image);
         choose.add(paypal);
-        add(choose);
-
-        TextField email = new TextField();
-        email.setClassName("payment-textfield");
-        email.setPlaceholder("Email");
-        add(email);
+        container.add(choose);
 
         TextField name = new TextField();
         name.setClassName("payment-textfield");
         name.setPlaceholder("Name on the card");
-        add(name);
+        container.add(name);
 
 
         TextField number = new TextField();
         number.setClassName("payment-textfield");
         number.setPlaceholder("Card number");
-        add(number);
+        container.add(number);
 
         Div d = new Div();
         d.setClassName("payment-container");
@@ -100,26 +110,44 @@ public class PaymentView extends CommonLayout {
         d.add(tijd);
         d.add(Cvc);
         d.add(Zip);
-        add(d);
+        container.add(d);
 
         Div buttondiv = new Div();
         buttondiv.setClassName("buttondiv");
         Button button = new Button("Betaal " + value);
         button.setClassName("payment-button");
         button.addClickListener(event -> {
-            if(email.getValue().length() < 8 || name.getValue().length() < 1 || number.getValue().length() < 8 ||
+            if(name.getValue().length() < 1 || number.getValue().length() < 8 ||
                     tijd.getValue().length() < 4 || Cvc.getValue().length() < 3 || Zip.getValue().length() < 4){
                 Notification.show("Je moet alles invullen !");
             }
             else {
                 Notification.show("Goedzo !");
-                CompanyEntity companyEntity = new CompanyEntity();
-                companyEntity.setEmail("xd");
-                UI.getCurrent().getPage().setLocation("EditInfo");
+
+                Calendar date = Calendar.getInstance();
+                date.setTime(new Date());
+
+                if(VaadinSession.getCurrent().getAttribute("parameter") == "1") {
+                    date.add(Calendar.MONTH, 1 /* AANTAL MAANDEN*/);
+                }
+                else if(VaadinSession.getCurrent().getAttribute("parameter") == "6") {
+                    date.add(Calendar.MONTH, 6 /* AANTAL MAANDEN*/);
+                }
+
+                else if(VaadinSession.getCurrent().getAttribute("parameter") == "12") {
+                    date.add(Calendar.MONTH, 12 /* AANTAL MAANDEN*/);
+                }
+
+                company.setSubscriptionExpiresDate(new Timestamp(date.getTime().getTime()));
+
+                DatabaseService.getCompaniesStore().update(company);
+
+                UI.getCurrent().navigate(DashboardView.class);
             }
         });
         buttondiv.add(button);
-        add(buttondiv);
+        container.add(buttondiv);
+        add(container);
 
 
     }

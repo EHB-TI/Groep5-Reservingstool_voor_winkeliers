@@ -1,6 +1,7 @@
 package ehb.group5.app.UI.views;
 
 import com.vaadin.flow.component.html.Anchor;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.login.LoginForm;
@@ -13,16 +14,23 @@ import lombok.val;
 
 @Route("404")
 @PageTitle("Page not found")
-public class NoteFoundView extends CommonLayout {
+public class NotFoundView extends CommonLayout {
 
-    public NoteFoundView() {
-        val v = new VerticalLayout();
+    public NotFoundView() {
+        getContainer().getStyle().set("display", "flex");
+        getContainer().getStyle().set("justify-content", "center");
+
+        val div = new Div();
+        div.getStyle().set("display", "flex");
+        div.getStyle().set("justify-content", "center");
+        div.getStyle().set("flex-direction", "column");
+        div.getStyle().set("text-align", "center");
 
         val title = new H1("404");
         val subTitle = new H3("Page not found");
         val dashboardAnchor = new RouterLink("Ga naar de dashboard ->", DashboardView.class);
 
-        v.add(title, subTitle, dashboardAnchor);
-        getContainer().add(v);
+        div.add(title, subTitle, dashboardAnchor);
+        getContainer().add(div);
     }
 }

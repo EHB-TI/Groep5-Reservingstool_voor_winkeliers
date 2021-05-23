@@ -1,12 +1,15 @@
 package ehb.group5.app.UI.views;
 
+import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.EmailField;
+import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -16,6 +19,7 @@ import com.vaadin.flow.theme.lumo.Lumo;
 import ehb.group5.app.UI.layouts.CommonLayout;
 import ehb.group5.app.backend.data.DatabaseService;
 import ehb.group5.app.backend.data.table.CompanyEntity;
+import lombok.Getter;
 
 @Route("profiel/edit")
 @PageTitle("ProfielBewerken")
@@ -24,18 +28,19 @@ import ehb.group5.app.backend.data.table.CompanyEntity;
 public class ProfielBewerkenView extends CommonLayout {
 
      /*
-     Author: Zakaria Lamsakam
+     Author: LAMSAKAM Zakaria
      email: zakaria.lamsakam@student.ehb.be
      */
 
     public ProfielBewerkenView(){
 
-        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("company");
+        CompanyEntity company = (CompanyEntity) VaadinSession.getCurrent().getAttribute("account");
 
-        Div div = new Div();
+        Div Contentdiv = new Div();
+        Contentdiv.setId("contentid");
 
         //Titel aanmaken
-        div.add(new H1("Profiel bewerken"));
+        Contentdiv.add(new H1("Profiel bewerken"));
 
 
         //Email initialiseren
@@ -44,42 +49,55 @@ public class ProfielBewerkenView extends CommonLayout {
         emailField.setClearButtonVisible(true);
         emailField.setErrorMessage("Please enter a valid email address");
 
-
-        //De maximum limiet van letters implementeren
+        //De maximum limiet van letters implementeren.
         emailField.setMaxLength(30);
 
-        div.add(emailField);
+        //Password initialiseren
+        PasswordField passwordField = new PasswordField();
+        passwordField.setLabel("Nieuwe Wachtwoord");
+        passwordField.setClearButtonVisible(true);
+        passwordField.setErrorMessage("Uw wachtwoord moet minstens 6 characters bevatten");
 
-        /*TextField labelField2 = new TextField();
-        labelField2.setLabel("Nieuwe Voornaam");
-        labelField2.setMaxLength(20);
+        //De maximum en minimum letters worden hier geinisialiseerd.
+        passwordField.setMaxLength(50);
+        passwordField.setMinLength(6);
 
-        div.add(labelField2);
 
-        TextField labelField3 = new TextField();
-        labelField3.setLabel("Nieuwe Achternaam");
-        labelField3.setMaxLength(20);
 
-        div.add(labelField3);*/
-
-        TextField labelField4 = new TextField();
-        labelField4.setLabel("Nieuwe Wachtwoord");
-        labelField4.setMaxLength(50);
-
-        div.add(labelField4);
-
-        //knop aanmaken
         Button button = new Button("Save");
-        div.add(button);
+        button.addClickShortcut(Key.ENTER);
+        //Hier wordt er geinisialiseerd dat je ook met de enter van uw toetsenbord mag drukken.
+
+        //Als de emailfield of de passwordfield leeg zijn gaat er niks gebeuren omdat ze dan invalid zijn.
         button.addClickListener(buttonClickEvent ->{
+            if (emailField.getValue()!= null
+                    && passwordField.getValue() != null
+                    && !emailField.getValue().isEmpty()
+                    && !passwordField.getValue().isEmpty()
+                    && !emailField.isInvalid()
+                    && !passwordField.isInvalid()
+            ){
+
+                //  De database wordt hier geüpdatet door de emailfield en de passwordfield te bewerken.
             company.setEmail(emailField.getValue());
-            company.setPassword(labelField4.getValue());
+            company.setPassword(passwordField.getValue());
             DatabaseService.getCompaniesStore().update(company);
+
+            //Wanneer er geklikt wordt op de button gaan we gestuurd zijn naar de pagina van de Route die hier geinisialiseerd word.
             UI.getCurrent().getPage().setLocation("profiel");
+            } else {
+                Notification.show("Alles is niet correct ingevuld.");
+            }
+
         });
 
-        div.addClassName("centered-content");
-        getContainer().add(div);
+        //Alles in de contentdiv toevoegen.
+
+        Contentdiv.add(emailField);
+        Contentdiv.add(passwordField);
+        Contentdiv.add(button);
+        getContainer().add(Contentdiv);
+
 
     }
 

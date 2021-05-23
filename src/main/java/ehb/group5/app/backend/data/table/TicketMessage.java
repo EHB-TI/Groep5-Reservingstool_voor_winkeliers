@@ -10,7 +10,8 @@ import java.sql.Timestamp;
 @ToString
 public class TicketMessage {
 
-    @Key @Generated
+    @Key
+    @Generated
     int id;
 
     @Column(name = "ticket_id")
@@ -18,10 +19,22 @@ public class TicketMessage {
     @ManyToOne
     TicketEntity ticket;
 
+    @Column(name = "company_id", nullable = true)
+    @ForeignKey(referencedColumn = "id")
+    @ManyToOne
+    CompanyEntity company;
+
+    @Column(name = "customer_id", nullable = true)
+    @ForeignKey(referencedColumn = "id")
+    @ManyToOne
+    CustomerEntity customer;
+
+    @Column(name = "admin_id", nullable = true)
+    @ForeignKey(referencedColumn = "id")
+    @ManyToOne
+    AdminEntity admin;
+
     String message;
 
     Timestamp date;
-
-    @Column(name = "file_id")
-    int fileId;
 }
