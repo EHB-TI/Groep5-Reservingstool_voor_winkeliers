@@ -16,8 +16,6 @@ import java.sql.Timestamp;
 @Table(name = "companies")
 @ToString
 public abstract class Company {
-
-
     @Key @Generated
     @Column(name = "id")
     int id;

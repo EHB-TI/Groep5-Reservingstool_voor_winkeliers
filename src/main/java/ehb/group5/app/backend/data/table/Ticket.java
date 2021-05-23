@@ -17,9 +17,9 @@ import java.sql.Timestamp;
 @Table(name = "tickets")
 @ToString
 public class Ticket {
-
     @Key
     @Generated
+    @Column(name = "id")
     int id;
 
     String title;
