@@ -36,7 +36,7 @@ import java.util.ArrayList;
      */
 
 @Route("edit")
-@PageTitle("Profiel")
+@PageTitle("Winkel Bewerken")
 @CssImport("./styles/edit.css")
 public class EditView extends CommonLayout {
 
@@ -225,11 +225,11 @@ public class EditView extends CommonLayout {
         Select<String> openingHourSelect = new Select<>();
         openingHourSelect.setItems(DAYS_OF_WEEK);
         openingHourSelect.setLabel("Open dagen");
-        openingHourSelect.setValue(DAYS_OF_WEEK[finalEntity.getWeekDay()]);
+        openingHourSelect.setValue(DAYS_OF_WEEK[finalEntity.getWeekDay() > 0? finalEntity.getWeekDay() - 1 : 0]);
         openingHourSelect.addValueChangeListener(event -> {
             for (int i = 0; i < DAYS_OF_WEEK.length; i++) {
-                if (DAYS_OF_WEEK[i].equals(openingHourSelect.getValue())) {
-                    finalEntity.setWeekDay(i);
+                if (DAYS_OF_WEEK[i-1].equals(openingHourSelect.getValue())) {
+                    finalEntity.setWeekDay(i-1);
                 }
             }
         });

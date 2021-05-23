@@ -61,10 +61,6 @@ public class LoginView extends VerticalLayout {
         emailField.setAutofocus(true);
         emailField.setErrorMessage("Hier moet een werkende e-mail adress staan.");
 
-        //TODO temporary
-        emailField.setValue("9@gmail.com");
-        passwordField.setValue("123456");
-
         // Listen to button actions
         loginButton.addClickListener(event -> {
             if (emailField.getValue()!= null){

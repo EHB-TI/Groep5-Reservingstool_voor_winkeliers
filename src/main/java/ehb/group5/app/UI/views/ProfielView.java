@@ -18,7 +18,7 @@ import ehb.group5.app.backend.data.table.StoreEntity;
 //gemaakt door jason devedeleer
 
 @Route("profiel")
-@PageTitle("profiel")
+@PageTitle("Profiel")
 @CssImport("./styles/profiel.css")
 public class ProfielView extends CommonLayout {
 
@@ -58,7 +58,7 @@ public class ProfielView extends CommonLayout {
             Button b1 = new Button("profiel bewerken");
             v2.add(b1);
             b1.addClickListener(event -> {
-                UI.getCurrent().getPage().setLocation("profiel/edit");
+                UI.getCurrent().navigate(ProfielBewerkenView.class);
             });
             b1.setId("button1");
 
