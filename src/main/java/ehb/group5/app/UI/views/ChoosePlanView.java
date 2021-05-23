@@ -21,9 +21,14 @@ public class ChoosePlanView extends VerticalLayout {
 
     /*
      Author: De Vogel Ryan
-     email: ryan.de.vogel@student.ehb.be
      Read the README.md bellow the file pom.xml
     */
+
+    /*
+     resources:
+     - https://vaadin.com/forum/thread/16986951/redirecting-to-another-page-when-the-notification-x-is-clicked
+     - https://vaadin.com/docs/v8/framework/articles/FindingTheCurrentUIAndPageAndVaadinSession
+     */
 
     public ChoosePlanView() {
 
@@ -55,21 +60,21 @@ public class ChoosePlanView extends VerticalLayout {
         Button button = new Button("1 maand");
         // Listen to button actions
         button.addClickListener(event -> {
-            VaadinSession.getCurrent().setAttribute("parameter", "1");
+            VaadinSession.getCurrent().setAttribute("parameter", "1");//Pass info to the next page
             UI.getCurrent().getPage().setLocation("payment");
         });
 
         Button button1 = new Button("6 maanden");
         // Listen to button actions
         button1.addClickListener(event -> {
-            VaadinSession.getCurrent().setAttribute("parameter", "6");
+            VaadinSession.getCurrent().setAttribute("parameter", "6");//Pass info to the next page
             UI.getCurrent().getPage().setLocation("payment");
         });
 
         Button button2 = new Button("12 maanden");
         // Listen to button actions
         button2.addClickListener(event -> {
-            VaadinSession.getCurrent().setAttribute("parameter", "12");
+            VaadinSession.getCurrent().setAttribute("parameter", "12");//Pass info to the next page
             UI.getCurrent().getPage().setLocation("payment");
         });
 
