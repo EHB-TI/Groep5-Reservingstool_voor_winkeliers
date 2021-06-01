@@ -22,6 +22,6 @@ Als u deze bekomt, is er een manier om die weg te maken. Aangezien we sommige co
 ### Wie heeft wat gedaan ?
 * Demir Tugçe: kalender per maand en per dag.
 * Lamsakam Zakaria: company ticket pagina, support pagina en profielbewerken pagina, frontend edit pagina.
-* Zoetardt Craig: login pagina, registreer en edit.
+* Zoetardt Craig: login pagina, registreer en backend edit pagina.
 * Faille Arnaud: edit, dashboard, commonLayout.
 * De Vogel Ryan: Admin ticket pagina, choose plan pagina, payment pagina.
