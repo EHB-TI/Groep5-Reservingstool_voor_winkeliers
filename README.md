@@ -1,5 +1,7 @@
 # Reservatietool voor winkeliers
 
+De bedoeling van dit project is om ervoor te zorgen dat winkeliers hun eigen profiel kunnen maken en hun winkel kunnen adverteren op deze manier kunnen ze zo ook een breder publiek kunnen bereiken. Hier kunnen ze foto's uploaden, informatie bewerken, tickets aanmaken...
+
 ### Installatie
 
 - Na het pullen/clonen van het project moet er een Maven compilatie gebeuren.
