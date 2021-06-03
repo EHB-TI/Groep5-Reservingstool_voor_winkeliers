@@ -14,7 +14,7 @@ Het project gebruikt openjdk-15.
 #### Manier 2
     - Download de launch.zip en exctract het in de gewenste folder
     - Start launch.sh script file (pas op! De script gebruikt de systeem variabel "java". Als java op uw computer te oud is, zal het niet  lanceren. Verander de script variabel JAVA_EXECUTOR naar de juiste path van de laatste java versie)
-####Na het starten
+#### Na het starten
 - Indien de server gestart is, moet u dan op http://localhost:8080 gaan
 - Een fake account is op voorhand gemaakt om de statistieken, kalender, ... pagina's te kunnen démonstreren. De email is `1@gmail.com` en de passwoord is `123456`
 - Een andere account is beschikbaar om de admin gedeelte te kunnen zien. De email is `admin@gmail.com` en de passwoord `123456`
