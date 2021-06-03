@@ -7,12 +7,18 @@ De bedoeling van dit project is om ervoor te zorgen dat winkeliers hun eigen pro
 - Na het pullen/clonen van het project moet er een Maven compilatie gebeuren.
 
 ### Gebruik
+Het project gebruikt openjdk-15.
+####Manier 1
+    - Het project gebruikt SpringBoot en de klasse om de applicatie tu kunnen lanceren is Application.java via Intellij.
 
-- Het project gebruikt SpringBoot en de klasse om de applicatie tu kunnen lanceren is Application.java .
+####Manier 2
+    - Download de launch.zip en exctract het in de gewenste folder
+    - Start launch.sh script file (pas op! De script gebruikt de systeem variabel "java". Als java op uw computer te oud is, zal het niet  lanceren. Verander de script variabel JAVA_EXECUTOR naar de juiste path van de laatste java versie)
+####Na het starten
 - Indien de server gestart is, moet u dan op http://localhost:8080 gaan
-- Een fake account is op voorand gemmaakt om de statistieken, kalender, ... paginas te kunnen démonstreren. De email is `1@gmail.com` en de passwoord is `123456`
+- Een fake account is op voorhand gemaakt om de statistieken, kalender, ... pagina's te kunnen démonstreren. De email is `1@gmail.com` en de passwoord is `123456`
 - Een andere account is beschikbaar om de admin gedeelte te kunnen zien. De email is `admin@gmail.com` en de passwoord `123456`
-  
+
 ### Mogelijke probleem
 
 https://imgur.com/a/9T5ebQ9

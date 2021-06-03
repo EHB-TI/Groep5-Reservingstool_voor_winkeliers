@@ -50,7 +50,7 @@ public abstract class CommonLayout extends Div {
         nav.add(navContainer);
 
         // Website title
-        val navLogo = new Image("/frontend/logo.png", "Website logo");
+        val navLogo = new Image("https://imgur.com/download/BjBA0KY/", "Website logo");
         navLogo.setWidth("80px");
         navLogo.setHeight("45px");
         navContainer.add(navLogo);

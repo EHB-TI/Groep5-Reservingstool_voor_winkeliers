@@ -47,14 +47,14 @@ public class DatabaseService {
     private HikariDataSource hikari;
 
     public DatabaseService() {
-        getLogger().info(LogUtils.YELLOW + "Reading sql config file...");
+        getLogger().info(LogUtils.YELLOW + "Reading sql config file..." + LogUtils.RESET);
         val sqlConfig = readOrCreateConfiguration(SQLCredentials.class);
 
-        getLogger().info(LogUtils.YELLOW + "Connection to the database...");
+        getLogger().info(LogUtils.YELLOW + "Connection to the database..." + LogUtils.RESET);
         hikari = new HikariDataSource(sqlConfig.toHikari());
-        getLogger().info(LogUtils.GREEN + "Connection etablised");
+        getLogger().info(LogUtils.GREEN + "Connection etablised" + LogUtils.RESET);
 
-        getLogger().info(LogUtils.YELLOW + "Setting up Entities Data Store...");
+        getLogger().info(LogUtils.YELLOW + "Setting up Entities Data Store..." + LogUtils.RESET);
         adminStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         companiesStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         customersStore = new EntityDataStore<>(hikari, Models.DEFAULT);
@@ -65,6 +65,6 @@ public class DatabaseService {
         storesStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         ticketStore = new EntityDataStore<>(hikari, Models.DEFAULT);
         ticketMessageStore = new EntityDataStore<>(hikari, Models.DEFAULT);
-        getLogger().info(LogUtils.GREEN + "Entities Data Store DONE");
+        getLogger().info(LogUtils.GREEN + "Entities Data Store DONE" + LogUtils.RESET);
     }
 }
