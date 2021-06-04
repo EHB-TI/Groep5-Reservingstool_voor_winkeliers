@@ -228,8 +228,8 @@ public class EditView extends CommonLayout {
         openingHourSelect.setValue(DAYS_OF_WEEK[finalEntity.getWeekDay() > 0? finalEntity.getWeekDay() - 1 : 0]);
         openingHourSelect.addValueChangeListener(event -> {
             for (int i = 0; i < DAYS_OF_WEEK.length; i++) {
-                if (DAYS_OF_WEEK[i-1].equals(openingHourSelect.getValue())) {
-                    finalEntity.setWeekDay(i-1);
+                if (DAYS_OF_WEEK[i].equals(openingHourSelect.getValue())) {
+                    finalEntity.setWeekDay(i);
                 }
             }
         });
