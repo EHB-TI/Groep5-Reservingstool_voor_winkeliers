@@ -12,13 +12,9 @@ De bedoeling van dit project is om ervoor te zorgen dat winkeliers hun eigen pro
     - com.fasterxml.jackson.dataformat : jackson-dataformat-yaml
     - org.vaadin.stefan : fullcalendar2
 
-### Installatie
-
-- Na het pullen/clonen van het project moet er een Maven compilatie gebeuren.
-
-### Gebruik
-Het project gebruikt openjdk-15.
+### Installatie & Gebruik
 #### Manier 1
+    - Na het pullen/clonen van het project moet er een Maven compilatie gebeuren.
     - Het project gebruikt SpringBoot en de klasse om de applicatie tu kunnen lanceren is Application.java via Intellij.
 
 #### Manier 2
