@@ -2,13 +2,19 @@
 
 De bedoeling van dit project is om ervoor te zorgen dat winkeliers hun eigen profiel kunnen maken en hun winkel kunnen adverteren op deze manier kunnen ze zo ook een breder publiek kunnen bereiken. Hier kunnen ze foto's uploaden, informatie bewerken, tickets aanmaken...
 
-### Installatie
+### Gebruikte libraries
+    - io.requery : requery
+    - io.requery : requery-processor
+    - javax.annotation : javax.annotation-api
+    - org.projectlombok : com.zaxxer
+    - com.vaadin : Vaadin
+    - com.zaxxer : HikariCP
+    - com.fasterxml.jackson.dataformat : jackson-dataformat-yaml
+    - org.vaadin.stefan : fullcalendar2
 
-- Na het pullen/clonen van het project moet er een Maven compilatie gebeuren.
-
-### Gebruik
-Het project gebruikt openjdk-15.
+### Installatie & Gebruik
 #### Manier 1
+    - Na het pullen/clonen van het project moet er een Maven compilatie gebeuren.
     - Het project gebruikt SpringBoot en de klasse om de applicatie tu kunnen lanceren is Application.java via Intellij.
 
 #### Manier 2
