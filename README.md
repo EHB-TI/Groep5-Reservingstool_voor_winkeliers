@@ -29,5 +29,5 @@ Als u deze bekomt, is er een manier om die weg te maken. Aangezien we sommige co
 * Demir Tugçe: kalender per maand en per dag.
 * Lamsakam Zakaria: company ticket pagina, support pagina en profielbewerken pagina, frontend edit pagina.
 * Zoetardt Craig: login pagina, registreer en backend edit pagina.
-* Faille Arnaud: edit, dashboard, commonLayout.
+* Faille Arnaud: edit, dashboard, commonLayout, database interactie en entiteiten.
 * De Vogel Ryan: Admin ticket pagina, choose plan pagina, payment pagina.
