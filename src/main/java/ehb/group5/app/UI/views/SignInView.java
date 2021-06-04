@@ -150,7 +150,7 @@ public class SignInView extends VerticalLayout {
                     store.setPhoneNumber(gsmField.getValue());
                     store.setName(naamField.getValue());
 
-                   /* DatabaseService.getCompaniesStore().insert(company);*/
+
                     DatabaseService.getStoresStore().insert(store);
 
                     VaadinSession.getCurrent().setAttribute("account", company);
