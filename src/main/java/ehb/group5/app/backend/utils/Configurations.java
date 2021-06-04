@@ -23,10 +23,12 @@ public class Configurations {
 
     @SneakyThrows
     public static <T> T readOrCreateConfiguration(Class<T> clazz) {
+        // Creating filename depends of the class name
         var configName = clazz.getSimpleName();
         if (!configName.endsWith(".yml"))
             configName = configName + ".yml";
 
+        // Creates config file if needed in config folder
         val path = Paths.get("config", configName);
         if (!Files.exists(path)) {
             Files.createDirectories(path.getParent());

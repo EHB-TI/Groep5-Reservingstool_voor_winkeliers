@@ -37,9 +37,11 @@ public abstract class ChartUtils {
         }
 
         public Chart build() {
+            // Get configuration of chart
             Configuration conf = chart.getConfiguration();
             conf.setTitle(new Title(title));
 
+            // Creates a legend for the chart
             Legend legend = new Legend();
             legend.setLayout(LayoutDirection.VERTICAL);
             legend.setAlign(HorizontalAlign.LEFT);
@@ -49,16 +51,19 @@ public abstract class ChartUtils {
             legend.setY(100);
             conf.setLegend(legend);
 
+            // Defines xAxis categories
             XAxis xAxis = new XAxis();
             xAxis.setCategories(categories);
             conf.addxAxis(xAxis);
 
+            // Defines yAxis title
             if (yAsTitle != null) {
                 YAxis yAxis = new YAxis();
                 yAxis.setTitle(new AxisTitle(yAsTitle));
                 conf.addyAxis(yAxis);
             }
 
+            // Defines tooltip information
             if (tooltipUnit != null) {
                 Tooltip tooltip = new Tooltip();
                 tooltip.setShared(true);

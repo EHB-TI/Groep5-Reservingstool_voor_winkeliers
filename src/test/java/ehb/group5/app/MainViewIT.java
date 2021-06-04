@@ -1,66 +1,46 @@
 package ehb.group5.app;
 
-import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
+import ehb.group5.app.backend.security.PasswordAuthentication;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 
-import com.vaadin.flow.component.button.testbench.ButtonElement;
-import com.vaadin.flow.component.notification.testbench.NotificationElement;
-import com.vaadin.flow.theme.lumo.Lumo;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.util.Calendar;
 
-public class MainViewIT extends AbstractViewTest {
+public class MainViewIT {
 
     @Test
-    public void clickingButtonShowsNotification() {
-        Assert.assertFalse($(NotificationElement.class).exists());
-        $(ButtonElement.class).first().click();
-        Assert.assertTrue($(NotificationElement.class).waitForFirst().isOpen());
+    public void enryptPassword() {
+        String password = "mysecretpassword";
+        String hasedPassword = new PasswordAuthentication().hash(password.toCharArray());
+        Assert.assertFalse(password == hasedPassword);
     }
 
     @Test
-    public void clickingButtonTwiceShowsTwoNotifications() {
-        Assert.assertFalse($(NotificationElement.class).exists());
-        ButtonElement button = $(ButtonElement.class).first();
-        button.click();
-        button.click();
-        Assert.assertEquals(2, $(NotificationElement.class).all().size());
+    public void enryptPasswordCheck() {
+        String password = "mysecretpassword";
+        String hasedPassword1 = new PasswordAuthentication().hash(password.toCharArray());
+        String hasedPassword2 = new PasswordAuthentication().hash(password.toCharArray());
+        Assert.assertTrue(hasedPassword1 == hasedPassword2);
     }
 
     @Test
-    public void buttonIsUsingLumoTheme() {
-        WebElement element = $(ButtonElement.class).first();
-        assertThemePresentOnElement(element, Lumo.class);
-    }
+    public void testDatesBefore() throws ParseException {
+        Calendar calStart = Calendar.getInstance();
+        Calendar calWeekAgo = Calendar.getInstance();
+        Calendar checkFunction = Calendar.getInstance();
 
-    @Test
-    public void testClickButtonShowsHelloAnonymousUserNotificationWhenUserNameIsEmpty() {
-        ButtonElement button = $(ButtonElement.class).first();
-        button.click();
-        Assert.assertTrue($(NotificationElement.class).exists());
-        NotificationElement notification = $(NotificationElement.class).first();
-        Assert.assertEquals("Hello anonymous user", notification.getText());
-    }
+        LocalDate dateStart = LocalDate.of(2021, 1, 8);
+        calStart.set(dateStart.getYear(), dateStart.getMonthValue(), dateStart.getDayOfMonth());
+        LocalDate dateWeekAgo = LocalDate.of(2021, 1, 1);
+        calWeekAgo.set(dateWeekAgo.getYear(), dateWeekAgo.getMonthValue(), dateWeekAgo.getDayOfMonth());
 
-    @Test
-    public void testClickButtonShowsHelloUserNotificationWhenUserIsNotEmpty() {
-        TextFieldElement textField = $(TextFieldElement.class).first();
-        textField.setValue("Vaadiner");
-        ButtonElement button = $(ButtonElement.class).first();
-        button.click();
-        Assert.assertTrue($(NotificationElement.class).exists());
-        NotificationElement notification = $(NotificationElement.class).first();
-        Assert.assertEquals("Hello Vaadiner", notification.getText());
-    }
+        LocalDate weekAgoDate = dateStart.minusDays(7);
+        checkFunction.set(weekAgoDate.getYear(), weekAgoDate.getMonthValue(), weekAgoDate.getDayOfMonth());
 
-    @Test
-    public void testEnterShowsHelloUserNotificationWhenUserIsNotEmpty() {
-        TextFieldElement textField = $(TextFieldElement.class).first();
-        textField.setValue("Vaadiner");
-        textField.sendKeys(Keys.ENTER);
-        Assert.assertTrue($(NotificationElement.class).exists());
-        NotificationElement notification = $(NotificationElement.class).first();
-        Assert.assertEquals("Hello Vaadiner", notification.getText());
+        Assert.assertTrue(calWeekAgo.get(Calendar.YEAR) == checkFunction.get(Calendar.YEAR)
+                && calWeekAgo.get(Calendar.MONTH) == checkFunction.get(Calendar.MONTH)
+                && calWeekAgo.get(Calendar.DAY_OF_MONTH) == checkFunction.get(Calendar.DAY_OF_MONTH));
     }
 }
